@@ -1,0 +1,29 @@
+.why {
+    padding: 5rem;
+    text-align: center;
+}
+
+.why h3 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.why .cardsData {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 60%;
+    margin: 3rem auto;
+}
+
+.why .cardsData .card {
+    width: 50%;
+    height: 200px;
+
+}
+
+.why .cardsData .card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}

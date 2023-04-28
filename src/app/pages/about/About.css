@@ -1,0 +1,38 @@
+.about {
+    display: flex;
+    padding: 5rem;
+    align-items: center;
+    gap: 2rem;
+    font-family: "Open sans", sans-serif;
+    background-color: #fff;
+}
+
+.about img {
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 3rem;
+}
+
+.about .text {
+    width: 50%;
+}
+
+.about .text button {
+    padding: 1rem;
+    font-family: "Roboto";
+    cursor: pointer;
+    background-color: #fff;
+    color: #f12535;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 3rem;
+    border: 2px solid #f12535;
+}
+
+.about .text p {
+    font-family: "Roboto";
+    font-size: 1.3rem;
+    text-align: justify;
+    margin: 2rem 0;
+}
