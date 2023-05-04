@@ -31,7 +31,7 @@ const DetailCategorie = () => {
                 </div>
                 <div className='col-sm-10 main'>
                     <div className='alert alert-success alertInputSearch'>
-                        <Link to="/categories">
+                        <Link to="/admin/categories">
                             <div className='retour'>
                                 <FaArrowLeft />
                                 <span>Retour</span>
@@ -47,20 +47,20 @@ const DetailCategorie = () => {
 
                     <div className='col-sm-12 mt-3 tableCategorie'>
                         <div className='alert alert-primary'>
-                            <h5>Influenceurs</h5>
+                            <h5>Productions</h5>
                         </div>
 
                         {
-                            data && data.influenceurs.length > 0 ? <div className='grille'>
+                            data && data.cagnottes && data.cagnottes.length > 0 ? <div className='grille'>
                                 {
-                                    data.influenceurs.map(val => {
+                                    data.cagnottes.map(val => {
                                         return <div className='card'>
                                             <img src={baseUrlImage + '/' + val.url} alt={val.nom} />
                                             <div className='card-body'>
-                                                <p>{val.nom} {val.prenom} {val.pseudo}</p>
+                                                <p>{val.nom} {val.prenom} {val.title}</p>
                                                 <p>
                                                     <Link
-                                                        to={{ pathname: "/influenceurs/detail" }}
+                                                        to={{ pathname: "/production/detail" }}
                                                         state={{ data: val }}
                                                         className='btn btn-outline'
                                                         style={{ color: "#555", border: "1px solid #ddd" }}

@@ -9,10 +9,7 @@ import ListCagnottes from './ListCagnottes';
 
 const Cagnottes = () => {
 
-    // const { userConnected } = useContext(ContextApp);
-
     const influenceurList = useSelector((state) => state.cagnottes);
-
     const [valueSearch, setValueSearch] = useState('');
     
     return (
@@ -38,7 +35,7 @@ const Cagnottes = () => {
                         </div>
                         <div className='col-sm-4'>
                             <Link to='add'>
-                                <button className='btn btn-primary'>
+                                <button className='btn btn-sucess'>
                                     <FaPlus />
                                     Ajouter
                                 </button>

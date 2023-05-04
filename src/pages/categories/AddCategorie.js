@@ -27,11 +27,10 @@ const AddCategorie = () => {
     }, [state]);
 
     const addCategorie = (e) => {
-        let formData = new FormData();
-        formData.append('nom', nom);
-        formData.append('description', description);
-
-        dispatch(newCategorie(formData));
+        let data = {}
+        data.nom = nom;
+        data.description = description;
+        dispatch(newCategorie(data));
     };
 
     const updCategorie = (e) => {
@@ -63,7 +62,7 @@ const AddCategorie = () => {
                                 gap: "5px",
                                 color: "#1976d2"
                             }}>
-                                <Link to="/categories"
+                                <Link to="/admin/categories"
                                     style={{
                                         fontSize: "16px", color: "#1976d2",
                                         display: "flex", alignItems: "center", gap: "5px",

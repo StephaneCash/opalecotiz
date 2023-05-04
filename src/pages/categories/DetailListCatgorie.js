@@ -63,7 +63,7 @@ export default function DetailListCatgorie(props) {
                         <TableCell align="left" width={200}>
                             <button className='btnList'>
                                 <Link to={{ pathname: "addInfluenceurs" }} state={{ data: data }} style={{ color: "#111" }}>
-                                    Ajouter des influenceurs
+                                    Ajouter des productions
                                 </Link>
                             </button>
                         </TableCell>

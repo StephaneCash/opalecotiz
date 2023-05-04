@@ -8,19 +8,29 @@ const Why = () => {
         <div className='why'>
             <h3>Pourquoi cotiser ?</h3>
             <div className='cardsData'>
-                <div className='card'>
-                    <img src={card1} alt="" />
-                    <p>
-                        Pour un pot commun...
-                        Parfait pour les évènements entre proches, naissances, mariages, pots de départ...
-                    </p>
+                <div>
+                    <h5>Pour grandir ensemble</h5>
+                    <div className='card'>
+                        <div className='card-body'>
+                            <img src={card2} alt="" />
+                        </div>
+                        <p>
+                            Pour un pot commun...
+                            Parfait pour les évènements entre proches, naissances, mariages, pots de départ...
+                        </p>
+                    </div>
                 </div>
-                <div className='card'>
-                    <img src={card2} alt="" />
-                    <p>
-                        Pour un pot commun...
-                        Parfait pour les évènements entre proches, naissances, mariages, pots de départ...
-                    </p>
+                <div>
+                    <h5>Promouvoir la culture</h5>
+                    <div className='card'>
+                        <div className='card-body'>
+                            <img src={card2} alt="" />
+                        </div>
+                        <p>
+                            Pour un pot commun...
+                            Parfait pour les évènements entre proches, naissances, mariages, pots de départ...
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,112 @@
+.production {
+    width: 100%;
+}
+
+.mainProd {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.mainProd h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.row1 {
+    display: flex;
+    gap: 1rem;
+}
+
+.row1 .col-sm-4 {}
+
+.row1 .col-sm-8 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.row1 .col-sm-8 .infosAlert {
+    border: 1px solid #009c4e;
+    border-radius: 7px;
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+    color: #009c4e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row1 .col-sm-8 .infosAlert .mainText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: #009c4e;
+    padding: 1rem;
+}
+
+.row1 .col-sm-8 .description {
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: justify;
+    font-size: 14px;
+}
+
+.row1 .col-sm-4 .card .image {
+    position: relative;
+    height: 200px;
+}
+
+.row1 .col-sm-4 .card .image .overPlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.row1 .col-sm-4 .card .image .textMain {
+    position: absolute;
+    left: 4%;
+    color: #ddd;
+    bottom: 4%;
+}
+
+.row1 .col-sm-4 .card .image img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.row1 .col-sm-4 .showData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.row1 .col-sm-4 .showData span:first-child{
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: "Roboto";
+}
+.row1 .col-sm-4 .showData span:last-child{
+    font-weight: 500;
+}
+
+.row1 .col-sm-4 .showData span span{
+    font-size: 1rem !important;
+    font-weight: bold !important;
+}
+
+.row1 .col-sm-4 button {
+    border: 1px solid #009c4e;
+    background-color: #009c4e;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}

@@ -35,7 +35,7 @@ const Categorie = () => {
                         </div>
                         <div className='col-sm-4'>
                             <Link to='add'>
-                                <button className='btn btn-primary'>
+                                <button className='btn btn-success'>
                                     <FaPlus />
                                     Ajouter
                                 </button>

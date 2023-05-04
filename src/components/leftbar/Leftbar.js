@@ -22,7 +22,7 @@ const Leftbar = () => {
                 <NavLink to="/admin/cagnottes">
                     <div className='item'>
                         <FaHandsHelping />
-                        <span>Cagnottes</span>
+                        <span>Productions</span>
                     </div>
                 </NavLink>
                 <NavLink to="/admin/images">

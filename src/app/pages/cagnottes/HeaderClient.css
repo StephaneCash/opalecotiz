@@ -1,0 +1,16 @@
+.headerTop{
+    background-color: #023020;
+    display: flex;
+    justify-content: space-between;
+    padding: .7rem 3rem;
+    color: #fff;
+}
+
+ .headerTop img {
+    width: 100px;
+}
+ .headerTop div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

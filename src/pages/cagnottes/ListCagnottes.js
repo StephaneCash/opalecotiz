@@ -21,11 +21,14 @@ export default function ListInfluenceurs(props) {
     let data = props.data;
     let valueSearch = props.valueSearch && props.valueSearch.toLowerCase();
 
-    const [showBtnAddInf, setShowBtnAddInf] = React.useState(true);
+    const [showBtnAddInf, setShowBtnAddInf] = React.useState(false);
 
     const [cagnottes, setCagnottes] = React.useState([]);
     const [hasMore, setHasMore] = React.useState(true);
     const [count, setCount] = React.useState(10);
+
+    const [id, setId] = React.useState(null);
+    const [valC, setC] = React.useState(null);
 
     let dispatch = useDispatch();
 
@@ -63,8 +66,9 @@ export default function ListInfluenceurs(props) {
         }
     };
 
-    const handleCheckBox = (id) => {
-        setShowBtnAddInf(!showBtnAddInf);
+    const handleCheckBox = (val) => {
+        setShowBtnAddInf(true);
+        setId(val.id);
     };
 
     return (
@@ -73,11 +77,30 @@ export default function ListInfluenceurs(props) {
                 height: 510,
                 overflow: 'auto',
             }}>
-            <div style={{ background: '#fff', border: "1px solid #ddd", padding: "1rem" }}>
-                <span>Pages</span> / <span>Cagnottes {cagnottes && cagnottes.length > 0 ? `(${cagnottes.length})` :
-                    `(0)`}</span>
-                <br />
-                <h6>Cagnottes</h6>
+            <div style={{ background: '#fff', border: "1px solid #ddd", padding: "1rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div>
+                    <span>Pages</span> / <span>Productions {cagnottes && cagnottes.length > 0 ? `(${cagnottes.length})` :
+                        `(0)`}</span>
+                    <br />
+                    <h6>Productions</h6>
+                </div>
+                {
+                    showBtnAddInf &&
+                    <Link
+                        to={{
+                            pathname: `/admin/add-images/${id && id}`
+                        }}
+                    >
+                        <button
+                            className='btn'
+                            style={{
+                                border: "1px solid #009c4e", color: "#009c4e"
+                            }}>
+                            Ajouter des images
+                        </button>
+                    </Link>
+
+                }
             </div>
             <InfiniteScroll
                 dataLength={cagnottes && cagnottes.length}
@@ -111,7 +134,7 @@ export default function ListInfluenceurs(props) {
                                 <input
                                     style={{ border: "2px solid silver", width: 20, height: 20 }}
                                     className="form-check-input" type="checkbox" value=""
-                                    id="flexCheckDefault"
+                                    id="checkBox"
                                 />
                             </TableCell>
                             <TableCell>ID</TableCell>
@@ -124,7 +147,7 @@ export default function ListInfluenceurs(props) {
                     <TableBody>
 
                         {cagnottes && cagnottes.length > 0 ? cagnottes.filter(val => {
-                            const nom = val && val.nom !== undefined && val.nom.toLowerCase();
+                            const nom = val && val.title !== undefined && val.title.toLowerCase();
                             return nom && nom.includes(valueSearch)
                         })
                             .map((row, i) => (
@@ -134,10 +157,12 @@ export default function ListInfluenceurs(props) {
                                 >
                                     <TableCell width={60}>
                                         <input
-                                            className="form-check-input" type="checkbox"
-                                            value="" id="flexCheckDefault"
-                                            onClick={() => handleCheckBox(row && row.id)}
-                                            style={{ border: "2px solid silver", width: 20, height: 20 }}
+                                            className="form-check-input checkForm" type="checkbox"
+                                            value="" id="checkBoxV"
+                                            onClick={() => {
+                                                handleCheckBox(row);
+                                            }}
+                                            style={{ border: "2px solid silver", width: 20, height: 20, }}
                                         />
                                     </TableCell>
                                     <TableCell width={60}>{i + 1}</TableCell>
@@ -147,14 +172,14 @@ export default function ListInfluenceurs(props) {
                                                 <Avatar alt="Remy Sharp" sx={{ width: 40, height: 40 }} src={baseUrlImage + "/" + row.url} />
                                             </div>
                                             <div>
-                                                <div style={{ fontWeight: "600", }}>{row.nom + ' ' + row.pseudo}</div>
+                                                <div style={{ fontWeight: "600", }}>{row.title}</div>
                                                 <div className='mt-1' style={{ color: "#666", fontSize: '13px' }}>{row && row.categorie && row.categorie.nom}</div>
                                             </div>
                                         </div>
                                     </TableCell>
                                     <TableCell align="left" width={500} style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                                         {
-                                            row && row.detail && row.detail.split(".") ? row.detail.split(".")[0] + "..." : row.detail
+                                            row && row.description && row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
                                         }
                                     </TableCell>
                                     <TableCell width={300}>
@@ -163,7 +188,7 @@ export default function ListInfluenceurs(props) {
                                         }
                                     </TableCell>
                                     <TableCell align="left" width={130}>
-                                        <Link to={{ pathname: "detail" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
+                                        <Link to={{ pathname: `detail/${row.id}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                             <FaInfo size={18} />
                                         </Link>
                                         <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">

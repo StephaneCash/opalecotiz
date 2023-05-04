@@ -19,8 +19,6 @@ const DetailCagnotte = () => {
         }
     }, [state]);
 
-    console.log(data)
-
     return (
         <>
             <Navbar />
@@ -30,7 +28,7 @@ const DetailCagnotte = () => {
                 </div>
                 <div className='col-sm-10 main'>
                     <div className='alert alert-success alertInputSearch'>
-                        <Link to="/influenceurs">
+                        <Link to="/admin/cagnottes">
                             <div className='retour'>
                                 <FaArrowLeft />
                                 <span>Retour</span>

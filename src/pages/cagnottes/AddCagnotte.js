@@ -11,18 +11,19 @@ import { newCagnotte, updateCagnotte } from '../../features/Cagnotte';
 
 const AddCagnotte = () => {
 
-    const [nom, setNom] = useState('');
-    const [postnom, setPostnom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [pseudo, setPseudo] = useState('');
+    const [title, setTitle] = useState('');
+    const [montant, setMontant] = useState('');
+    const [link, setLink] = useState('');
     const [image, setImage] = useState('');
-    const [detail, setDetail] = useState('');
-    const [textDetail, setTextDetail] = useState('');
+    const [description, setDescription] = useState('');
     const [categorie, setCategorie] = useState('');
     const [file, setFile] = useState('');
 
+    const [date1, setDate1] = useState('');
+    const [date2, setDate2] = useState('');
+
     const dispatch = useDispatch();
-    const isLoading = useSelector(state => state.categories);
+    const isLoading = useSelector(state => state.cagnottes);
 
     const location = useLocation();
     const { state } = location;
@@ -36,41 +37,41 @@ const AddCagnotte = () => {
 
     useEffect(() => {
         if (state) {
-            setNom(state && state.data && state.data.nom);
+            setTitle(state && state.data && state.data.title);
             setImage(state && state.data && state.data.url);
-            setTextDetail(state && state.data && state.data.textDetaillle);
-            setPrenom(state && state.data && state.data.prenom);
-            setPostnom(state && state.data && state.data.postnom);
-            setPseudo(state && state.data && state.data.pseudo);
-            setDetail(state && state.data && state.data.detail);
+            setDescription(state && state.data && state.data.description);
+            setLink(state && state.data && state.data.link);
+            setMontant(state && state.data && state.data.montant);
+            setDate1(state && state.data && state.data.dateDebut);
+            setDate2(state && state.data && state.data.dateFin);
             setCategorie(state && state.data && state.data.categorie && state.data.categorie.id);
         }
     }, [state]);
 
     const addInfluenceur = (e) => {
         let formData = new FormData();
-        formData.append('nom', nom);
-        formData.append('postnom', postnom);
-        formData.append('prenom', prenom);
-        formData.append('pseudo', pseudo);
+        formData.append('title', title);
+        formData.append('montant', montant);
+        formData.append('link', setLink);
         formData.append('image', image);
         formData.append('categorieId', categorie);
-        formData.append('detail', detail);
-        formData.append('textDetaillle', textDetail);
+        formData.append('description', description);
+        formData.append('dateDebut', date1);
+        formData.append('dateFin', date2);
 
         dispatch(newCagnotte(formData));
     };
 
     const updateInfluenceurHandle = (e) => {
         let formData = new FormData();
-        formData.append('nom', nom);
-        formData.append('postnom', postnom);
-        formData.append('prenom', prenom);
-        formData.append('pseudo', pseudo);
+        formData.append('title', title);
+        formData.append('montant', montant);
+        formData.append('link', link);
         formData.append('image', image);
         formData.append('categorieId', categorie);
-        formData.append('detail', detail);
-        formData.append('textDetaillle', textDetail);
+        formData.append('description', description);
+        formData.append('dateDebut', date1);
+        formData.append('dateFin', date2);
 
         let data = {}
         data.form = formData;
@@ -95,18 +96,18 @@ const AddCagnotte = () => {
                                 gap: "5px",
                                 color: "#1976d2"
                             }}>
-                                <Link to="/influenceurs"
+                                <Link to="/admin/cagnottes"
                                     style={{
                                         fontSize: "16px", color: "#1976d2",
                                         display: "flex", alignItems: "center", gap: "5px",
                                     }}
                                 >
-                                    <FaArrowLeft /> Influenceurs
+                                    <FaArrowLeft /> Productions
                                 </Link>
                                 <span style={{ fontSize: "15px", color: "#1976d2", }}>/</span>
                                 <span style={{ fontSize: "17px" }}>
                                     {
-                                        state ? `Modification de ${state && state.data && state.data.nom}` : "Ajout"
+                                        state ? `Modification de ${state && state.data && state.data.title}` : "Ajout"
                                     }
                                 </span>
                             </h4>
@@ -114,60 +115,49 @@ const AddCagnotte = () => {
                     </div>
 
                     <div className='col-sm-12 tableCategorie'>
+
                         <div className='row'>
-                            <div className='col-sm-6'>
-                                <div className='col-sm-12'>
-                                    <div className="form-group mb-3">
-                                        <label htmlFor="nom">Entrer un nom</label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="nom"
-                                            placeholder="Entrer un nom"
-                                            value={nom}
-                                            onChange={(e) => setNom(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
+                            <div className='col-sm-8'>
                                 <div className='row'>
                                     <div className='col-sm-6'>
                                         <div className="form-group mb-3">
-                                            <label htmlFor="prenom">Prénom</label>
+                                            <label htmlFor="nom">Entrer un titre</label>
                                             <input
                                                 type="text"
-                                                placeholder='Prénom'
                                                 className="form-control"
-                                                id="prenom"
-                                                value={prenom}
-                                                onChange={(e) => setPrenom(e.target.value)}
+                                                id="nom"
+                                                placeholder="Entrer un nom"
+                                                value={title}
+                                                onChange={(e) => setTitle(e.target.value)}
                                             />
                                         </div>
                                     </div>
                                     <div className='col-sm-6'>
                                         <div className="form-group mb-3">
-                                            <label htmlFor="postnom">Postnom</label>
+                                            <label htmlFor="postnom">Montant à atteindre</label>
                                             <input
-                                                type="text"
-                                                placeholder='Prénom'
+                                                type="number"
+                                                placeholder='Montant'
                                                 className="form-control"
-                                                id="postnom"
-                                                value={postnom}
-                                                onChange={(e) => setPostnom(e.target.value)}
+                                                id="montant"
+                                                value={montant}
+                                                onChange={(e) => setMontant(e.target.value)}
                                             />
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className='row'>
                                     <div className='col-sm-6'>
                                         <div className="form-group mb-3">
-                                            <label htmlFor="pseudo">Pseudo</label>
+                                            <label htmlFor="pseudo">Un lien</label>
                                             <input
                                                 type="text"
-                                                placeholder='Pseudo'
+                                                placeholder='Url'
                                                 className="form-control"
-                                                id="pseudo"
-                                                value={pseudo}
-                                                onChange={(e) => setPseudo(e.target.value)}
+                                                id="url"
+                                                value={link}
+                                                onChange={(e) => setLink(e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -185,6 +175,33 @@ const AddCagnotte = () => {
                                     </div>
                                 </div>
 
+                                <div className='row'>
+                                    <div className='col-sm-6'>
+                                        <div className="form-group mb-3">
+                                            <label htmlFor="pseudo">Choisir la date du lancement</label>
+                                            <input
+                                                type="date"
+                                                className="form-control"
+                                                id="date"
+                                                value={date1}
+                                                onChange={(e) => setDate1(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='col-sm-6'>
+                                        <div className="form-group mb-3">
+                                            <label htmlFor="photod">Choisir la date de fermeture</label>
+                                            <input
+                                                type="date"
+                                                className="form-control"
+                                                value={date2}
+                                                id="date1"
+                                                onChange={(e)=>setDate2(e.target.value)}
+                                                style={{ width: "100%" }}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div className="form-group mb-3">
                                     <label htmlFor="desc">Description</label>
@@ -192,8 +209,8 @@ const AddCagnotte = () => {
                                         className="form-control"
                                         id="desc"
                                         placeholder='Description'
-                                        onChange={(e) => setTextDetail(e.target.value)}
-                                        value={textDetail}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        value={description}
                                         rows="3">
                                     </textarea>
                                 </div>
@@ -219,41 +236,33 @@ const AddCagnotte = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className={file ? "col-sm-6 imageCard" : image ? "col-sm-6 imageCard" : "col-sm-6"}>
-                                <div className="form-group mb-3">
-                                    <label htmlFor="bio">Breve biographie</label>
-                                    <textarea
-                                        className="form-control"
-                                        id="bio"
-                                        placeholder='Biographie'
-                                        onChange={(e) => setDetail(e.target.value)}
-                                        value={detail}
-                                        rows="3"></textarea>
-                                </div>
-                                <h5>Image</h5>
-                                <div className='card' style={{ border: image ? "1px solid #ddd" : "0px solid #ddd" }}>
-                                    {
-                                        file ? <img src={file} alt="" className='img-thumbnail' /> :
-                                            image ?
-                                                <img src={image ? baseUrlImage + "/" + image : ""}
-                                                    className='img-thumbnail' alt="catégorie" />
-                                                : <div className='noneImage'>
-                                                    <FaCloudUploadAlt size={100} />
-                                                    <label htmlFor="photo"> Veuillez choisir une image</label>
-                                                </div>
-                                    }
+                            <div className='col-sm-4'>
+                                <div className={file ? "col-sm-12 imageCard" : image ? "col-sm-12 imageCard" : "col-sm-12"}>
+                                    <h5>Image</h5>
+                                    <div className='card' style={{ border: image ? "1px solid #ddd" : "0px solid #ddd" }}>
+                                        {
+                                            file ? <img src={file} alt="" className='img-thumbnail' /> :
+                                                image ?
+                                                    <img src={image ? baseUrlImage + "/" + image : ""}
+                                                        className='img-thumbnail' alt="catégorie" />
+                                                    : <div className='noneImage'>
+                                                        <FaCloudUploadAlt size={100} />
+                                                        <label htmlFor="photo"> Veuillez choisir une image</label>
+                                                    </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <button
                             className='btn btn-primary'
                             onClick={!state ? addInfluenceur : updateInfluenceurHandle}
-                            disabled={nom && textDetail ? false : true}
+                            disabled={title && description ? false : true}
                         >
                             {
                                 isLoading && isLoading.loading ? <Loader /> : state ? "Modifier" : "Ajouter"
                             }
-
                         </button>
                     </div>
                 </div>

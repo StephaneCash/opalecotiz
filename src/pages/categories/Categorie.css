@@ -22,7 +22,6 @@
     border: 1px solid #fff !important;
     display: flex;
     align-items: center !important;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .categories .main .alertInputSearch .input-group {
@@ -36,18 +35,16 @@
     box-shadow: none !important;
 }
 
-.categories .main .col-sm-4 .btn-primary {
+.categories .main .col-sm-4 .btn-success {
     display: flex !important;
     align-items: center !important;
     gap: .5rem !important;
     float: right !important;
-    background-color: #1976d2 !important;
 }
 
 .categories .tableCategorie {
     background-color: #fff !important;
     padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 5px;
 }
 
@@ -146,7 +143,6 @@ tr:hover {
 
 .categories .tableCategorie .grille .card {
     width: 250px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .categories .tableCategorie .grille .card img {

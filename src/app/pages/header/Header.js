@@ -27,21 +27,31 @@ const Header = () => {
             <div className='logoAndBarSearch'>
                 <div className='prodSearch'>
                     <FiSearch />
-                    <span>Rechercher une production</span>
+                    < Link to="/productions" style={{ textDecoration: "none", color: "#222" }} >
+                        <span>Rechercher une production</span>
+                    </Link>
                 </div>
                 <div className='linksCagnottes'>
                     {
                         listCagnottes ? listCagnottes.length > 0 ?
                             listCagnottes.slice(0, 5).map(val => {
-                                return <Link key={val.id} to="/cagnottes">{val.title && val.title.toUpperCase()}</Link>
+                                return <Link key={val.id} to={{
+                                    pathname: `/production/${val.title}`
+                                }}
+                                    state={{
+                                        val: val
+                                    }}
+                                >{val.title}</Link>
                             })
                             : "Chargement..." : "Serveur non disponible."
                     }
                 </div>
-                <div className='btnSearch'>
-                    <span>Voir plus...</span>
-                    <FiArrowRightCircle />
-                </div>
+                <Link to="/productions" style={{ textDecoration: "none" }}>
+                    <div className='btnSearch'>
+                        <span>Voir plus...</span>
+                        <FiArrowRightCircle />
+                    </div>
+                </Link>
             </div>
         </div>
     )

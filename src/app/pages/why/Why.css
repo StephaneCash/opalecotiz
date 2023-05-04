@@ -17,13 +17,13 @@
 }
 
 .why .cardsData .card {
-    width: 50%;
-    height: 200px;
+    width: 100%;
+    height: auto;
 
 }
 
 .why .cardsData .card img {
     width: 100%;
-    height: 50%;
+    height: 100%;
     object-fit: cover;
 }

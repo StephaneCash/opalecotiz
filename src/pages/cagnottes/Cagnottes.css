@@ -23,7 +23,6 @@
     background-color: #fff !important;
     display: flex;
     align-items: center !important;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border: 0;
 }
 
@@ -38,19 +37,19 @@
     box-shadow: none !important;
 }
 
-.influenceurs .main .col-sm-4 .btn-primary {
+.influenceurs .main .col-sm-4 .btn-sucess {
     display: flex !important;
     align-items: center !important;
     gap: .5rem !important;
     float: right !important;
-    background-color: #f12535 !important;
+    background-color: #009c4e !important;
     border: 0;
+    color: #fff;
 }
 
 .influenceurs .tableCategorie {
     background-color: #fff !important;
     padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 5px;
 }
 
@@ -67,7 +66,6 @@
     display: flex;
     align-items: center;
     gap: .6rem;
-    color: #f12535;
     font-size: 15px;
 }
 
@@ -93,7 +91,7 @@
     align-items: center !important;
     text-align: center !important;
     height: 200px;
-    border: 5px dotted #f12535;
+    border: 5px dotted #009c4e;
     gap: 1rem;
 }
 
@@ -117,4 +115,34 @@
 
 .swal-button--danger {
     background-color: #f12535 !important
+}
+
+.influenceurs .form-check-input {
+    box-shadow: none !important;
+}
+
+.influenceurs .form-check-input:checked {
+    background-color: #009c4e;
+    box-shadow: none !important;
+}
+
+
+.imagesCard {
+    width: 100% !important;
+    height: 250px !important;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 10px);
+}
+
+.imagesCard .card-body {
+    height: 100%;
+    width: 25%;
+}
+
+.imagesCard img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
 }

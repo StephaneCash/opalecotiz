@@ -3,7 +3,6 @@
     padding: 5rem;
     align-items: center;
     gap: 2rem;
-    font-family: "Open sans", sans-serif;
     background-color: #fff;
 }
 
@@ -11,7 +10,7 @@
     width: 50%;
     height: 400px;
     object-fit: cover;
-    border-radius: 3rem;
+    border-radius: 5px;
 }
 
 .about .text {
@@ -19,20 +18,56 @@
 }
 
 .about .text button {
-    padding: 1rem;
-    font-family: "Roboto";
     cursor: pointer;
-    background-color: #fff;
-    color: #f12535;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 3rem;
-    border: 2px solid #f12535;
+    background-color: #023020;
+    color: #023020;
+    color: #fff;
+    border-radius: 3px;
+    padding: .5rem;
+    font-size: 14px;
+    border: 1px solid #023020;
 }
 
 .about .text p {
-    font-family: "Roboto";
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-align: justify;
     margin: 2rem 0;
+    width: 90%;
+}
+
+.about .text ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.about .text ul li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 1rem;
+}
+
+.about .text ul li:first-child {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.about .text ul li svg {
+    color: green;
+}
+
+.about .images h1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.about .images img {
+    width: auto;
+    height: 100%;
+    border: 0;
+    border-radius: 0;
 }

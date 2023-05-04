@@ -1,0 +1,97 @@
+.payement {
+    width: 50%;
+    margin: 2rem auto;
+}
+
+.payement .linksPayement {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: 1rem;
+    background-color: #023020;
+    color: #fff;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    width: 120px;
+    cursor: pointer;
+}
+
+.payement form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 2rem;
+}
+
+.payement input,
+.payement select {
+    box-shadow: none !important;
+}
+
+.payement button {
+    background-color: #023020;
+    color: #fff;
+    width: 50%;
+    margin-top: 2rem;
+}
+
+.payement button:hover {
+    border: 1px solid #023020;
+    color: #023020;
+}
+
+.payement .montant .row .card {
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    border-radius: 0;
+}
+
+.payement .montant .row .card.choisi {
+    border: 3px solid #023020;
+}
+
+.payement .montant .row .card svg {
+    color: #023020;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.payement .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.payement .grille .card {
+    height: 100px;
+    width: 150px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 0;
+}
+
+.payement .grille .card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.paiementModes .col-sm-4 .card {
+    height: 250px;
+}
+
+.paiementModes .col-sm-4 .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.paiementModes .col-sm-4 .card p{
+    text-align: center !important;
+}

@@ -43,7 +43,7 @@ export default function DetailListInfluenceur(props) {
     return (
         <TableContainer component={Paper} style={{ borderTop: "1px solid #ddd" }}>
             <div className='alert alert-primary'>
-                <h6>Détail de {data && data.nom} membre depuis {dateParserFunction(data.createdAt)}</h6>
+                <h6>Détail de {data && data.title} lancée depuis {dateParserFunction(data.createdAt)} avec un délai de 2 mois</h6>
             </div>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableBody key={data.id}>
@@ -51,60 +51,53 @@ export default function DetailListInfluenceur(props) {
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell width={200} style={{ fontWeight: "bold" }}>Nom</TableCell>
-                        <TableCell width={200}>{data.nom}</TableCell>
-                    </TableRow>
-
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Prénom </TableCell>
-                        <TableCell width={200}>{data.prenom}</TableCell>
-                    </TableRow>
-
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Postnom</TableCell>
-                        <TableCell width={200}>{data.postnom}</TableCell>
-                    </TableRow>
-
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Pseudo </TableCell>
-                        <TableCell width={200}>{data.pseudo}</TableCell>
+                        <TableCell width={200}>{data.title}</TableCell>
                     </TableRow>
 
                     <TableRow
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                         <TableCell width={200} style={{ fontWeight: "bold" }}>Description </TableCell>
-                        <TableCell width={200}>{data.detail}</TableCell>
+                        <TableCell width={200}>{data.description}</TableCell>
                     </TableRow>
 
                     <TableRow
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Biographie </TableCell>
-                        <TableCell width={200}>{data.textDetaillle}</TableCell>
+                        <TableCell width={200} style={{ fontWeight: "bold" }}>Montant à atteindre </TableCell>
+                        <TableCell width={200}>{data.montant}</TableCell>
                     </TableRow>
 
                     <TableRow
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Catégorie </TableCell>
+                        <TableCell width={200} style={{ fontWeight: "bold" }}>Montant collecté </TableCell>
                         <TableCell width={200}>{inf ? inf.nom : data.categorie && data.categorie.nom}</TableCell>
                     </TableRow>
 
                     <TableRow
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                        <TableCell width={200} style={{ fontWeight: "bold" }}>Photo </TableCell>
+                        <TableCell width={200} style={{ fontWeight: "bold" }}>Nombre de participants </TableCell>
+                        <TableCell width={200}>{data.montant}</TableCell>
+                    </TableRow>
+
+                    <TableRow
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                        <TableCell width={200} style={{ fontWeight: "bold" }}>Montant collecté </TableCell>
+                        <TableCell width={200}>{inf ? "Pas de données" : data.categorie && data.categorie.d}</TableCell>
+                    </TableRow>
+
+                    <TableRow
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                        <TableCell width={200} style={{ fontWeight: "bold" }}>Image principale </TableCell>
                         <TableCell width={200}>
                             <Avatar
                                 style={{ cursor: "pointer" }}
                                 onClick={() => showImage(data)}
-                                alt={data && data.nom.toUpperCase()}
+                                alt={data && data.nom && data.nom.toUpperCase()}
                                 src={baseUrlImage + "/" + data.url}
                                 sx={{ width: 100, height: 100 }}
                             />
