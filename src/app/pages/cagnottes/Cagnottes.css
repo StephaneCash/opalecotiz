@@ -73,7 +73,7 @@
 }
 
 .cagnotte .productions .card .image {
-    height: 60%;
+    height: 50%;
     position: relative;
 }
 
@@ -95,6 +95,15 @@
     background-color: #ddd;
     color: #000;
     font-size: .7rem;
+    font-weight: bold;
+    padding: .3rem;
+    border-radius: 4px;
+}
+
+.titleImportant{
+    background-color: #ddd;
+    color: #000;
+    font-size: 1rem;
     font-weight: bold;
     padding: .3rem;
     border-radius: 4px;
@@ -138,6 +147,7 @@
     flex-direction: row;
     border: 1px solid #efefef;
     align-items: center;
+    padding: .5rem;
 }
 
 

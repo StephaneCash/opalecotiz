@@ -59,6 +59,7 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                         <div className='image'>
                                             <div className='overPlay'></div>
                                             <div className='textMain '>
+                                                <span className='titleImportant'>{val.title}</span> <br/>
                                                 <span className='bgTitle'>{val.categorie && val.categorie.nom}</span> <br />
                                                 <span>Lancée {dateParserFunction(val.createdAt)}</span>
                                             </div>
@@ -66,7 +67,6 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                         </div>
                                         <div className='card-body'>
                                             <div className='overPlay'></div>
-                                            <span>{val.title}</span>
                                             <div className='dataShow'>
                                                 <div>Montant à atteindre  </div>
                                                 <div>{val.montant} $</div>
