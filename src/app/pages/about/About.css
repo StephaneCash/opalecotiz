@@ -19,13 +19,13 @@
 
 .about .text button {
     cursor: pointer;
-    background-color: #023020;
-    color: #023020;
+    background-color: #009c4e;
+    color: #009c4e;
     color: #fff;
     border-radius: 3px;
     padding: .5rem;
     font-size: 14px;
-    border: 1px solid #023020;
+    border: 1px solid #009c4e;
 }
 
 .about .text p {

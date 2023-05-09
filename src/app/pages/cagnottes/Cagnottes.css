@@ -41,7 +41,7 @@
     justify-content: center;
     height: 60px;
     gap: 1.2rem;
-    background-color: #023020;
+    background-color: #009c4e;
 }
 
 .cagnotte .categoriesCagnottes a {
@@ -163,7 +163,7 @@
 .cagnotte .card-body .lastDiv{
     text-align: center;
     margin-top: .6rem;
-    background-color: #023020;
+    background-color: #009c4e;
     padding: .5rem;
     color: #fff;
 }
