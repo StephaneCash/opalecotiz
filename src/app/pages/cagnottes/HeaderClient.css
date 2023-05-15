@@ -1,4 +1,4 @@
-.headerTop{
+.headerTop {
     background-color: #009c4e;
     display: flex;
     justify-content: space-between;
@@ -6,11 +6,16 @@
     color: #fff;
 }
 
- .headerTop img {
+.headerTop img {
     width: 100px;
 }
- .headerTop div {
+
+.headerTop div {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.headerTop svg {
+    cursor: pointer;
 }

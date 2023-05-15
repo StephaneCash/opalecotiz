@@ -161,7 +161,7 @@ export default function ListCategorie(props) {
                   </TableCell>
                   <TableCell width={60}>{i + 1}</TableCell>
                   <TableCell width={200}>{row.nom}</TableCell>
-                  <TableCell align="left" width={500} style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
+                  <TableCell align="left" width={500} style={{ textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                     {
                       row && row.description && row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
                     }

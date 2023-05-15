@@ -177,7 +177,7 @@ export default function ListInfluenceurs(props) {
                                             </div>
                                         </div>
                                     </TableCell>
-                                    <TableCell align="left" width={500} style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
+                                    <TableCell align="left" width={500} style={{  textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                                         {
                                             row && row.description && row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
                                         }

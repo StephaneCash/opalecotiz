@@ -3,6 +3,7 @@ import Header from './header/Header'
 import About from './about/About'
 import Why from './why/Why'
 import Footer from './footer/Footer'
+import Contact from './contacts/Contact'
 
 const Home = () => {
   return (
@@ -10,7 +11,8 @@ const Home = () => {
       <Header />
       <About />
       <Why />
-      <Footer/>
+      <Contact />
+      <Footer />
     </div>
   )
 }

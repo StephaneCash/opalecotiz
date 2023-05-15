@@ -13,14 +13,22 @@ const Header = () => {
     return (
         <div className='col-sm-12 headerApp'>
             <div className='borderTop'>
-                <img src={logoBlanc} alt="Logo" />
+                <Link to="/"><img src={logoBlanc} alt="Logo" /></Link>
                 <div>
                     <span>Suivez-nous sur  </span>
                     <div className='icons'>
-                        <FaFacebook />
-                        <FaInstagram />
-                        <FaTwitter />
-                        <FaYoutube />
+                        <FaFacebook
+                            onClick={() => window.open("https://www.facebook.com/ligablo.co?mibextid=LQQJ4d")}
+                        />
+                        <FaInstagram
+                            onClick={() => window.open('https://www.instagram.com/ligablo.co')}
+                        />
+                        <FaTwitter
+                            onClick={() => window.open('https://twitter.com/ligablo_co')}
+                        />
+                        <FaYoutube
+                            onClick={() => window.open("https://www.youtube.com/@ligablo/videos")}
+                        />
                     </div>
                 </div>
             </div>
@@ -48,7 +56,7 @@ const Header = () => {
                 </div>
                 <Link to="/productions" style={{ textDecoration: "none" }}>
                     <div className='btnSearch'>
-                        <span>Voir plus...</span>
+                        <span>Autres productions...</span>
                         <FiArrowRightCircle />
                     </div>
                 </Link>

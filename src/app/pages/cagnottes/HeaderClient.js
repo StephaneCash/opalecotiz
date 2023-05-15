@@ -14,10 +14,18 @@ const HeaderClient = () => {
                 <div>
                     <span>Suivez-nous sur  </span>
                     <div className='icons'>
-                        <FaFacebook />
-                        <FaInstagram />
-                        <FaTwitter />
-                        <FaYoutube />
+                        <FaFacebook
+                            onClick={() => window.open("https://www.facebook.com/ligablo.co?mibextid=LQQJ4d")}
+                        />
+                        <FaInstagram
+                            onClick={() => window.open('https://www.instagram.com/ligablo.co')}
+                        />
+                        <FaTwitter
+                            onClick={() => window.open('https://twitter.com/ligablo_co')}
+                        />
+                        <FaYoutube
+                            onClick={() => window.open("https://www.youtube.com/@ligablo/videos")}
+                        />
                     </div>
                 </div>
             </div>

@@ -63,10 +63,16 @@ const AddCagnotte = () => {
     };
 
     const updateInfluenceurHandle = (e) => {
+
+        let findLink = link.split("watch?v=");
+        let replaceLink = findLink.join("embed/");
+
+        console.log(replaceLink , " REPARE ")
+
         let formData = new FormData();
         formData.append('title', title);
         formData.append('montant', montant);
-        formData.append('link', link);
+        formData.append('link', replaceLink);
         formData.append('image', image);
         formData.append('categorieId', categorie);
         formData.append('description', description);

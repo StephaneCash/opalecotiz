@@ -13,13 +13,15 @@ import { combineReducers } from "redux";
 import userSlice from './features/Users';
 import contactsSlice, { getAllContacts } from './features/Contacts';
 import cagnotteSlice, { getAllCagnottes } from './features/Cagnotte';
+import imageSlice, { getAllImages } from './features/Images';
 
 const store = configureStore({
   reducer: combineReducers({
     categories: categoriesSlice.reducer,
     users: userSlice.reducer,
     cagnottes: cagnotteSlice.reducer,
-    contacts: contactsSlice.reducer
+    contacts: contactsSlice.reducer,
+    images: imageSlice.reducer
   })
 });
 
@@ -27,6 +29,29 @@ store.dispatch(getAllcategories());
 store.dispatch(getAllUsers());
 store.dispatch(getAllCagnottes());
 store.dispatch(getAllContacts());
+store.dispatch(getAllImages());
+
+const scrollBtn = document.createElement("button");
+
+const scrollTop = function () {
+  scrollBtn.innerHTML = "&uarr;";
+  scrollBtn.setAttribute("id", "scroll-btn");
+  document.body.appendChild(scrollBtn);
+};
+scrollTop();
+
+const scrollBtnDisplay = function () {
+  window.scrollY > window.innerHeight
+    ? scrollBtn.classList.add("show")
+    : scrollBtn.classList.remove("show");
+};
+window.addEventListener("scroll", scrollBtnDisplay);
+
+const scrollWindow = function () {
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+};
+scrollBtn.addEventListener("click", scrollWindow);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

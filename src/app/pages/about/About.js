@@ -1,32 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './About.css'
-import about from "../../../assets/about.jpg"
 import { Link } from 'react-router-dom'
-import { FaCheck } from 'react-icons/fa'
 
 const About = () => {
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <div className='col-sm-12 about'>
+            <div className='overPlay'></div>
             <div className='text'>
-                <div className='images'>
-                    <h1> Qui Sommes-nous ?</h1>
-                </div>
+                <h1>LiGABLO PRODUCTION</h1>
+                <div className='textQuiSommesNous'>Qui sommes-nous ?</div>
                 <p>
-                    Pour une bonne cause: ensemble, nous sommes la solution pour promouvoir la pop culture avec notre programme <strong>Ligablo production</strong>.
+                    Pour une bonne cause : ensemble, nous sommes la solution pour promouvoir la pop culture avec notre programme <strong>LiGABLO PRODUCTION</strong>.
                     Avec le défi des insignes virtuels la classe apprend et remplit sa caisse.
                 </p>
-                <ul>
-                    <li> Nos objectifs </li>
-                    <li> <FaCheck /> Production séries </li>
-                    <li> <FaCheck /> Soutien à la pop culture</li>
-                    <li> <FaCheck /> Développer la production</li>
-                    <li> <FaCheck /> Dénicher de nouveaux talents</li>
-                </ul>
-                <Link to="/productions">
-                    <button className='btn'>Particper à une production</button>
-                </Link>
+                <div className='dataFlex'>
+                    <div className='co'>
+                        <Link to="/productions">
+                            <button className='btn'>Particper à une production</button>
+                        </Link>
+                    </div>
+
+                </div>
+
             </div>
-            <img src={about} alt="about" />
 
         </div>
     )

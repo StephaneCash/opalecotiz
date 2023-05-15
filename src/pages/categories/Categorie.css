@@ -1,6 +1,5 @@
 .categories {
     display: flex !important;
-    font-family: "Open sans", sans-serif;
     font-size: 14px !important;
 }
 
@@ -99,7 +98,6 @@
 
 .categories td {
     padding-top: 10px;
-    font-family: "Roboto" !important;
     padding-bottom: 10px;
     font-size: 14px !important;
     color: #555 !important;

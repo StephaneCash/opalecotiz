@@ -14,8 +14,6 @@ import airtel from "../../../assets/airtel-money-logo.png";
 import africell from "../../../assets/afrimoney-services-424805.jpg";
 import { toast } from 'react-toastify';
 
-
-
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
@@ -40,7 +38,7 @@ const Paiement = () => {
             toast.error('Veuillez remplir le champ montant svp')
         } else {
             if (choix === 3) {
-                toast.success("Merci pour votre participation")
+                toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
                 navigate('/productions');
             } else {
                 toast.warning("Veuillez suivre le processus normal")
@@ -90,7 +88,7 @@ const Paiement = () => {
                     state={{
                         val: state && state.val
                     }}
-
+                    style={{ borderRadius: "10px" }}
                     className='linksPayement'>
                     <span><FaArrowLeft /></span>
                     <span>Retour</span>
@@ -125,14 +123,29 @@ const Paiement = () => {
                                                 </div> :
                                                 montant >= 10000 && montant <= 30000 ?
                                                     <div className='alert alert-info mt-2'>
-                                                        <FaInfo /> <span>Entre 10000 $ et 30000 $, votre entreprise a droit à 3-5 sec. de visibilité dans tous les teasers. </span>
+                                                        <FaInfo /> <span>Entre 10000 $ et 30000 $, votre entreprise a droit à deux placements de produits de 3-5 sec. dans tous les épisodes. </span>
                                                     </div>
                                                     :
-                                                    montant > 30000 && montant <= 50000 &&
-                                                    <div className='alert alert-info mt-2'>
-                                                        <FaInfo />
-                                                        <span>Entre 30000 $ et 50000 $, votre entreprise a droit à 3-5 sec. de visibilité dans tous les teasers. </span>
-                                                    </div>
+                                                    montant > 30000 && montant <= 50000 ?
+                                                        <div className='alert alert-info mt-2'>
+                                                            <FaInfo />
+                                                            <span>Entre 30000 $ et 50000 $, votre entreprise a droit à trois placements de produits de 3-5 sec. dans tous les épisodes.</span>
+                                                        </div> :
+                                                        montant > 50000 && montant <= 90000 ?
+                                                            <div className='alert alert-info mt-2'>
+                                                                <FaInfo />
+                                                                <span>Entre 50000 $ et 90000 $, votre entreprise a droit à trois à quatre placements de produits de 3-5 sec. dans tous les épisodes.</span>
+                                                            </div> :
+                                                            montant > 90000 && montant <= 130000 ?
+                                                                <div className='alert alert-info mt-2'>
+                                                                    <FaInfo />
+                                                                    <span>Entre 90000 $ et 130000 $, votre entreprise a droit à quatre à cinq placements de produits de 5-15 sec. dans tous les épisodes.</span>
+                                                                </div> :
+                                                                montant > 130000 &&
+                                                                <div className='alert alert-info mt-2'>
+                                                                    <FaInfo />
+                                                                    <span>Au délà 130000 $, votre entreprise a droit à cinq à dix placements de produits de 5-15 sec. dans tous les épisodes.</span>
+                                                                </div>
                                 }
 
                                 {
@@ -148,12 +161,26 @@ const Paiement = () => {
                                 <option value="Euro">€</option>
                                 <option value="FC">FC</option>
                             </select>
-                            {
-                                montant >= 5000 && montant <= 10000 &&
-                                <div>
-                                    <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' placeholder='Votre message à passer'></textarea>
+
+                            <div className='row'>
+                                <div className='col-sm-6'>
+                                    {
+                                        montant >= 5000 &&
+                                        <div>
+                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' placeholder='Votre nom à afficher'></textarea>
+                                        </div>
+                                    }
                                 </div>
-                            }
+
+                                <div className='col-sm-6'>
+                                    {
+                                        montant >= 5000 &&
+                                        <div>
+                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' placeholder='Votre message à afficher'></textarea>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
 
                         </div>
                     </div>

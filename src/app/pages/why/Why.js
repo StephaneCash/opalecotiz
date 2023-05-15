@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Why.css";
-import card1 from "../../../assets/card1.jpg"
 import card2 from "../../../assets/card2.jpeg"
 
 const Why = () => {

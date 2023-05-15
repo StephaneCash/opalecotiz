@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
 import { FaCheckCircle } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
+import Footer from '../footer/Footer'
 
 const Production = () => {
 
@@ -67,13 +68,46 @@ const Production = () => {
             </div>
             <div className='description'>{state && state.val && state.val.description}</div>
             <div className='images'>
-              
+              {
+                state && state.val && state && state.val.images  && state.val.images[0] &&
+                <>
+                  <div className='card'>
+                    <img src={baseUrlImage + "/" + state.val.images[0].url1} alt="" />
+                  </div>
+
+                  <div className='card'>
+                    <img src={baseUrlImage + "/" + state.val.images[0].url2} alt="" />
+                  </div>
+                  <div className='card'>
+                    <img src={baseUrlImage + "/" + state.val.images[0].url3} alt="" />
+                  </div>
+                  <div className='card'>
+                    <img src={baseUrlImage + "/" + state.val.images[0].url4} alt="" />
+                  </div>
+                </>
+              }
             </div>
-            <div className='videos'></div>
+            <div className='videos'>
+              <div className='card'>
+                <iframe
+                  width="auto"
+                  height="300"
+                  src={state && state.val && state.val.link}
+                  target="_parent"
+                  allow="accelerometer; autoplay; clipboard-write;
+                        encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Vidéo"
+                  name="inframe"
+                >
+                </iframe>
+              </div>
+            </div>
             <div className='participants'></div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

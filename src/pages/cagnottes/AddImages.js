@@ -8,18 +8,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/loader/Loader';
 import { baseUrlImage } from '../../bases/basesUrl';
 import { newCagnotte, updateCagnotte } from '../../features/Cagnotte';
+import { Filter2Outlined } from '@mui/icons-material';
+import { newImage } from '../../features/Images';
 
 const AddImages = () => {
-;
+    ;
     const [file1, setFile1] = useState('');
     const [file2, setFile2] = useState('');
     const [file3, setFile3] = useState('');
     const [file4, setFile4] = useState('');
 
-    const [image, setImage] = useState('');
+    const [image1, setImage1] = useState('');
+    const [image2, setImage2] = useState('');
+    const [image3, setImage3] = useState('');
+    const [image4, setImage4] = useState('');
 
-    const isLoading = useSelector(state => state.cagnottes);
 
+    const isLoading = useSelector(state => state.images);
 
     const location = useLocation();
     const { state } = location;
@@ -28,24 +33,49 @@ const AddImages = () => {
     const params = useParams();
 
     const handleImage1 = (e) => {
-        setImage(e.target.files[0]);
+        setImage1(e.target.files[0]);
         setFile1(URL.createObjectURL(e.target.files[0]))
     };
 
     const handleImage2 = (e) => {
-        setImage(e.target.files[0]);
+        setImage2(e.target.files[0]);
         setFile2(URL.createObjectURL(e.target.files[0]))
     };
 
     const handleImage3 = (e) => {
-        setImage(e.target.files[0]);
+        setImage3(e.target.files[0]);
         setFile3(URL.createObjectURL(e.target.files[0]))
     };
 
     const handleImage4 = (e) => {
-        setImage(e.target.files[0]);
+        setImage4(e.target.files[0]);
         setFile4(URL.createObjectURL(e.target.files[0]))
     };
+
+    let dispatch = useDispatch()
+
+    const submit = () => {
+
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Content-Disposition': 'form-data',
+            }
+        }
+        
+        const body = new FormData();
+        body.append("image", image1)
+        body.append("image", image2)
+        body.append("image", image3)
+        body.append("image", image4)
+        body.append("cagnotteId", params.id)
+
+        let form = {};
+        form.data = body;
+        form.config = config;
+
+        dispatch(newImage(form))
+    }
 
     return (
         <>
@@ -139,10 +169,36 @@ const AddImages = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-sm-6'>
-                                <div className='card imagesCard'>
-                                    <div className='card-body'>
-                                        <img src={file1} alt="" />
+                            <div className='col-sm-6 row cards'>
+                                <div className='col-sm-3'>
+                                    <div className='card'>
+                                        <div className='card-body'>
+                                            <img src={file1} alt="Image1" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-sm-3'>
+                                    <div className='card'>
+                                        <div className='card-body'>
+                                            <img src={file2} alt="Image2" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-sm-3'>
+                                    <div className='card'>
+                                        <div className='card-body'>
+                                            <img src={file3} alt="Image3" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='col-sm-3'>
+                                    <div className='card'>
+                                        <div className='card-body'>
+                                            <img src={file4} alt="Image4" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +206,7 @@ const AddImages = () => {
 
                         <button
                             className='btn btn-primary'
+                            onClick={submit}
                         >
                             {
                                 isLoading && isLoading.loading ? <Loader /> : state ? "Modifier" : "Ajouter"
