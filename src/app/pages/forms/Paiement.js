@@ -322,12 +322,16 @@ const Paiement = () => {
                         )
                     }
 
-                    <button type="submit" className="btn">
-                        {
-                            choix === 3 ? "Confirmer ce payement" :
-                                "Valider et Payer"
-                        }
-                    </button>
+                    <div
+                        style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
+                    >
+                        <button type="submit" className="btn">
+                            {
+                                choix === 3 ? "Confirmer ce payement" :
+                                    "Valider et Payer"
+                            }
+                        </button>
+                    </div>
                 </form>
             </div>
             <Footer />

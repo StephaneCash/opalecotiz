@@ -156,7 +156,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     margin-bottom: 1px;
     align-items: center;
     padding: .5rem;
