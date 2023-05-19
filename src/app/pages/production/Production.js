@@ -6,10 +6,10 @@ import { baseUrlImage } from '../../../bases/basesUrl'
 import { FaCheckCircle } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
-
 const Production = () => {
 
   const { state } = useLocation();
+  let devise = state && state.val && state.val.devise && state.val.devise.split(',');
 
   return (
     <div className='production'>
@@ -31,8 +31,28 @@ const Production = () => {
               <div className='card-body'>
                 <div className='overPlay'></div>
                 <div className='showData'>
-                  <span>6 000 $</span>
-                  <span>Collectés sur <span>60 000 $</span></span>
+                  <span className='montant'>
+                    2000 $
+                  </span>
+                  <span>Collectés sur {" "}
+                    <span>
+                      {state && state.val && state.val.montant && state.val.montant}
+                      {
+                        devise && devise.map((val, i) => {
+                          if (i === 0) {
+                            if (val === "Dollar") {
+                              return " $"
+                            } else if (val === "Euro") {
+                              return " €"
+                            } else if (val === "FC") {
+                              return " FC"
+                            }
+                          }
+                        })
+                      }
+                    </span>
+                  </span>
+
                 </div>
                 <div className='lastDiv'>
                   <div className="progress">
@@ -69,46 +89,39 @@ const Production = () => {
             <div className='description'>{state && state.val && state.val.description}</div>
             <div className='images'>
               {
-                state && state.val && state && state.val.images  && state.val.images[0] &&
-                <>
-                  <div className='card'>
-                    <img src={baseUrlImage + "/" + state.val.images[0].url1} alt="" />
+                state && state.val && state && state.val.images && state.val.images.map(val => {
+                  return <div className='card'>
+                    <img src={baseUrlImage + "/" + val.url} alt="" />
                   </div>
-
-                  <div className='card'>
-                    <img src={baseUrlImage + "/" + state.val.images[0].url2} alt="" />
-                  </div>
-                  <div className='card'>
-                    <img src={baseUrlImage + "/" + state.val.images[0].url3} alt="" />
-                  </div>
-                  <div className='card'>
-                    <img src={baseUrlImage + "/" + state.val.images[0].url4} alt="" />
-                  </div>
-                </>
+                })
               }
             </div>
             <div className='videos'>
-              <div className='card'>
-                <iframe
-                  width="auto"
-                  height="300"
-                  src={state && state.val && state.val.link}
-                  target="_parent"
-                  allow="accelerometer; autoplay; clipboard-write;
+              {
+                state && state.val && state.val.link &&
+                <div className='card'>
+                  <iframe
+                    width="auto"
+                    height="300"
+                    src={state && state.val && state.val.link}
+                    target="_parent"
+                    allow="accelerometer; autoplay; clipboard-write;
                         encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Vidéo"
-                  name="inframe"
-                >
-                </iframe>
-              </div>
+                    allowFullScreen
+                    title="Vidéo"
+                    name="inframe"
+                  >
+                  </iframe>
+                </div>
+              }
+
             </div>
             <div className='participants'></div>
           </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   )
 }
 

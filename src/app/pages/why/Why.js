@@ -19,18 +19,7 @@ const Why = () => {
                         </p>
                     </div>
                 </div>
-                <div>
-                    <h5>Promouvoir la culture</h5>
-                    <div className='card'>
-                        <div className='card-body'>
-                            <img src={card2} alt="" />
-                        </div>
-                        <p>
-                            Pour un pot commun...
-                            Parfait pour les évènements entre proches, naissances, mariages, pots de départ...
-                        </p>
-                    </div>
-                </div>
+
             </div>
         </div>
     )

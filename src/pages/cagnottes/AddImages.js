@@ -6,9 +6,6 @@ import "./Cagnottes.css";
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/loader/Loader';
-import { baseUrlImage } from '../../bases/basesUrl';
-import { newCagnotte, updateCagnotte } from '../../features/Cagnotte';
-import { Filter2Outlined } from '@mui/icons-material';
 import { newImage } from '../../features/Images';
 
 const AddImages = () => {

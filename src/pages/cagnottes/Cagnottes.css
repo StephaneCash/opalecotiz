@@ -112,7 +112,7 @@
 }
 
 .swal-button--danger {
-    background-color: #f12535 !important
+    background-color: #009c4e !important
 }
 
 .influenceurs .form-check-input {
@@ -159,6 +159,8 @@
     flex-direction: row;
     gap: 1rem;
     justify-content: space-between;
+    min-height: 400px;
+    padding: 1rem;
 }
 
 .flexDataDetailCagnotte .col-sm-8 td{

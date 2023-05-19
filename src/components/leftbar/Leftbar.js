@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import "./Leftbar.css";
-import { FaHandsHelping, FaImage, FaTable, FaTachometerAlt, FaUsers, FaVideo } from "react-icons/fa"
+import { FaHandsHelping } from "react-icons/fa"
+import { FiBarChart, FiImage, FiList, FiUsers, FiVideo } from 'react-icons/fi';
+import { GrUserAdmin } from "react-icons/gr";
 
 const Leftbar = () => {
     return (
@@ -9,13 +11,13 @@ const Leftbar = () => {
             <div className='menu-item'>
                 <NavLink to="/admin/dashboard">
                     <div className='item'>
-                        <FaTachometerAlt />
+                        <FiBarChart />
                         <span>Dashboard</span>
                     </div>
                 </NavLink>
                 <NavLink to="/admin/categories">
                     <div className='item'>
-                        <FaTable />
+                        <FiList />
                         <span>Catégorie</span>
                     </div>
                 </NavLink>
@@ -25,21 +27,27 @@ const Leftbar = () => {
                         <span>Productions</span>
                     </div>
                 </NavLink>
+                <NavLink to="/admin/participants">
+                    <div className='item'>
+                        <FiUsers />
+                        <span>Participants</span>
+                    </div>
+                </NavLink>
                 <NavLink to="/admin/images">
                     <div className='item'>
-                        <FaImage />
+                        <FiImage />
                         <span>Images</span>
                     </div>
                 </NavLink>
                 <NavLink to="/admin/videos">
                     <div className='item'>
-                        <FaVideo />
+                        <FiVideo />
                         <span>Vidéos</span>
                     </div>
                 </NavLink>
                 <NavLink to="/admin/users">
                     <div className='item'>
-                        <FaUsers />
+                        <GrUserAdmin />
                         <span>Utilisateurs</span>
                     </div>
                 </NavLink>

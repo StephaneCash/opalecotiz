@@ -39,7 +39,8 @@ export default function DetailListInfluenceur(props) {
             })
         }
     }, [data, categories]);
-    console.log(data && data.images && baseUrlImage + '/' + data.images[0].url1)
+
+    console.log(data && data.images)
 
     return (
         <TableContainer component={Paper} style={{ borderTop: "1px solid #ddd" }}>
@@ -49,54 +50,54 @@ export default function DetailListInfluenceur(props) {
 
             <div className='flexDataDetailCagnotte'>
                 <div className='col-sm-8'>
-                    <Table sx={{ minWidth: "auto", border:"1px solid #ddd" }} aria-label="simple table">
+                    <Table sx={{ minWidth: "auto", border: "1px solid #ddd" }} aria-label="simple table">
                         <TableBody key={data.id}>
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Nom</TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Nom</TableCell>
                                 <TableCell >{data.title}</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell width={200}  style={{ fontWeight: "bold" }}>Description </TableCell>
+                                <TableCell width={200} style={{ fontWeight: "bold" }}>Description </TableCell>
                                 <TableCell >{data.description}</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Montant à atteindre </TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Montant à atteindre </TableCell>
                                 <TableCell >{data.montant}</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Catégorie </TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Catégorie </TableCell>
                                 <TableCell >{inf ? inf.nom : data.categorie && data.categorie.nom}</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Nombre de participants </TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Nombre de participants </TableCell>
                                 <TableCell >0</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Montant collecté </TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Montant collecté </TableCell>
                                 <TableCell >{inf ? "Pas de données" : data.categorie && data.categorie.d}</TableCell>
                             </TableRow>
 
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell  style={{ fontWeight: "bold" }}>Image principale </TableCell>
+                                <TableCell style={{ fontWeight: "bold" }}>Image principale </TableCell>
                                 <TableCell >
                                     <Avatar
                                         style={{ cursor: "pointer" }}
@@ -112,29 +113,18 @@ export default function DetailListInfluenceur(props) {
                     </Table>
                 </div>
                 <div className='col-sm-3 imagesCagnotte'>
-                    <h6>Images secondaires</h6>
+                    <h6>Images secondaires, Cliquer pour agrandir</h6>
                     <div className='grilleCards'>
-                        <div className='card'>
-                            <div className='card-body'>
-                                <img src={data && data.images && baseUrlImage + '/' + data.images[0].url1} alt="Image1" />
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-body'>
-                                <img src={data && data.images && baseUrlImage + '/' + data.images[0].url2} alt="Image1" />
-                            </div>
-                        </div>
 
-                        <div className='card'>
-                            <div className='card-body'>
-                                <img src={data && data.images && baseUrlImage + '/' + data.images[0].url3} alt="Image1" />
-                            </div>
-                        </div>
-                        <div className='card'>
-                            <div className='card-body'>
-                                <img src={data && data.images && baseUrlImage + '/' + data.images[0].url4} alt="Image1" />
-                            </div>
-                        </div>
+                        {
+                            data && data.images && data.images.map(val => {
+                                return <div className='card'> <div className='card-body'>
+                                    <img style={{ cursor: "pointer" }} src={val && baseUrlImage + '/' + val.url} alt="Image1" onClick={() => showImage(val)} />
+                                </div>
+                                </div>
+                            })
+                        }
+
                     </div>
                 </div>
             </div>

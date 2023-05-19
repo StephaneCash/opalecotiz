@@ -11,7 +11,6 @@ import { getAllcategories } from './features/Categories';
 import { getAllUsers } from './features/Users';
 import { combineReducers } from "redux";
 import userSlice from './features/Users';
-import contactsSlice, { getAllContacts } from './features/Contacts';
 import cagnotteSlice, { getAllCagnottes } from './features/Cagnotte';
 import imageSlice, { getAllImages } from './features/Images';
 
@@ -20,7 +19,6 @@ const store = configureStore({
     categories: categoriesSlice.reducer,
     users: userSlice.reducer,
     cagnottes: cagnotteSlice.reducer,
-    contacts: contactsSlice.reducer,
     images: imageSlice.reducer
   })
 });
@@ -28,7 +26,6 @@ const store = configureStore({
 store.dispatch(getAllcategories());
 store.dispatch(getAllUsers());
 store.dispatch(getAllCagnottes());
-store.dispatch(getAllContacts());
 store.dispatch(getAllImages());
 
 const scrollBtn = document.createElement("button");

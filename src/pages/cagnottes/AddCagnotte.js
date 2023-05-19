@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/loader/Loader';
 import { baseUrlImage } from '../../bases/basesUrl';
 import { newCagnotte, updateCagnotte } from '../../features/Cagnotte';
+import Select from 'react-dropdown-select'
 
 const AddCagnotte = () => {
 
     const [title, setTitle] = useState('');
     const [montant, setMontant] = useState('');
-    const [link, setLink] = useState('');
+    const [lien, setLien] = useState('');
     const [image, setImage] = useState('');
     const [description, setDescription] = useState('');
     const [categorie, setCategorie] = useState('');
@@ -21,14 +22,21 @@ const AddCagnotte = () => {
 
     const [date1, setDate1] = useState('');
     const [date2, setDate2] = useState('');
+    const [devise, setDevise] = useState('');
 
     const dispatch = useDispatch();
-    const isLoading = useSelector(state => state.cagnottes);
+    const isLoading = useSelector(state => state.cagnottes.loading);
 
     const location = useLocation();
     const { state } = location;
 
     const categories = useSelector(state => state.categories);
+
+    const devises = [
+        { id: 1, nom: "Dollar" },
+        { id: 2, nom: "Euro" },
+        { id: 3, nom: "FC" }
+    ]
 
     const handleImage = (e) => {
         setImage(e.target.files[0]);
@@ -40,7 +48,7 @@ const AddCagnotte = () => {
             setTitle(state && state.data && state.data.title);
             setImage(state && state.data && state.data.url);
             setDescription(state && state.data && state.data.description);
-            setLink(state && state.data && state.data.link);
+            setLien(state && state.data && state.data.link);
             setMontant(state && state.data && state.data.montant);
             setDate1(state && state.data && state.data.dateDebut);
             setDate2(state && state.data && state.data.dateFin);
@@ -49,25 +57,9 @@ const AddCagnotte = () => {
     }, [state]);
 
     const addInfluenceur = (e) => {
-        let formData = new FormData();
-        formData.append('title', title);
-        formData.append('montant', montant);
-        formData.append('link', setLink);
-        formData.append('image', image);
-        formData.append('categorieId', categorie);
-        formData.append('description', description);
-        formData.append('dateDebut', date1);
-        formData.append('dateFin', date2);
-
-        dispatch(newCagnotte(formData));
-    };
-
-    const updateInfluenceurHandle = (e) => {
-
-        let findLink = link.split("watch?v=");
+        
+        let findLink = lien.split("watch?v=");
         let replaceLink = findLink.join("embed/");
-
-        console.log(replaceLink , " REPARE ")
 
         let formData = new FormData();
         formData.append('title', title);
@@ -78,6 +70,30 @@ const AddCagnotte = () => {
         formData.append('description', description);
         formData.append('dateDebut', date1);
         formData.append('dateFin', date2);
+        formData.append('devise', devise && devise.map(val => {
+            return val.nom
+        }));
+
+        dispatch(newCagnotte(formData));
+    };
+
+    const updateInfluenceurHandle = (e) => {
+
+        let findLink = lien.split("watch?v=");
+        let replaceLink = findLink.join("embed/");
+
+        let formData = new FormData();
+        formData.append('title', title);
+        formData.append('montant', montant);
+        formData.append('link', replaceLink);
+        formData.append('image', image);
+        formData.append('categorieId', categorie);
+        formData.append('description', description);
+        formData.append('dateDebut', date1);
+        formData.append('dateFin', date2);
+        formData.append('devise', devise && devise.map(val => {
+            return val.nom
+        }));
 
         let data = {}
         data.form = formData;
@@ -85,6 +101,8 @@ const AddCagnotte = () => {
 
         dispatch(updateCagnotte(data));
     };
+
+    console.log(isLoading , " IS LOADING")
 
     return (
         <>
@@ -124,20 +142,21 @@ const AddCagnotte = () => {
 
                         <div className='row'>
                             <div className='col-sm-8'>
-                                <div className='row'>
-                                    <div className='col-sm-6'>
-                                        <div className="form-group mb-3">
-                                            <label htmlFor="nom">Entrer un titre</label>
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                id="nom"
-                                                placeholder="Entrer un nom"
-                                                value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
-                                            />
-                                        </div>
+                                <div className='col-sm-12'>
+                                    <div className="form-group mb-3">
+                                        <label htmlFor="nom">Entrer un titre</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="nom"
+                                            placeholder="Entrer un nom"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        />
                                     </div>
+                                </div>
+
+                                <div className='row'>
                                     <div className='col-sm-6'>
                                         <div className="form-group mb-3">
                                             <label htmlFor="postnom">Montant à atteindre</label>
@@ -151,7 +170,25 @@ const AddCagnotte = () => {
                                             />
                                         </div>
                                     </div>
+                                    <div className='col-sm-6'>
+                                        <div className="form-group mb-3">
+                                            <label htmlFor="postnom">Choisir une devise</label>
+                                            <Select
+                                                name='select'
+                                                options={devises}
+                                                labelField="nom"
+                                                valueField="id"
+                                                multi
+                                                className='form-control'
+                                                searchable={true}
+                                                dropdownPosition='bottom'
+                                                onChange={(value => setDevise(value))}
+                                            >
+                                            </Select>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <div className='row'>
                                     <div className='col-sm-6'>
@@ -162,8 +199,8 @@ const AddCagnotte = () => {
                                                 placeholder='Url'
                                                 className="form-control"
                                                 id="url"
-                                                value={link}
-                                                onChange={(e) => setLink(e.target.value)}
+                                                value={lien}
+                                                onChange={(e) => setLien(e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -202,7 +239,7 @@ const AddCagnotte = () => {
                                                 className="form-control"
                                                 value={date2}
                                                 id="date1"
-                                                onChange={(e)=>setDate2(e.target.value)}
+                                                onChange={(e) => setDate2(e.target.value)}
                                                 style={{ width: "100%" }}
                                             />
                                         </div>
@@ -264,10 +301,10 @@ const AddCagnotte = () => {
                         <button
                             className='btn btn-primary'
                             onClick={!state ? addInfluenceur : updateInfluenceurHandle}
-                            disabled={title && description ? false : true}
+                            disabled={title && description && montant && devise && date1 && date2 && categorie ? false : true}
                         >
                             {
-                                isLoading && isLoading.loading ? <Loader /> : state ? "Modifier" : "Ajouter"
+                                isLoading && isLoading ? <Loader /> : state ? "Modifier" : "Ajouter"
                             }
                         </button>
                     </div>

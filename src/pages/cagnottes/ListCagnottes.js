@@ -40,14 +40,14 @@ export default function ListInfluenceurs(props) {
         dispatch(getAllCagnottes(count));
     }, [dispatch, count]);
 
-    const deleteCategorie = (id) => {
+    const deleCagnotte = (id) => {
         swal({
-            text: "Etes-vous sûr de vouloir supprimer cet influenceur ?",
+            text: "Etes-vous sûr de vouloir supprimer cette cagnotte ?",
             buttons: true,
             dangerMode: true
         }).then((willDelete) => {
             if (willDelete) {
-                dispatch(deleteCagnotte(id));
+                dispatch(deleteCagnotte(id && id));
             }
         }).catch((error) => {
             console.log(error);
@@ -140,7 +140,7 @@ export default function ListInfluenceurs(props) {
                             <TableCell>ID</TableCell>
                             <TableCell>Titre</TableCell>
                             <TableCell align="left">Description</TableCell>
-                            <TableCell align="left">Date inscription</TableCell>
+                            <TableCell align="left">Date création</TableCell>
                             <TableCell align="left">Options</TableCell>
                         </TableRow>
                     </TableHead>
@@ -177,7 +177,7 @@ export default function ListInfluenceurs(props) {
                                             </div>
                                         </div>
                                     </TableCell>
-                                    <TableCell align="left" width={500} style={{  textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
+                                    <TableCell align="left" width={500} style={{ textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                                         {
                                             row && row.description && row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
                                         }
@@ -194,7 +194,7 @@ export default function ListInfluenceurs(props) {
                                         <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                             <FaRegEdit size={18} />
                                         </Link>
-                                        <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
+                                        <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleCagnotte(row.id)} />
                                     </TableCell>
                                 </TableRow>
                             )) :
