@@ -28,6 +28,8 @@ const Paiement = () => {
     const [prenom, setPrenom,] = useState("");
     const [chec, setChec] = useState(false);
 
+    const [typeMobile, setTypeMobile] = useState(0);
+
     const { state } = useLocation();
 
     let navigate = useNavigate()
@@ -275,7 +277,7 @@ const Paiement = () => {
                                             <tr>
                                                 <td>Email et Prénom</td>
                                                 <td style={{ fontWeight: "bold" }}>
-                                                    {email} , {prenom}
+                                                    {email} {prenom && ', ' + prenom}
                                                 </td>
                                             </tr>
                                     }
@@ -295,18 +297,18 @@ const Paiement = () => {
                         choix === 1 && (
                             <>
                                 <h5>Choisir un mode opératoire</h5>
-                                <div className='grille'>
-                                    <div className='card'>
-                                        <img src={mpsa} alt="" />
+                                <div className='grille mobilesBank'>
+                                    <div className={typeMobile === 1 ? "card checked" : "card"} onClick={() => setTypeMobile(1)}>
+                                        {typeMobile === 1 && <FaCheckCircle size={30} />}     <img src={mpsa} alt="" />
                                     </div>
-                                    <div className='card'>
-                                        <img src={orange} alt="" />
+                                    <div className={typeMobile === 2 ? "card checked" : "card"} onClick={() => setTypeMobile(2)}>
+                                        {typeMobile === 2 && <FaCheckCircle size={30} />}   <img src={orange} alt="" />
                                     </div>
-                                    <div className='card'>
-                                        <img src={airtel} alt="" />
+                                    <div className={typeMobile === 3 ? "card checked" : "card"} onClick={() => setTypeMobile(3)}>
+                                        {typeMobile === 3 && <FaCheckCircle size={30} />}    <img src={airtel} alt="" />
                                     </div>
-                                    <div className='card'>
-                                        <img src={africell} alt="" />
+                                    <div className={typeMobile === 4 ? "card checked" : "card"} onClick={() => setTypeMobile(4)}>
+                                        {typeMobile === 4 && <FaCheckCircle size={30} />}   <img src={africell} alt="" />
                                     </div>
                                 </div>
                             </>

@@ -13,13 +13,15 @@ import { combineReducers } from "redux";
 import userSlice from './features/Users';
 import cagnotteSlice, { getAllCagnottes } from './features/Cagnotte';
 import imageSlice, { getAllImages } from './features/Images';
+import participantslice, { getAllparticipants } from './features/Participants';
 
 const store = configureStore({
   reducer: combineReducers({
     categories: categoriesSlice.reducer,
     users: userSlice.reducer,
     cagnottes: cagnotteSlice.reducer,
-    images: imageSlice.reducer
+    images: imageSlice.reducer,
+    participants: participantslice.reducer
   })
 });
 
@@ -27,6 +29,7 @@ store.dispatch(getAllcategories());
 store.dispatch(getAllUsers());
 store.dispatch(getAllCagnottes());
 store.dispatch(getAllImages());
+store.dispatch(getAllparticipants());
 
 const scrollBtn = document.createElement("button");
 

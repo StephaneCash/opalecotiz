@@ -23,7 +23,11 @@
 }
 
 .payement input,
-.payement select, label, td, button, textarea {
+.payement select,
+label,
+td,
+button,
+textarea {
     box-shadow: none !important;
     font-size: 14px;
 }
@@ -87,43 +91,57 @@
     height: 250px;
 }
 
-.paiementModes .col-sm-4 .card img{
+.paiementModes .col-sm-4 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.paiementModes .col-sm-4 .card p{
+.paiementModes .col-sm-4 .card p {
     text-align: center !important;
 }
 
-.textPayement{
+.textPayement {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.anonymat{
+.anonymat {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.anonymat input{
+.anonymat input {
     width: 16%;
     border: 2px solid #009c4e;
     height: 25px;
 }
 
-.form-check-input:checked{
+.form-check-input:checked {
     background-color: #009c4e !important;
     border-color: #009c4e !important;
 }
 
-.infosData div{
+.infosData div {
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 12px;
+}
+
+.mobilesBank .card.checked {
+    border-color: #009c4e !important;
+}
+
+.mobilesBank .card.checked svg {
+    color: #009c4e;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
