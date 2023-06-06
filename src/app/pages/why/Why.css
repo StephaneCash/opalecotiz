@@ -13,17 +13,17 @@
     justify-content: center;
     gap: 2rem;
     width: 80%;
+    align-items: center;
     margin: 3rem auto;
 }
 
-.why .cardsData .card {
-    width: 100%;
-    height: auto;
 
+.why .cardsData .col1, .cardsData .col2{
+    width: 49%;
 }
 
-.why .cardsData .card img {
-    width: 100%;
-    height: 100%;
+.why .cardsData  img {
+    width: 100% !important;
+    height: 400px;
     object-fit: cover;
 }

@@ -18,6 +18,9 @@ import Paiement from '../app/pages/forms/Paiement';
 import AddImages from '../pages/cagnottes/AddImages';
 import Participants from '../pages/participants/Participants';
 import AddUser from '../pages/users/AddUser';
+import Documents from "../pages/documents/Documents"
+import DetailDoc from "../pages/documents/DetailDoc"
+import AddDocument from "../pages/documents/AddDocument"
 
 const RoutesFree = () => {
     return (
@@ -42,6 +45,10 @@ const RoutesFree = () => {
                     <Route path='/admin/cagnottes/detail/:id' element={<DetailCagnotte />} />
                     <Route path='/admin/add-images/:id' element={<AddImages />} />
                     <Route path='/admin/users/add' element={<AddUser />} />
+
+                    <Route path='/admin/documents' element={<Documents />} />
+                    <Route path='/admin/documents/add' element={<AddDocument />} />
+                    <Route path='/admin/documents/detail' element={<DetailDoc />} />
                 </Route>
             </Routes>
         </BrowserRouter>

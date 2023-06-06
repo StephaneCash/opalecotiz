@@ -3,50 +3,14 @@ import Leftbar from '../../components/leftbar/Leftbar';
 import Navbar from '../../components/navbar/Navbar';
 import { ContextApp } from '../../context/AppContext'
 import "./Dashboard.css";
-import influenceurs from "../../assets/influenceurs.svg"
-import inf from "../../assets/inf.svg"
-import help from "../../assets/help.svg"
-import users from "../../assets/users.svg"
-import invest from "../../assets/invest.svg"
-import contact from "../../assets/contact.svg"
-import { useSelector } from 'react-redux';
-import { Avatar, Button } from '@mui/material';
+import {  Button } from '@mui/material';
 import Chart from "react-apexcharts";
-import { FaArrowRight } from 'react-icons/fa';
 import { FaChartLine } from "react-icons/fa"
-import { baseUrlImage } from '../../bases/basesUrl';
 import { FiMoreVertical } from "react-icons/fi"
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider'
 
-const marks = [
-  {
-    value: 0,
-    label: '0%',
-  },
-  {
-    value: 20,
-    label: '20%',
-  },
-  {
-    value: 37,
-    label: '37%',
-  },
-];
-
-function valuetext(value) {
-  return `${value}%`;
-}
 
 const Dashboard = () => {
   const { userConnected } = useContext(ContextApp);
-  const categories = useSelector((state) => state.categories);
-  const usersLength = useSelector((state) => state.users);
-  const contacts = useSelector((state) => state.contacts);
-
-  const cagnottesLength = useSelector((state) => state.cagnottes);
 
   const options = {
     xaxis: {
