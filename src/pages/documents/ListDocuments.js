@@ -12,7 +12,6 @@ import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import { FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { dateParserFunction } from '../../utils';
-import { FiToggleLeft, FiToggleRight } from 'react-icons/fi';
 import { deleteDocument } from '../../features/Documents';
 
 export default function ListDocuments(props) {
@@ -52,7 +51,7 @@ export default function ListDocuments(props) {
     return (
         <TableContainer component={Paper}>
             <div className='headTable' style={{
-                background: '#0b6cc7d0', color: "#fff",
+                background: '#009c4e', color: "#fff",
                 border: "1px solid #ddd", padding: "1rem", display: "flex",
                 justifyContent: "space-between", alignItems: "center", borderRadius: "5px"
             }}>
@@ -61,18 +60,6 @@ export default function ListDocuments(props) {
                         `(0)`}</span>
                     <br />
                     <h6>Documents</h6>
-                </div>
-
-                <div>
-                    <label>Choisir le nombre d'items à afficher</label>
-                    <select onChange={(e) => setCunt(e.target.value)} className='form-control'>
-                        <option value={5}>5</option>
-                        <option value={10}>10</option>
-                        <option value={15}>15</option>
-                        <option value={20}>20</option>
-                        <option value={50}>50</option>
-                        <option value={100}>100</option>
-                    </select>
                 </div>
             </div>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">

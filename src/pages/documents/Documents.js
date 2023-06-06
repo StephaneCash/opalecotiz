@@ -22,7 +22,7 @@ const Documents = () => {
                         <Leftbar />
                     </div>
                     <div className='contentApp'>
-                        <div className='alert alertInputSearch'>
+                        <div className='alert  alertInputSearch'>
                             <div className='col-sm-8'>
                                 <div className="input-group">
                                     <input
@@ -36,8 +36,8 @@ const Documents = () => {
                                 </div>
                             </div>
                             <div className='col-sm-4'>
-                                <Link to='add'>
-                                    <button className='btn btn-primary'>
+                                <Link to='add' className='Add'>
+                                    <button className='btn btn-success'>
                                         <FaPlus />
                                         Ajouter
                                     </button>
