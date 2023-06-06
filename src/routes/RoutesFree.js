@@ -17,6 +17,7 @@ import Production from '../app/pages/production/Production';
 import Paiement from '../app/pages/forms/Paiement';
 import AddImages from '../pages/cagnottes/AddImages';
 import Participants from '../pages/participants/Participants';
+import AddUser from '../pages/users/AddUser';
 
 const RoutesFree = () => {
     return (
@@ -40,6 +41,7 @@ const RoutesFree = () => {
                     <Route path='/admin/cagnottes/add' element={<AddCagnotte />} />
                     <Route path='/admin/cagnottes/detail/:id' element={<DetailCagnotte />} />
                     <Route path='/admin/add-images/:id' element={<AddImages />} />
+                    <Route path='/admin/users/add' element={<AddUser />} />
                 </Route>
             </Routes>
         </BrowserRouter>

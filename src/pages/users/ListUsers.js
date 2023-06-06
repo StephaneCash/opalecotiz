@@ -15,6 +15,7 @@ import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import { FaFilter, FaInfo, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { deleteUser } from '../../features/Users';
 
 export default function ListUsers(props) {
     let data = props.data;
@@ -43,7 +44,7 @@ export default function ListUsers(props) {
             dangerMode: true
         }).then((willDelete) => {
             if (willDelete) {
-                dispatch(deleteCategory(id));
+                dispatch(deleteUser(id));
             }
         }).catch((error) => {
             console.log(error);

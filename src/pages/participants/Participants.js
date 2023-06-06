@@ -14,39 +14,41 @@ const Participants = () => {
     return (
         <>
             <Navbar />
-            <div className='col-sm-12 categories'>
-                <div className='col-sm-2'>
-                    <Leftbar />
-                </div>
-                <div className='col-sm-10 main'>
-                    <div className='alert alert-success alertInputSearch'>
-                        <div className='col-sm-8'>
-                            <div className="input-group">
-                                <input
-                                    type="search"
-                                    id="form1"
-                                    placeholder='Rechercher...'
-                                    className="form-control"
-                                    onChange={(e) => setValueSearch(e.target.value)}
-                                />
-                                <FaSearch color='#1976d2' />
+            <div className='mainApp'>
+                <div className='contentMain'>
+                    <div className='contentLeftBar'>
+                        <Leftbar />
+                    </div>
+                    <div className='contentApp'>
+                        <div className='alert alertInputSearch'>
+                            <div className='col-sm-8'>
+                                <div className="input-group">
+                                    <input
+                                        type="search"
+                                        id="form1"
+                                        placeholder='Rechercher...'
+                                        className="form-control"
+                                        onChange={(e) => setValueSearch(e.target.value)}
+                                    />
+                                    <FaSearch color='#1976d2' />
+                                </div>
+                            </div>
+                            <div className='col-sm-4'>
+                                <Link to='add'>
+                                    <button className='btn btn-success'>
+                                        <FaPlus />
+                                        Ajouter
+                                    </button>
+                                </Link>
                             </div>
                         </div>
-                        <div className='col-sm-4'>
-                            <Link to='add'>
-                                <button className='btn btn-success'>
-                                    <FaPlus />
-                                    Ajouter
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
 
-                    <div className='col-sm-12 tableCategorie'>
-                        <ListParticipants
-                            data={participantsList}
-                            valueSearch={valueSearch}
-                        />
+                        <div className='col-sm-12 tableCategorie'>
+                            <ListParticipants
+                                data={participantsList}
+                                valueSearch={valueSearch}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Cagnottes.css"
 import { useSelector } from 'react-redux'
 import Footer from "../footer/Footer"
@@ -11,6 +11,10 @@ const Cagnotte = () => {
   const listCagnottes = useSelector(state => state.cagnottes.value);
 
   const [valueSearch, setValueSearch] = useState("");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}, []);
 
   return (
     <div className='mainCol'>

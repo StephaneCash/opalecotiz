@@ -182,7 +182,7 @@ export default function ListCategorie(props) {
                                 </TableCell> :
 
                                 <TableCell align="left" style={{ textAlign: "center" }} colSpan="6px">
-                                    ''
+                                    Pas de données disponibles
                                 </TableCell>
                         }
 

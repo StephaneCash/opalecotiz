@@ -22,27 +22,30 @@ const DetailCagnotte = () => {
     return (
         <>
             <Navbar />
-            <div className='col-sm-12 categories'>
-                <div className='col-sm-2'>
-                    <Leftbar />
-                </div>
-                <div className='col-sm-10 main'>
-                    <div className='alert alert-success alertInputSearch'>
-                        <Link to="/admin/cagnottes">
-                            <div className='retour'>
-                                <FaArrowLeft />
-                                <span>Retour</span>
-                            </div>
-                        </Link>
+            <div className='mainApp'>
+                <div className='contentMain'>
+                    <div className='contentLeftBar'>
+                        <Leftbar />
                     </div>
+                    <div className='contentApp'>
+                        <div className='alert alertInputSearch'>
+                            <Link to="/admin/cagnottes">
+                                <div className='retour'>
+                                    <FaArrowLeft />
+                                    <span>Retour</span>
+                                </div>
+                            </Link>
+                        </div>
 
-                    <div className='col-sm-12 tableCategorie'>
-                        <DetailListCagnottes
-                            data={data}
-                        />
+                        <div className='col-sm-12 tableCategorie'>
+                            <DetailListCagnottes
+                                data={data}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

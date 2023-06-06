@@ -33,18 +33,7 @@ const Leftbar = () => {
                         <span>Participants</span>
                     </div>
                 </NavLink>
-                <NavLink to="/admin/images">
-                    <div className='item'>
-                        <FiImage />
-                        <span>Images</span>
-                    </div>
-                </NavLink>
-                <NavLink to="/admin/videos">
-                    <div className='item'>
-                        <FiVideo />
-                        <span>Vidéos</span>
-                    </div>
-                </NavLink>
+             
                 <NavLink to="/admin/users">
                     <div className='item'>
                         <GrUserAdmin />
