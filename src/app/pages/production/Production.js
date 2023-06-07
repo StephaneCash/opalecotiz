@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
-import { FaCheckCircle } from 'react-icons/fa'
+import { FaArrowLeft, FaCheckCircle } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
 const Production = () => {
@@ -13,10 +13,18 @@ const Production = () => {
 
   const [devises, setDevise] = useState(0);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <div className='production'>
       <HeaderClient />
       <div className='mainProd'>
+        <Link to="/productions">
+          <FaArrowLeft />
+          <span>Retour</span>
+        </Link>
         <h1>{state && state.val && state.val.title}</h1>
         <div className='row1'>
           <div className='col-sm-4'>
@@ -87,7 +95,7 @@ const Production = () => {
                 }}
                   state={{ val: state && state.val }}
                 >
-                  <button>Je participe</button>
+                  <button className='btn'>Je participe</button>
                 </Link>
               </div>
             </div>

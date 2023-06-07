@@ -9,7 +9,9 @@
 
 .mainProd h1 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
+    font-size: 2.5rem !important;
+    font-weight: bold;
 }
 
 .row1 {
@@ -122,15 +124,22 @@
 }
 
 .row1 .col-sm-4 button {
-    border: 1px solid #009c4e;
+   
     background-color: #009c4e;
     color: #fff;
-    padding: 0.4rem 1rem;
     width: 100%;
-    margin-top: 1rem;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 2rem auto;
+    border-radius: 30px !important;
+    padding: 1rem;
+    font-size: 15px;
+}
+
+.mainProd a:first-child{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #009c4e;
+    text-decoration: none;
 }
 
 .row1 .col-sm-4 .lastDiv span {

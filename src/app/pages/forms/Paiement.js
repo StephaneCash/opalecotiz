@@ -20,6 +20,10 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const Paiement = () => {
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }, []);
+
     const [choix, setChoix] = useState(0);
     const [montant, setMontant] = useState(200);
 
@@ -82,7 +86,6 @@ const Paiement = () => {
             <HeaderClient />
 
             <div className='payement'>
-                <h5>Paiement de la production {state && state.val && state.val.title}</h5>
                 <Link
                     to={{
                         pathname: `/production/${state && state.val && state.val.title}`
@@ -95,6 +98,8 @@ const Paiement = () => {
                     <span><FaArrowLeft /></span>
                     <span>Retour</span>
                 </Link>
+                <h5>Paiement de la production {state && state.val && state.val.title}</h5>
+
                 <form onSubmit={submitData}>
 
                     <div className='row'>
@@ -169,7 +174,7 @@ const Paiement = () => {
                                     {
                                         montant >= 5000 &&
                                         <div>
-                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' placeholder='Votre nom à afficher'></textarea>
+                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control'  maxLength={25} placeholder='Votre nom à afficher'></textarea>
                                         </div>
                                     }
                                 </div>
@@ -178,7 +183,7 @@ const Paiement = () => {
                                     {
                                         montant >= 5000 &&
                                         <div>
-                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' placeholder='Votre message à afficher'></textarea>
+                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre message à afficher'></textarea>
                                         </div>
                                     }
                                 </div>

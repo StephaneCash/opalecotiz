@@ -40,8 +40,6 @@ export default function DetailListInfluenceur(props) {
         }
     }, [data, categories]);
 
-    console.log(data && data.images)
-
     return (
         <TableContainer component={Paper} style={{ borderTop: "1px solid #ddd" }}>
             <div className='alert alert-primary'>

@@ -3,23 +3,25 @@
     margin: 2rem auto;
 }
 
-.payement .linksPayement {
+.payement a {
+    color: #009c4e;
     display: flex;
     align-items: center;
-    gap: .6rem;
-    margin-bottom: 1rem;
-    background-color: #009c4e;
-    color: #fff;
-    padding: .5rem 1rem;
-    text-decoration: none;
-    width: 120px;
-    cursor: pointer;
+    gap: 10px;
+}
+
+.payement h5 {
+    font-size: 30px !important;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
 }
 
 .payement form {
     background-color: #fff;
     border-radius: 5px;
     padding: 2rem;
+    text-decoration: none;
 }
 
 .payement input,
@@ -35,8 +37,11 @@ textarea {
 .payement button {
     background-color: #009c4e;
     color: #fff;
-    width: 50%;
+    width: 40%;
     margin-top: 2rem;
+    border-radius: 30px !important;
+    padding: 1rem;
+    font-size: 15px;
 }
 
 .payement button:hover {

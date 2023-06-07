@@ -85,7 +85,8 @@
     color: #fff;
     border: 1px solid #009c4e;
     background-color: #009c4e;
-    padding: 1rem
+    padding: 1rem;
+    border-radius: 30px;
 }
 
 .dataFlex button:hover {
