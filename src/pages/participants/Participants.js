@@ -20,7 +20,7 @@ const Participants = () => {
                         <Leftbar />
                     </div>
                     <div className='contentApp'>
-                        <div className='alert alertInputSearch'>
+                        <div className='alert  alertInputSearch'>
                             <div className='col-sm-8'>
                                 <div className="input-group">
                                     <input
@@ -34,7 +34,7 @@ const Participants = () => {
                                 </div>
                             </div>
                             <div className='col-sm-4'>
-                                <Link to='add'>
+                                <Link to='add' className='Add'>
                                     <button className='btn btn-success'>
                                         <FaPlus />
                                         Ajouter
@@ -42,7 +42,6 @@ const Participants = () => {
                                 </Link>
                             </div>
                         </div>
-
                         <div className='col-sm-12 tableCategorie'>
                             <ListParticipants
                                 data={participantsList}

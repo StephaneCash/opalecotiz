@@ -9,7 +9,7 @@ import ListCagnottes from './ListCagnottes';
 
 const Cagnottes = () => {
 
-    const influenceurList = useSelector((state) => state.cagnottes);
+    const influenceurList = useSelector((state) => state.cagnottes.value);
     const [valueSearch, setValueSearch] = useState('');
 
     return (

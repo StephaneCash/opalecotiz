@@ -1,40 +1,33 @@
 import * as React from 'react';
+import LoaderBlue from '../../components/loader/LoaderBlue';
+import { useDispatch } from 'react-redux';
+import { deleteCategory } from '../../features/Categories';
+import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
+import {  FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { dateParserFunction } from '../../utils';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Avatar } from '@mui/material';
-import { baseUrlImage } from '../../bases/basesUrl';
-import LoaderBlue from '../../components/loader/LoaderBlue';
-import { useDispatch } from 'react-redux';
-import { deleteCategory, getAllcategories } from '../../features/Categories';
-import swal from 'sweetalert';
-import { Link } from 'react-router-dom';
-import { FaFilter, FaInfo, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function ListCategorie(props) {
   let data = props.data;
   let valueSearch = props.valueSearch && props.valueSearch.toLowerCase();
 
   const [showBtnAddInf, setShowBtnAddInf] = React.useState(true);
+  const [cunt, setCunt] = React.useState(5);
 
   const [categories, setCategories] = React.useState([]);
-  const [hasMore, setHasMore] = React.useState(true);
-  const [count, setCount] = React.useState(10);
 
   let dispatch = useDispatch();
 
   React.useEffect(() => {
     setCategories(data && data.value && data.value)
   }, [data]);
-
-  React.useEffect(() => {
-    dispatch(getAllcategories(count));
-  }, [dispatch, count]);
 
   const deleteCategorie = (id) => {
     swal({
@@ -50,18 +43,6 @@ export default function ListCategorie(props) {
     });
   };
 
-  const loadMore = () => {
-    if (categories.length === count) {
-      setCategories(categories && categories.concat(categories));
-      setHasMore(true);
-      setCount(count + 10);
-    }
-    else {
-      setHasMore(false);
-      setCount(count + 10);
-    }
-  };
-
   const handleCheckBox = (id) => {
     setShowBtnAddInf(!showBtnAddInf);
     console.log(id)
@@ -71,85 +52,73 @@ export default function ListCategorie(props) {
     setShowBtnAddInf(false);
   }, []);
 
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  const lastIndex = currentPage * cunt;
+  const firstIndex = lastIndex - cunt;
+  const records = categories && categories.length > 0 && categories.slice(firstIndex, lastIndex);
+  const nbPage = Math.ceil(categories && categories.length > 0 && categories.length / cunt);
+  const numbers = [...Array(categories && nbPage + 1).keys()].slice(1);
+
   return (
-    <TableContainer component={Paper} id="scrollableDiv"
-      style={{
-        height: 510,
-        overflow: 'auto',
+    <TableContainer component={Paper}>
+
+      <div className='alert alert-primary headTable' style={{
+        background: '#0b6cc7d0', color: "#fff",
+        border: "1px solid #ddd", padding: "1rem", display: "flex",
+        justifyContent: "space-between", alignItems: "center"
       }}>
-      <div className='alert alert-primary' style={{ background: '#fff', border: "1px solid #ddd" }}>
-        <div className='headerListCategorie'>
-          <div>
-            <span>Pages</span> / <span>Catégories {data && data.value && data.value.length > 0 ? `(${data.value.length})` : `(0)`}</span>
-            <br />
-            <h6>Catégories</h6>
-          </div>
-          <div>
-            {
-              showBtnAddInf ? <button
-                className='btn btn-success'
-                style={{
-                  backgroundColor: '#ddd', color: "#333",
-                  border: "1px solid #fff", boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                }}>
-                <FaUsers /> Ajouter des productions
-              </button>
-                : <FaFilter />
-            }
-          </div>
+        <div>
+          <span>Pages</span> / <span>Catégories {data && data.value && data.value.length > 0 ? `(${data.value.length})` : `(0)`}</span>
+          <br />
+          <h6>Catégories</h6>
+        </div>
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-end"
+        }}>
+          <label>Choisir le nombre d'items à afficher</label>
+          <select style={{ width: "20%", textAlign: "center" }} onChange={(e) => setCunt(e.target.value)} className='form-control'>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
         </div>
       </div>
-      <InfiniteScroll
-        dataLength={categories && categories.length}
-        next={loadMore}
-        hasMore={hasMore}
-        loader={
-          <div style={{
-            width: '100%',
-            display: "flex",
-            justifyContent: "center"
-          }}>
-            <LoaderBlue />
-          </div>
-        }
-        endMessage={
-          <div style={{
-            width: '100%',
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: '1rem'
-          }}>
-            Plus de données disponibles
-          </div>
-        }
-        scrollableTarget="scrollableDiv"
-      >
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <input
-                  style={{ border: "2px solid silver", width: 20, height: 20 }}
-                  className="form-check-input" type="checkbox" value=""
-                  id="flexCheckDefault"
-                />
-              </TableCell>
-              <TableCell>ID</TableCell>
-              <TableCell>Nom</TableCell>
-              <TableCell align="left">Description</TableCell>
-              <TableCell align="left">Options</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
 
-            {categories && categories.length > 0 ? categories.filter(val => {
-              const nom = val && val.nom !== undefined && val.nom.toLowerCase();
-              return nom && nom.includes(valueSearch)
-            })
-              .map((row, i) => (
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>
+              <input
+                style={{ border: "2px solid silver", width: 20, height: 20 }}
+                className="form-check-input" type="checkbox" value=""
+                id="flexCheckDefault"
+              />
+            </TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>Nom</TableCell>
+            <TableCell align="left">Description</TableCell>
+            <TableCell align="left">Date création</TableCell>
+            <TableCell align="left">Options</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+
+          {records ? records.length > 0 ? records.filter(val => {
+            const nom = val && val.nom !== undefined && val.nom.toLowerCase();
+            return nom && nom.includes(valueSearch)
+          })
+            .map((row, i) => {
+              return (
                 <TableRow
                   key={row.id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  sx={{ '&:last-child TableCell, &:last-child th': { border: 0 } }}
                 >
                   <TableCell width={60}>
                     <input
@@ -163,8 +132,11 @@ export default function ListCategorie(props) {
                   <TableCell width={200}>{row.nom}</TableCell>
                   <TableCell align="left" width={500} style={{ textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                     {
-                      row && row.description && row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
+                      row.description.split(".") ? row.description.split(".")[0] + "..." : row.description
                     }
+                  </TableCell>
+                  <TableCell align="left" width={200}>
+                    {dateParserFunction(row.createdAt)}
                   </TableCell>
                   <TableCell align="left" width={130}>
                     <Link to={{ pathname: "detail" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
@@ -176,24 +148,82 @@ export default function ListCategorie(props) {
                     <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
                   </TableCell>
                 </TableRow>
-              )) :
-              data && data.value && data.value.length === 0 ?
-                <TableCell colSpan="6px"
-                  style={{
-                    textAlign: "center",
-                  }}
-                >
-                  Pas de données disponibles.
-                </TableCell> :
-
-                <TableCell align="left" style={{ textAlign: "center" }} colSpan="6px">
-                  ''
-                </TableCell>
+              )
             }
+            ) :
+            data && data.value && data.value.length === 0 ?
+              <TableCell colSpan="8px"
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Pas de données disponibles.
+              </TableCell> :
+              <TableRow>
+                <TableCell
+                  align='center'
+                  colSpan="8px"
+                >
+                  <LoaderBlue />
+                </TableCell>
+              </TableRow>
+            : <TableRow>
+              <TableCell
+                align='center'
+                colSpan="8px"
+              >
+                Pas de données disponibles
+              </TableCell>
+            </TableRow>
+          }
 
-          </TableBody>
-        </Table>
-      </InfiniteScroll>
+        </TableBody>
+      </Table>
+
+      {
+        <nav className='paginationNav'>
+          <ul className='pagination'>
+            <li className='page-item'>
+              <Link to="#" className='page-link'
+                onClick={prePage}
+              >Retour</Link>
+            </li>
+            {
+              numbers && numbers.map((n, i) => {
+                return (
+                  <li key={i} className={`page-item ${currentPage === n} ? 'active' : ''`}>
+                    <Link to="#" className='page-link'
+                      onClick={() => changePage(n)}
+                    >{n}</Link>
+                  </li>
+                )
+              })
+            }
+            <li className='page-item'>
+              <Link to="#" className='page-link'
+                onClick={nextPage}
+              >Suivant</Link>
+            </li>
+          </ul>
+        </nav>
+      }
+
     </TableContainer>
   );
+
+  function prePage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  function changePage(id) {
+    setCurrentPage(id)
+  }
+
+  function nextPage() {
+    if (currentPage !== nbPage) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
 }

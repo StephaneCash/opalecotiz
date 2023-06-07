@@ -123,7 +123,7 @@ const AddCagnotte = () => {
                                     <Link to="/admin/cagnottes"
                                         style={{
                                             fontSize: "16px", color: "#009c4e", alignItems:"center",
-                                            display: "flex", alignItems: "center", gap: "5px",
+                                            display: "flex", gap: "5px",
                                         }}
                                     >
                                         <FaArrowLeft /> Productions
