@@ -25,22 +25,22 @@ const DetailDoc = () => {
                         <Leftbar />
                     </div>
                     <div className='contentApp'>
-                        <div className='alert alertInputSearch ' style={{ border: "1px solid #ddd", background: "#fff", padding: "2rem 2rem 2rem 1rem" }}>
+                        <div className='alert alertInputSearch ' style={{ border: "1px solid #ddd", background: "#009c4e", padding: "2rem 2rem 2rem 1rem" }}>
                             <h4 style={{
                                 display: "flex",
                                 alignItems: "center",
                                 gap: "5px",
-                                color: "#fff"
+                                color: "#009c4e"
                             }}>
                                 <Link to="/admin/documents"
                                     style={{
-                                        fontSize: "16px", color: "#fff",
+                                        fontSize: "16px", color: "#009c4e",
                                         display: "flex", alignItems: "center", gap: "5px",
                                     }}
                                 >
                                     <FaArrowLeft />Documents
                                 </Link>
-                                <span style={{ fontSize: "15px", color: "#fff", }}>/</span>
+                                <span style={{ fontSize: "15px", color: "#009c4e", }}>/</span>
                                 <span style={{ fontSize: "17px" }}>
                                     {
                                         state && state.val ?
