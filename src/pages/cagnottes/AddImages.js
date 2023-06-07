@@ -102,7 +102,7 @@ const AddImages = () => {
                                     <span style={{ fontSize: "15px", color: "#1976d2", }}>/</span>
                                     <span style={{ fontSize: "17px" }}>
                                         {
-                                            state ? `Modification de ${state && state.data && state.data.title}` : "Ajout images"
+                                            state ? `Ajout images sur ${state && state.data && state.data.title}` : "Ajout images"
                                         }
                                     </span>
                                 </h4>

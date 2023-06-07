@@ -43,7 +43,7 @@ const RoutesFree = () => {
                     <Route path='/admin/categories/detail' element={<DetailCategorie />} />
                     <Route path='/admin/cagnottes/add' element={<AddCagnotte />} />
                     <Route path='/admin/cagnottes/detail/:id' element={<DetailCagnotte />} />
-                    <Route path='/admin/add-images/:id' element={<AddImages />} />
+                    <Route path='/admin/cagnottes/add-images/:id' element={<AddImages />} />
                     <Route path='/admin/users/add' element={<AddUser />} />
 
                     <Route path='/admin/documents' element={<Documents />} />

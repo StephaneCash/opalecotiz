@@ -12,9 +12,9 @@ import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { FaImages, FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { dateParserFunction } from '../../utils';
-import {  deleteCagnotte } from '../../features/Cagnotte';
+import { deleteCagnotte } from '../../features/Cagnotte';
 
 export default function ListCagnottes(props) {
     let data = props.data && props.data;
@@ -50,13 +50,13 @@ export default function ListCagnottes(props) {
     const nbPage = Math.ceil(data && data.length > 0 && data.length / cunt);
     const numbers = [...Array(data && nbPage + 1).keys()].slice(1);
 
-console.log(data)
+    console.log(data)
     return (
         <TableContainer component={Paper}>
             <div className='headTable' style={{
                 background: '#009c4e', color: "#fff",
                 border: "1px solid #ddd", padding: "1rem", display: "flex",
-                justifyContent: "space-between", alignItems: "center", borderRadius:"5px"
+                justifyContent: "space-between", alignItems: "center", borderRadius: "5px"
             }}>
                 <div>
                     <span>Pages</span> / <span>Productions {data && data.length > 0 ? `(${data.length})` :
@@ -66,13 +66,13 @@ console.log(data)
                 </div>
 
                 <div style={{
-                    display:"flex",
+                    display: "flex",
                     flexDirection: "column",
-                    justifyContent:"center",
-                    alignItems:"flex-end"
+                    justifyContent: "center",
+                    alignItems: "flex-end"
                 }}>
                     <label>Choisir le nombre d'items à afficher</label>
-                    <select style={{width:"20%", textAlign:"center"}} onChange={(e) => setCunt(e.target.value)} className='form-control'>
+                    <select style={{ width: "20%", textAlign: "center" }} onChange={(e) => setCunt(e.target.value)} className='form-control'>
                         <option value={5}>5</option>
                         <option value={10}>10</option>
                         <option value={15}>15</option>
@@ -133,7 +133,7 @@ console.log(data)
                                                 row.nom.substring(0, 20) + "..." : row && row.title !== undefined && row.title}</div>
                                             <div style={{ fontWeight: "300", }}>{row && row.categorie && row.categorie.nom}
                                             </div>
-                    
+
                                         </div>
                                     </div>
                                 </TableCell>
@@ -149,11 +149,14 @@ console.log(data)
                                     }
                                 </TableCell>
                                 <TableCell align="left" width={190}>
-                                    <Link to={{ pathname: "detail" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
+                                    <Link to={{ pathname: `detail/${row.id}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                         <FaInfo size={18} />
                                     </Link>
                                     <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                         <FaRegEdit size={18} />
+                                    </Link>
+                                    <Link to={{ pathname: `add-images/${row.id}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
+                                        <FaImages size={18} />
                                     </Link>
                                     <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
                                 </TableCell>

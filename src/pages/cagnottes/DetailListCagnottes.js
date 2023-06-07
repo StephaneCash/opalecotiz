@@ -123,7 +123,7 @@ export default function DetailListInfluenceur(props) {
                 </div>
                 <div className='col-sm-3 imagesCagnotte'>
                     <h6>Images secondaires, Cliquer pour agrandir</h6>
-                    <div className='grilleCards'>
+                    <div className='grilleCards mt-2'>
 
                         {
                             data && data.images && data.images.map(val => {
