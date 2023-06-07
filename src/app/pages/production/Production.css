@@ -87,6 +87,9 @@
 .row1 .montant {
     font-family: "Roboto";
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .row1 .col-sm-4 .card .image img {

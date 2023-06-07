@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
@@ -10,6 +10,8 @@ const Production = () => {
 
   const { state } = useLocation();
   let devise = state && state.val && state.val.devise && state.val.devise.split(',');
+
+  const [devises, setDevise] = useState(0);
 
   return (
     <div className='production'>
@@ -31,9 +33,24 @@ const Production = () => {
               <div className='card-body'>
                 <div className='overPlay'></div>
                 <div className='showData'>
-                  <span className='montant'>
-                    2000 $
-                  </span>
+                  <div className='montant'>
+                    <span>0</span>
+                    <span>
+                      {
+                        devises && devises === "Dollar" ? "$" : devises === "Euro" ? "€" : devises === "FC" ? "CDF" : "$"
+                      }
+                    </span>
+                    <select onChange={(e) => setDevise(e.target.value)} style={{
+                      fontSize: "12px"
+                    }}>
+                      {
+                        state && state.val && state.val.devise && state.val.devise.split(",") &&
+                        state.val.devise.split(",").map((val, i) => {
+                          return <option value={val} key={i}>{val}</option>
+                        })
+                      }
+                    </select>
+                  </div>
                   <span>Collectés sur {" "}
                     <span>
                       {state && state.val && state.val.montant && state.val.montant}
@@ -59,10 +76,10 @@ const Production = () => {
                     <div
                       className="progress-bar"
                       role="progressbar"
-                      style={{ width: "10%", background: "#009c4e" }} aria-valuenow="10"
-                      aria-valuemin="0" aria-valuemax="100">10%</div>
+                      style={{ width: "0%", background: "#009c4e" }} aria-valuenow="10"
+                      aria-valuemin="0" aria-valuemax="100">0%</div>
                   </div>
-                  <span>60% atteint avec 1200 participants</span>
+                  <span>0% atteint avec 0 participants</span>
                 </div>
 
                 <Link to={{

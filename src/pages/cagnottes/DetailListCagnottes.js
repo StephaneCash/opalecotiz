@@ -76,6 +76,15 @@ export default function DetailListInfluenceur(props) {
                             <TableRow
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
+                                <TableCell style={{ fontWeight: "bold" }}>Devises </TableCell>
+                                <TableCell >
+                                    {data && data.devise && data.devise}
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
                                 <TableCell style={{ fontWeight: "bold" }}>Catégorie </TableCell>
                                 <TableCell >{inf ? inf.nom : data.categorie && data.categorie.nom}</TableCell>
                             </TableRow>
