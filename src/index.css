@@ -29,3 +29,7 @@ body {
   opacity: 1;
   transition: opacity 1s, transform 1s;
 }
+
+select {
+  box-shadow: none !important;
+}

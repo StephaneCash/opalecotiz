@@ -48,7 +48,7 @@ const Production = () => {
                         devises && devises === "Dollar" ? "$" : devises === "Euro" ? "€" : devises === "FC" ? "CDF" : "$"
                       }
                     </span>
-                    <select onChange={(e) => setDevise(e.target.value)} style={{
+                    <select className='form-control' onChange={(e) => setDevise(e.target.value)} style={{
                       fontSize: "12px"
                     }}>
                       {

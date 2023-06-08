@@ -19,3 +19,15 @@
 .headerTop svg {
     cursor: pointer;
 }
+
+@media screen and (max-width:430px) {
+    .headerTop {
+        padding: .7rem 1rem !important;
+    }
+}
+
+@media screen and (max-width:370px) {
+    .headerTop {
+        flex-direction: column !important;
+    }
+}

@@ -20,8 +20,8 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'© '}
-            <a color="inherit" href="https://opaleinfluence.com/">
-                Opale Production
+            <a color="inherit" href="https://ligabloprod.com/">
+                Ligablo production
             </a>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -130,7 +130,8 @@ export default function Login() {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                justifyContent: "center"
+                                justifyContent: "center",
+                                background:"#009c4e"
                             }}
                         >
                             {

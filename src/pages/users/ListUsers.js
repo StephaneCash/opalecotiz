@@ -10,12 +10,13 @@ import { Avatar } from '@mui/material';
 import { baseUrlImage } from '../../bases/basesUrl';
 import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
-import { deleteCategory, getAllcategories } from '../../features/Categories';
+import { getAllcategories } from '../../features/Categories';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import { FaFilter, FaInfo, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { deleteUser } from '../../features/Users';
+import { ContextApp } from '../../context/AppContext';
 
 export default function ListUsers(props) {
     let data = props.data;
@@ -71,6 +72,9 @@ export default function ListUsers(props) {
     React.useEffect(() => {
         setShowBtnAddInf(false);
     }, []);
+
+    const { userConnected } = React.useContext(ContextApp);
+
 
     return (
         <TableContainer component={Paper} id="scrollableDiv"
@@ -165,7 +169,15 @@ export default function ListUsers(props) {
                                     <TableCell width={60}>{i + 1}</TableCell>
                                     <TableCell width={200} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                                         <Avatar alt={row && row.pseudo && row.pseudo} sx={{ width: 50, height: 50 }} src={baseUrlImage + "/" + row.url} />
-                                        {row.pseudo}
+                                        <div>
+                                            <div>{row.pseudo}</div>
+                                            {
+                                                userConnected && userConnected.id === row.id &&
+                                                <div className='text-primary'>
+                                                    ( Vous )
+                                                </div>
+                                            }
+                                        </div>
                                     </TableCell>
                                     <TableCell align="left" width={400}
                                         style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
@@ -183,17 +195,19 @@ export default function ListUsers(props) {
                                     <TableCell align="left" width={200}
                                         style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
                                         {
-                                            row && row.isActive === false ? <span className='alert alert-danger'>Désactivé</span> : <span className='alert alert-success'>Activé</span>
+                                            row && row.isActive === true ? <span className='alert alert-danger'>Désactivé</span> : <span className='alert alert-success'>Activé</span>
                                         }
                                     </TableCell>
                                     <TableCell align="left" width={130}>
-                                        <Link to={{ pathname: "detail" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
-                                            <FaInfo size={18} />
-                                        </Link>
+                                       
                                         <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                             <FaRegEdit size={18} />
                                         </Link>
-                                        <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
+                                        {
+                                            userConnected &&  userConnected.id === row.id ? "" :
+                                            <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
+                                            
+                                        }
                                     </TableCell>
                                 </TableRow>
                             )) :

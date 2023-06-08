@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -44,7 +44,7 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('tokenUser');
-        navigate('/');
+        navigate('/admin');
     }
 
     return (
@@ -174,7 +174,7 @@ function Navbar() {
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                     {
                                         i === 0 ? <Typography textAlign="center">
-                                            <Link to="/profil">{setting}</Link>
+                                            <Link to="">{setting}</Link>
                                         </Typography> : i === 1 ? < Typography textAlign="center" onClick={() => handleLogout()}>
                                             {setting}
                                         </Typography> : ""

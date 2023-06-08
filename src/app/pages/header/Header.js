@@ -49,7 +49,9 @@ const Header = () => {
                                     state={{
                                         val: val
                                     }}
-                                >{val.title}</Link>
+                                >{
+                                        val && val.title && val.title.length > 20 ? val.title.substring(0, 20) + "..." : val.title
+                                    }</Link>
                             })
                             : "Chargement..." : "Serveur non disponible."
                     }

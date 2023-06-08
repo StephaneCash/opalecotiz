@@ -12,7 +12,7 @@ const About = () => {
         <div className='col-sm-12 about'>
             <div className='overPlay'></div>
             <div className='text'>
-                <h1>LiGABLO PRODUCTION</h1>
+                <h1>LiGABLO <br/> PRODUCTION</h1>
                 <div className='textQuiSommesNous'>Qui sommes-nous ?</div>
                 <p>
                     Pour une bonne cause : ensemble, nous sommes la solution pour promouvoir la pop culture avec notre programme <strong>LiGABLO PRODUCTION</strong>.

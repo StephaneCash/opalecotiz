@@ -8,12 +8,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .payement h5 {
     font-size: 30px !important;
     font-weight: bold;
     text-align: center;
+    margin-top: 1rem !important;
     margin-bottom: 1.5rem !important;
 }
 
@@ -149,4 +151,38 @@ textarea {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width:1200px) {
+    .payement {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .payement {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .payement {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .payement {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .payement {
+        width: 100%;
+    }
+
+    .payement button {
+        width: 100% !important;
+    }
 }

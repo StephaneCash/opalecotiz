@@ -12,7 +12,6 @@ const Why = () => {
                 </div>
 
                 <div className='col2'>
-
                     Dans le cas d’un salarié cadre d’entreprise, les cotisations sociales salariales et patronales représentent en moyenne 75 % de son salaire brut.
                     Si vous êtes dirigeant assimilé salarié, elles s’élèvent globalement 62 % de votre rémunération brute
                     Si vous êtes travailleur indépendant, elles correspondent environ à  45 % de votre rémunération nette ou de votre bénéfice.

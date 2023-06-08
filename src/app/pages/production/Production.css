@@ -57,21 +57,19 @@
 }
 
 .row1 .col-sm-4 .card {
-    border-radius: 10px !important;
+    border-radius: 0 !important;
 }
 
 .row1 .col-sm-4 .card .image {
     position: relative;
     height: 200px;
-    border-radius: 10px !important;
+    border-radius: 0 !important;
 }
 
 .row1 .col-sm-4 .card .image .overPlay {
     position: absolute;
     height: 100%;
     width: 100%;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -98,7 +96,7 @@
     width: 100%;
     object-fit: cover;
     height: 100%;
-    border-radius: 10px !important;
+    border-radius: 0 !important;
 }
 
 .row1 .col-sm-4 .showData {
@@ -118,23 +116,26 @@
     font-family: "Roboto";
 }
 
+select {
+    border-radius: 0 !important;
+}
+
 .row1 .col-sm-4 .showData span span {
     font-size: 1rem !important;
     font-weight: bold !important;
 }
 
 .row1 .col-sm-4 button {
-   
     background-color: #009c4e;
     color: #fff;
     width: 100%;
     margin: 2rem auto;
-    border-radius: 30px !important;
+    border-radius: 0 !important;
     padding: 1rem;
     font-size: 15px;
 }
 
-.mainProd a:first-child{
+.mainProd a:first-child {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -177,4 +178,47 @@
     border: 1px solid #ddd;
     border-radius: 0;
     width: 100%;
+}
+
+@media screen and (max-width:1100px) {
+    .mainProd {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .mainProd {
+        width: 90% !important;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .images {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 50%);
+        justify-content: space-between;
+        height: auto;
+        gap: 0 !important;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .mainProd {
+        width: 95% !important;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .mainProd .row1 {
+        flex-direction: column;
+    }
+
+    .mainProd .col-sm-4 {
+        width: 100% !important;
+    }
+
+    .mainProd .col-sm-8 {
+        width: 100% !important;
+    }
 }

@@ -77,3 +77,41 @@
     cursor: pointer;
     border-radius: 5px;
 }
+
+@media screen and (max-width:500px) {
+    .headerApp .borderTop {
+        padding: 1rem 2rem !important;
+    }
+}
+
+@media screen and (max-width:390px) {
+    .headerApp .borderTop {
+        flex-direction: column !important;
+    }
+}
+
+@media screen and (max-width:970px) {
+    .headerApp .logoAndBarSearch {
+        padding: 1rem !important;
+    }
+}
+
+@media screen and (max-width:870px) {
+    .headerApp .logoAndBarSearch {
+        flex-direction: column !important;
+    }
+
+    .headerApp .linksCagnottes{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    .headerApp .linksCagnottes{
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        margin: .4rem auto;
+    }
+}

@@ -130,10 +130,7 @@ export default function ListCagnottes(props) {
                                             justifyContent: "center"
                                         }}>
                                             <div style={{ fontWeight: "600", }}>{row && row.title && row.title && row.title.length > 20 ?
-                                                row.nom.substring(0, 20) + "..." : row && row.title !== undefined && row.title}</div>
-                                            <div style={{ fontWeight: "300", }}>{row && row.categorie && row.categorie.nom}
-                                            </div>
-
+                                                row.title.substring(0, 20) + "..." : row && row.title !== undefined && row.title}</div>
                                         </div>
                                     </div>
                                 </TableCell>

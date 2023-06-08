@@ -33,6 +33,7 @@
     font-weight: bold;
     margin: 0 auto !important;
     width: 50%;
+    text-align: center !important;
 }
 
 .about .text .textQuiSommesNous {
@@ -92,4 +93,59 @@
 .dataFlex button:hover {
     border: 1px solid #009c4e;
     color: #fff;
+}
+
+@media screen and (max-width:1220px) {
+    .about .text h1 {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:1070px) {
+    .about .text h1 {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .about .text h1 {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:790px) {
+    .about .text h1 {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:698px) {
+    .about .text h1 {
+        width: 100%;
+    }
+
+    .about .text {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:555px) {
+    .about .text h1 {
+        width: 100%;
+        font-size: 3rem !important;
+    }
+
+    .about .text {
+        width: 90%;
+    }
+
+    .about .text p {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:310px) {
+    .about .text h1 {
+        font-size: 1.7rem !important;
+    }
 }

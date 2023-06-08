@@ -1,6 +1,6 @@
 .contact {
     width: 100%;
-    padding: 2rem 20rem;
+    padding: 2rem 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +34,7 @@
     padding: 1rem;
     text-align: center;
     background-color: #fff;
+    width: 100%;
 }
 
 .contact form input,
@@ -102,4 +103,29 @@
 .contact button:hover {
     border: 1px solid #009c4e;
     background-color: #009c4e;
+}
+
+@media screen and (max-width:700px) {
+    .contact {
+        flex-direction: column;
+    }
+
+    .contact .col1 {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .contact .col2 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .contact {
+        padding: 1rem !important;
+    }
+
+    .contact .col1 .text {
+        font-size: 1.4rem !important;
+    }
 }
