@@ -127,10 +127,14 @@ export default function ListCagnottes(props) {
                                         <div style={{
                                             display: "flex",
                                             flexDirection: "column",
-                                            justifyContent: "center"
+                                            justifyContent: "center",
+                                            gap:"5px"
                                         }}>
                                             <div style={{ fontWeight: "600", }}>{row && row.title && row.title && row.title.length > 20 ?
                                                 row.title.substring(0, 20) + "..." : row && row.title !== undefined && row.title}</div>
+                                            <div className='text-success' style={{ fontWeight: "500", }}>{row && row.categorie && row.categorie.nom}
+                                            </div>
+
                                         </div>
                                     </div>
                                 </TableCell>
