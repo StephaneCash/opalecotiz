@@ -71,14 +71,19 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                         </div>
                                         <div className='card-body'>
                                             <div className='overPlay'></div>
-                                            <div className='dataShow'>
-                                                <div>Montant à atteindre</div>
-                                                <div>{val.montant} $</div>
-                                            </div>
-                                            <div className='dataShow'>
-                                                <div>Delai  </div>
-                                                <div>Deux mois</div>
-                                            </div>
+
+                                            <table className='table table-bordered table-striped'>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Montant à atteindre</td>
+                                                        <td>{val.montant} $ </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Delai</td>
+                                                        <td>Deux mois</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                             <div className='lastDiv'>14 000 $ collectés avec <strong>220</strong> participants </div>
                                         </div>
                                     </Link>

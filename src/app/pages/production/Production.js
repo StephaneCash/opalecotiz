@@ -40,45 +40,51 @@ const Production = () => {
               </div>
               <div className='card-body'>
                 <div className='overPlay'></div>
-                <div className='showData'>
-                  <div className='montant'>
-                    <span>0</span>
-                    <span>
-                      {
-                        devises && devises === "Dollar" ? "$" : devises === "Euro" ? "€" : devises === "FC" ? "CDF" : "$"
-                      }
-                    </span>
-                    <select className='form-control' onChange={(e) => setDevise(e.target.value)} style={{
-                      fontSize: "12px"
-                    }}>
-                      {
-                        state && state.val && state.val.devise && state.val.devise.split(",") &&
-                        state.val.devise.split(",").map((val, i) => {
-                          return <option value={val} key={i}>{val}</option>
-                        })
-                      }
-                    </select>
-                  </div>
-                  <span>Collectés sur {" "}
-                    <span>
-                      {state && state.val && state.val.montant && state.val.montant}
-                      {
-                        devise && devise.map((val, i) => {
-                          if (i === 0) {
-                            if (val === "Dollar") {
-                              return " $"
-                            } else if (val === "Euro") {
-                              return " €"
-                            } else if (val === "FC") {
-                              return " FC"
+                <div className='alert alert-success'>
+                  <div className='showData'>
+                    <div className='montant'>
+                      <span>0</span>
+                      <span>
+                        {
+                          devises && devises === "Dollar" ? "$" : devises === "Euro" ? "€" : devises === "FC" ? "CDF" : "$"
+                        }
+                      </span>
+                      <select  onChange={(e) => setDevise(e.target.value)} style={{
+                        fontSize: "12px",
+                        border:"1px solid #ddd",
+                        background: '#d1e7dd'
+                      }}>
+                        {
+                          state && state.val && state.val.devise && state.val.devise.split(",") &&
+                          state.val.devise.split(",").map((val, i) => {
+                            return <option value={val} key={i}>{val}</option>
+                          })
+                        }
+                      </select>
+                    </div>
+                    <span>Collectés sur {" "}
+                      <span>
+                        {state && state.val && state.val.montant && state.val.montant}
+                        {
+                          devise && devise.map((val, i) => {
+                            if (i === 0) {
+                              if (val === "Dollar") {
+                                return " $"
+                              } else if (val === "Euro") {
+                                return " €"
+                              } else if (val === "FC") {
+                                return " FC"
+                              }
                             }
-                          }
-                        })
-                      }
+                          })
+                        }
+                      </span>
                     </span>
-                  </span>
 
+                  </div>
                 </div>
+
+
                 <div className='lastDiv'>
                   <div className="progress">
                     <div
