@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import { getAllcategories } from '../../features/Categories';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaFilter, FaInfo, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
+import { FaFilter, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { deleteUser } from '../../features/Users';
 import { ContextApp } from '../../context/AppContext';
