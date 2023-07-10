@@ -1,2 +1,2 @@
-export const baseUrl = "https://api.ligabloprod.com/api"
-export const baseUrlImage = "https://api.ligabloprod.com"
+export const baseUrl = "http://localhost:5006/api"
+export const baseUrlImage = "http://localhost:5006"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
@@ -9,9 +9,6 @@ import Footer from '../footer/Footer'
 const Production = () => {
 
   const { state } = useLocation();
-  let devise = state && state.val && state.val.devise && state.val.devise.split(',');
-
-  const [devises, setDevise] = useState(0);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

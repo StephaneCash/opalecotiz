@@ -12,11 +12,12 @@
 }
 
 .payement h5 {
-    font-size: 30px !important;
+    font-size: 2rem !important;
     font-weight: bold;
     text-align: center;
     margin-top: 1rem !important;
     margin-bottom: 1.5rem !important;
+    font-family: "Poppins";
 }
 
 .payement form {
@@ -177,6 +178,17 @@ textarea {
 
     .payement a {
         margin-left: 10px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .textPayement {
+        margin-top: 1rem;
+        gap: 1rem
+    }
+
+    .anonymat {
+        flex-direction: row;
     }
 }
 
