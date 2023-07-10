@@ -43,62 +43,56 @@ const Production = () => {
                 <div className=''>
                   <div className='showData'>
                     <div className='montant'>
-                      <span className='collect'>
+                      <div className='title'>
                         {
-                          state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
+                          state && state.val && state.val.title && state.val.title.length > 20 ? state.val.title.substring(0, 20) + "..." :
+                            state.val.title
                         }
-                      </span>
-                      <span>
-                        {
-                          state && state.val.devise && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
-                            if (value === "Dollar") {
-                              return " $"
-                            } else if (value === "Euro") {
-                              return " €"
-                            } else if (value === "FC") {
-                              return " FC"
-                            } else {
-                              return null
-                            }
-                          })
-                        }
-                      </span>
+                      </div>
 
-                      <select onChange={(e) => setDevise(e.target.value)} style={{
-                        fontSize: "12px",
-                        border: "1px solid #ddd",
-                      }}>
-                        {
-                          state && state.val && state.val.devise && state.val.devise.split(",") &&
-                          state.val.devise.split(",").map((val, i) => {
-                            return <option value={val} key={i}>{val}</option>
-                          })
-                        }
-                      </select>
-                    </div>
-                    <span>Collectés sur {" "}
-                      <span>
-                        {state && state.val && state.val.montant && state.val.montant}
-                        {
-                          devise && devise.map((val, i) => {
-                            if (i === 0) {
-                              if (val === "Dollar") {
+                      <hr />
+
+                      <div className='montant2'>
+                        <div className='prixRecoltat'>
+                          {
+                            state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
+                          }
+                        </div>
+                        <div className='devise'>
+                          {
+                            state && state.val.devise && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
+                              if (value === "Dollar") {
                                 return " $"
-                              } else if (val === "Euro") {
+                              } else if (value === "Euro") {
                                 return " €"
-                              } else if (val === "FC") {
+                              } else if (value === "FC") {
                                 return " FC"
                               } else {
                                 return null
                               }
-                            } else {
-                              return null
-                            }
-                          })
-                        }
-                      </span>
-                    </span>
+                            })
+                          }
+                        </div>
+                      </div>
+                      <div className='collect'>
+                        <span>collectés sur </span>  <span>{state && state.val.montant}
+                          {
+                            state && state.val.devise && state && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
+                              if (value === "Dollar") {
+                                return " $"
+                              } else if (value === "Euro") {
+                                return " €"
+                              } else if (value === "FC") {
+                                return " FC"
+                              } else {
+                                return null
+                              }
+                            })
+                          }
+                        </span>
+                      </div>
 
+                    </div>
                   </div>
                 </div>
 

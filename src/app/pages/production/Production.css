@@ -12,6 +12,7 @@
     margin-bottom: 2rem !important;
     font-size: 2.5rem !important;
     font-weight: bold;
+    font-family: "Poppins";
 }
 
 .row1 {
@@ -82,13 +83,6 @@
     bottom: 4%;
 }
 
-.row1 .montant {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
 .row1 .col-sm-4 .card .image img {
     width: 100%;
     object-fit: cover;
@@ -97,23 +91,6 @@
     border-top-right-radius: 7px !important;
 }
 
-.row1 .col-sm-4 .showData {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.row1 .col-sm-4 .showData span:first-child {
-    font-size: 1.7rem;
-    font-weight: bold;
-}
-
-.row1 .col-sm-4 .showData span:last-child {
-    font-family: "Poppins" !important;
-    font-size: 1.3rem !important;
-    color: #555;
-}
 
 select {
     border-radius: 0 !important;
@@ -122,6 +99,24 @@ select {
 .row1 .col-sm-4 .showData span span {
     font-size: 1rem !important;
     font-weight: bold !important;
+}
+
+.row1 .montant2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.row1 .card .title {
+    font-size: 1.4rem !important;
+    font-family: "Poppins";
+    text-align: center;
+    font-weight: bold;
+}
+
+.row1 .showData {
+    margin-bottom: 1rem;
 }
 
 .row1 .col-sm-4 button {
@@ -136,6 +131,60 @@ select {
     text-transform: uppercase;
 }
 
+.row1 .card .montant .prixRecoltat,
+.row1 .card .devise {
+    font-family: "Poppins" !important;
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-align: center;
+    color: #666;
+}
+
+.row1 .collect {
+    text-align: center;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.row1 .collect span:first-child {
+    font-size: 1rem !important;
+    font-family: "Poppins" !important;
+}
+
+.row1 .collect span:last-child {
+    font-size: 1.2rem !important;
+    font-family: "Poppins" !important;
+    font-weight: bold;
+}
+
+
+
+.row1 hr {
+    width: 50%;
+    margin: 7px auto;
+}
+
+.cagnotte .productions .collect span:first-child {
+    font-size: 1rem !important;
+    font-family: "Poppins" !important;
+}
+
+.cagnotte .productions .collect span:last-child {
+    font-size: 1.2rem !important;
+    font-family: "Poppins" !important;
+    font-weight: bold;
+}
+
+.cagnotte .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .mainProd a:first-child {
     display: flex;
     align-items: center;
@@ -144,10 +193,6 @@ select {
     text-decoration: none;
 }
 
-.row1 .col-sm-4 .lastDiv span {
-    font-family: "Poppins";
-    font-size: 1rem !important;
-}
 
 .images {
     width: 100%;
@@ -180,15 +225,6 @@ select {
     border: 1px solid #ddd;
     border-radius: 0;
     width: 100%;
-}
-
-.row1 .showData .montant span {
-    font-family: "Poppins" !important;
-    font-size: 1.6rem !important;
-    font-weight: bold;
-    text-align: center;
-    color: #555;
-
 }
 
 @media screen and (max-width:1100px) {
