@@ -34,7 +34,7 @@
     background-color: #fff;
     color: #009c4e;
     display: flex;
-    align-items: center;
+    align-items: center !important;
     justify-content: center;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .row1 .col-sm-4 .card {
-    border-radius: 0 !important;
+    border-radius: 7px !important;
 }
 
 .row1 .col-sm-4 .card .image {
@@ -71,10 +71,8 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-.lastDiv .progress {
-    height: 30px !important;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .row1 .col-sm-4 .card .image .textMain {
@@ -85,9 +83,8 @@
 }
 
 .row1 .montant {
-    font-family: "Roboto";
-    font-weight: bold;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
 }
@@ -96,7 +93,8 @@
     width: 100%;
     object-fit: cover;
     height: 100%;
-    border-radius: 0 !important;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px !important;
 }
 
 .row1 .col-sm-4 .showData {
@@ -112,8 +110,9 @@
 }
 
 .row1 .col-sm-4 .showData span:last-child {
-    font-weight: 500;
-    font-family: "Roboto";
+    font-family: "Poppins" !important;
+    font-size: 1.3rem !important;
+    color: #555;
 }
 
 select {
@@ -130,9 +129,11 @@ select {
     color: #fff;
     width: 100%;
     margin: 2rem auto;
-    border-radius: 0 !important;
+    border-radius: 7px !important;
     padding: 1rem;
     font-size: 15px;
+    font-family: "Poppins";
+    text-transform: uppercase;
 }
 
 .mainProd a:first-child {
@@ -144,7 +145,8 @@ select {
 }
 
 .row1 .col-sm-4 .lastDiv span {
-    font-family: "Roboto"
+    font-family: "Poppins";
+    font-size: 1rem !important;
 }
 
 .images {
@@ -178,6 +180,15 @@ select {
     border: 1px solid #ddd;
     border-radius: 0;
     width: 100%;
+}
+
+.row1 .showData .montant span {
+    font-family: "Poppins" !important;
+    font-size: 1.6rem !important;
+    font-weight: bold;
+    text-align: center;
+    color: #555;
+
 }
 
 @media screen and (max-width:1100px) {

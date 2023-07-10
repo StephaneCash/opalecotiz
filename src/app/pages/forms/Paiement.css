@@ -39,7 +39,6 @@ textarea {
 .payement button {
     background-color: #009c4e;
     color: #fff;
-    width: 40%;
     margin-top: 2rem;
     border-radius: 30px !important;
     padding: 1rem;
@@ -174,6 +173,10 @@ textarea {
 @media screen and (max-width:700px) {
     .payement {
         width: 100%;
+    }
+
+    .payement a {
+        margin-left: 10px;
     }
 }
 

@@ -50,7 +50,7 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                             if (valueCategorieId) {
                                 return categorieId === valueCategorieId
                             } else {
-                                return nom && nom.includes(value) || desc && desc.includes(value);
+                                return (nom && nom.includes(value)) || (desc && desc.includes(value));
                             }
                         })
                             .map(val => {
@@ -72,19 +72,60 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                         <div className='card-body'>
                                             <div className='overPlay'></div>
 
-                                            <table className='table table-bordered table-striped'>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Montant à atteindre</td>
-                                                        <td>{val.montant} $ </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Delai</td>
-                                                        <td>Deux mois</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div className='lastDiv'>14 000 $ collectés avec <strong>220</strong> participants </div>
+                                            <div className='title'>
+                                                {
+                                                    val && val.title && val.title.length > 20 ? val.title.substring(0, 20) + "..." :
+                                                        val.title
+                                                }
+                                            </div>
+
+                                            <hr />
+
+                                            <div className='montant'>
+                                                <div className='prixRecoltat'>
+                                                    {
+                                                        val && val.montantRecolte ? val.montantRecolte : 0
+                                                    }
+                                                </div>
+                                                <div className='devise'>
+                                                    {
+                                                        val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                            if (value === "Dollar") {
+                                                                return " $"
+                                                            } else if (value === "Euro") {
+                                                                return " €"
+                                                            } else if (value === "FC") {
+                                                                return " FC"
+                                                            } else {
+                                                                return null
+                                                            }
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div className='collect'>
+                                                <span>collectés sur </span>  <span>{val.montant}
+                                                    {
+                                                        val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                            if (value === "Dollar") {
+                                                                return " $"
+                                                            } else if (value === "Euro") {
+                                                                return " €"
+                                                            } else if (value === "FC") {
+                                                                return " FC"
+                                                            } else {
+                                                                return null
+                                                            }
+                                                        })
+                                                    }
+                                                </span>
+                                            </div>
+
+                                            <div className='alert text-center' style={{ background: "#efefef" }}>
+                                                Lancement : {dateParserFunction(val.dateDebut)}
+                                                <br />
+                                                Fermeture : {dateParserFunction(val.dateFin)}
+                                            </div>
                                         </div>
                                     </Link>
                                 </div>

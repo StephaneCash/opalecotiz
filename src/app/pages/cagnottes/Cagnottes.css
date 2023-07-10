@@ -13,7 +13,7 @@
 }
 
 .cagnotte .mainSearch {
-    width: 70%;
+    width: 75%;
     min-height: 100%;
     margin: 1rem auto;
     border-radius: 0 !important;
@@ -57,21 +57,21 @@
 }
 
 .cagnotte .productions {
-    width: 70%;
+    width: 75%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 343px);
-    justify-content: center;
+    grid-template-columns: repeat(3, 32.33%);
+    justify-content: space-between;
     align-items: center;
-    gap: .9rem;
     margin: 0.9rem auto;
 }
 
 .cagnotte .productions .card {
-    width: 343px;
-    height: 360px;
+    height: 500px;
     border: 0;
     background-color: #fff;
-    border-radius: 0 !important;
+    border-radius: 7px !important;
+    margin-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .cagnotte .productions .card .image {
@@ -84,6 +84,15 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.cagnotte .productions .card .title {
+    font-size: 1.4rem !important;
+    font-family: "Poppins";
+    text-align: center;
+    font-weight: bold;
 }
 
 .cagnotte .productions .textMain {
@@ -118,6 +127,8 @@
     height: 100%;
     object-fit: cover;
     border: 0;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 
 .cagnotte .productions .card a {
@@ -126,23 +137,122 @@
     text-decoration: none;
 }
 
-.cagnotte td:last-child {
+.cagnotte .productions .card .montant {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.cagnotte .productions .card .montant .prixRecoltat,
+.cagnotte .productions .card .devise {
+    font-family: "Poppins" !important;
+    font-size: 2rem !important;
     font-weight: bold;
-    font-family: "Poppins";
+    text-align: center;
+    color: #666;
+}
+
+.cagnotte .productions .collect {
+    text-align: center;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cagnotte .productions hr {
+    width: 50%;
+    margin: 7px auto;
+}
+
+.cagnotte .productions .collect span:first-child {
+    font-size: 1rem !important;
+    font-family: "Poppins" !important;
+}
+
+.cagnotte .productions .collect span:last-child {
+    font-size: 1.2rem !important;
+    font-family: "Poppins" !important;
+    font-weight: bold;
+}
+
+.cagnotte .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cagnotte .card-body .lastDiv {
     text-align: center;
     margin-top: .6rem;
-    background-color: #fff;
-    border-radius: 0;
-    color: #000;
+    border-radius: 7px;
+    color: #fff;
     font-size: 14px;
     font-family: "Poppins";
     border: 1px solid #ddd;
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    background-color: #efefef;
+}
+
+@media screen and (max-width:1300px) {
+    .cagnotte .productions {
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(3, 32.33%);
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.9rem auto;
+    }
+
+    .cagnotte .mainSearch {
+        width: 80%;
+        min-height: 100%;
+        margin: 1rem auto;
+        border-radius: 0 !important;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .cagnotte .productions {
+        width: 90%;
+    }
+
+    .cagnotte .mainSearch {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .cagnotte .productions {
+        width: 95%;
+    }
+
+    .cagnotte .mainSearch {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .cagnotte .productions {
+        width: 98%;
+    }
+
+    .cagnotte .mainSearch {
+        width: 98%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .cagnotte .productions {
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.9rem auto;
+    }
 }
 
 @media screen and (max-width:600px) {

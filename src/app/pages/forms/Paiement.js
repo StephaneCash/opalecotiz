@@ -22,7 +22,7 @@ const Paiement = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-      }, []);
+    }, []);
 
     const [choix, setChoix] = useState(0);
     const [montant, setMontant] = useState(200);
@@ -174,7 +174,7 @@ const Paiement = () => {
                                     {
                                         montant >= 5000 &&
                                         <div>
-                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control'  maxLength={25} placeholder='Votre nom à afficher'></textarea>
+                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre nom à afficher'></textarea>
                                         </div>
                                     }
                                 </div>
@@ -332,12 +332,30 @@ const Paiement = () => {
                     <div
                         style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-                        <button type="submit" className="btn">
-                            {
-                                choix === 3 ? "Confirmer ce payement" :
-                                    "Valider et Payer"
-                            }
-                        </button>
+
+
+                        <form action="https://api-testbed.maxicashapp.com/PayEntryPost" method="POST">
+                            <input type="hidden" name="PayType" value="MaxiCash" />
+                            <input type="hidden" name="Amount" value="1000" />
+                            <input type="hidden" name="Currency" value="MaxiDollar" />
+                            <input type="hidden" name="Telephone" value="0817247035" />
+                            <input type="hidden" name="Email" value="ligabloopale@gmail.com" />
+                            <input type="hidden" name="MerchantID" value="e536dee7701d4ab598e2aa5a112bd88e" />
+                            <input type="hidden" name="MerchantPassword" value="ce11a5a4214548368ba1bc5bbbe0d9a0" />
+                            <input type="hidden" name="Language" value="En" />
+                            <input type="hidden" name="Reference" value="5656" />
+                            <input type="hidden" name="accepturl" value="ligabloprod.com" />
+                            <input type="hidden" name="cancelurl" value="ligabloprod.com" />
+                            <input type="hidden" name="declineurl" value="ligabloprod.com" />
+                            <input type="hidden" name="notifyurl" value="ligabloprod.com" />
+
+                            <button type="submit" className="btn" style={{ width: "100%" }}>
+                                {
+                                    choix === 3 ? "Confirmer ce payement" :
+                                        "Valider et Payer"
+                                }
+                            </button>
+                        </form>
                     </div>
                 </form>
             </div>

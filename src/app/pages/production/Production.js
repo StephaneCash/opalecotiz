@@ -40,19 +40,33 @@ const Production = () => {
               </div>
               <div className='card-body'>
                 <div className='overPlay'></div>
-                <div className='alert alert-success'>
+                <div className=''>
                   <div className='showData'>
                     <div className='montant'>
-                      <span>0</span>
-                      <span>
+                      <span className='collect'>
                         {
-                          devises && devises === "Dollar" ? "$" : devises === "Euro" ? "€" : devises === "FC" ? "CDF" : "$"
+                          state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
                         }
                       </span>
-                      <select  onChange={(e) => setDevise(e.target.value)} style={{
+                      <span>
+                        {
+                          state && state.val.devise && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
+                            if (value === "Dollar") {
+                              return " $"
+                            } else if (value === "Euro") {
+                              return " €"
+                            } else if (value === "FC") {
+                              return " FC"
+                            } else {
+                              return null
+                            }
+                          })
+                        }
+                      </span>
+
+                      <select onChange={(e) => setDevise(e.target.value)} style={{
                         fontSize: "12px",
-                        border:"1px solid #ddd",
-                        background: '#d1e7dd'
+                        border: "1px solid #ddd",
                       }}>
                         {
                           state && state.val && state.val.devise && state.val.devise.split(",") &&
@@ -74,7 +88,11 @@ const Production = () => {
                                 return " €"
                               } else if (val === "FC") {
                                 return " FC"
+                              } else {
+                                return null
                               }
+                            } else {
+                              return null
                             }
                           })
                         }
@@ -110,7 +128,7 @@ const Production = () => {
           <div className='col-sm-8'>
             <div className='infosAlert'>
               <div className='mainText'>
-                <FaCheckCircle />
+                <FaCheckCircle size={20} />
                 <div>
                   Participez en toute confiance
                   Cette cagnotte a été contrôlée et vérifiée par les équipes de Ligablo production.
@@ -121,7 +139,7 @@ const Production = () => {
             <div className='images'>
               {
                 state && state.val && state && state.val.images && state.val.images.map(val => {
-                  return <div className='card'>
+                  return <div className='card' key={val.id}>
                     <img src={baseUrlImage + "/" + val.url} alt="" />
                   </div>
                 })
