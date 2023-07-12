@@ -11,6 +11,10 @@
     text-decoration: none;
 }
 
+.payement .showFalse {
+    display: none !important;
+}
+
 .payement h5 {
     font-size: 2rem !important;
     font-weight: bold;
@@ -29,19 +33,24 @@
 
 .payement input,
 .payement select,
-label,
 td,
 button,
 textarea {
     box-shadow: none !important;
     font-size: 14px;
+    border-radius: 0;
+}
+
+.payement input:focus,
+.payement select:focus {
+    border: 1px solid #009c4e;
 }
 
 .payement button {
     background-color: #009c4e;
     color: #fff;
     margin-top: 2rem;
-    border-radius: 30px !important;
+    border-radius: 3px !important;
     padding: 1rem;
     font-size: 15px;
 }
@@ -86,6 +95,43 @@ textarea {
     cursor: pointer;
     border: 1px solid #ddd;
     border-radius: 0;
+}
+
+.termeDec {
+    border: 1px solid #ddd;
+    padding: 1rem;
+}
+
+.termeDec p {
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.btnTermes {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: underline;
+}
+
+.btnTermes input {
+    height: 20px;
+    width: 20px;
+}
+
+.btnTermes input:checked {
+    background-color: #009c4e !important;
+    border-color: #009c4e !important;
+}
+
+.labelLue {
+    color: #009c4e;
+}
+
+.titleTerme {
+    font-size: 1.3rem !important;
+    font-family: "Poppins";
 }
 
 .payement .grille .card img {

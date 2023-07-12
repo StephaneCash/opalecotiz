@@ -14,9 +14,7 @@ import airtel from "../../../assets/airtel-money-logo.png";
 import africell from "../../../assets/afrimoney-services-424805.jpg";
 import { toast } from 'react-toastify';
 
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./CheckoutForm";
-import { loadStripe } from "@stripe/stripe-js";
+import FormJeuneTalent from './FormJeuneTalent';
 
 const Paiement = () => {
 
@@ -24,30 +22,65 @@ const Paiement = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
 
-    const [choix, setChoix] = useState(0);
-    const [montant, setMontant] = useState(200);
+    const { state } = useLocation();
+    let navigate = useNavigate()
 
-    const [devise, setDevise] = useState("");
+    const [choix, setChoix] = useState(0);
+    const [montant, setMontant] = useState(
+        state && state.val && state.val.title === "Jeune Talent" ? "500 FC" : 200
+    );
+
+    const [devise, setDevise] = useState(
+        state && state.val && state.val.title === "Jeune Talent" ? "FC" : ""
+    );
     const [email, setEmail] = useState("");
     const [prenom, setPrenom,] = useState("");
     const [chec, setChec] = useState(false);
 
+    const [numTel, setNumTel] = useState("");
+    const [dateNaissance, setDateNaissance] = useState("");
+    const [commune, setCommune] = useState("");
+    const [occupation, setOccupation] = useState("");
+    const [file, setFile] = useState("");
+    const [categorie, setCategorie] = useState("");
+    const [nom, setNom] = useState("");
+
+    const [isChecked, setIsChecked] = useState(false);
+    const [btnClic, setBtnClic] = useState(false);
+
     const [typeMobile, setTypeMobile] = useState(0);
-
-    const { state } = useLocation();
-
-    let navigate = useNavigate()
 
     const submitData = (e) => {
         e.preventDefault();
-        if (!montant) {
-            toast.error('Veuillez remplir le champ montant svp')
-        } else {
-            if (choix === 3) {
-                toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
-                navigate('/productions');
+        setBtnClic(true);
+        const checkBox = document.getElementById('checkBoxTermes');
+        if (state && state.val && state.val.title === "Jeune Talent") {
+            if (checkBox && checkBox.checked === true) {
+                setIsChecked(true);
+                if (!montant) {
+                    toast.error('Veuillez remplir le champ montant svp')
+                } else {
+                    if (choix === 3) {
+                        toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
+                        navigate('/productions');
+                    } else {
+                        toast.warning("Veuillez suivre le processus normal")
+                    }
+                }
             } else {
-                toast.warning("Veuillez suivre le processus normal")
+                setIsChecked(false)
+            }
+        } else {
+            setIsChecked(true);
+            if (!montant) {
+                toast.error('Veuillez remplir le champ montant svp')
+            } else {
+                if (choix === 3) {
+                    toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
+                    navigate('/productions');
+                } else {
+                    toast.warning("Veuillez suivre le processus normal")
+                }
             }
         }
     };
@@ -60,26 +93,6 @@ const Paiement = () => {
             setChec(false);
         }
     }
-
-    const [stripePromise, setStripePromise] = useState(null);
-    const [clientSecret, setClientSecret] = useState("");
-
-    useEffect(() => {
-        fetch("/config").then(async (r) => {
-            const { publishableKey } = await r.json();
-            setStripePromise(loadStripe(publishableKey));
-        });
-    }, []);
-
-    useEffect(() => {
-        fetch("/create-payment-intent", {
-            method: "POST",
-            body: JSON.stringify({}),
-        }).then(async (result) => {
-            var { clientSecret } = await result.json();
-            setClientSecret(clientSecret);
-        });
-    }, []);
 
     return (
         <>
@@ -103,12 +116,17 @@ const Paiement = () => {
                 <form onSubmit={submitData}>
 
                     <div className='row'>
-                        <div className='montant col-sm-6'>
+                        <div className={
+                            state && state.val && state.val.title === "Jeune Talent" ? "montant col-sm-12" : "montant col-sm-6"
+                        }>
                             <label>Montant de votre partication</label>
-                            <div className="form-group mb-3 infosData">
-                                <input type="number" className="form-control" id="exampleInputEmail1"
+                            <div className="form-group mb-3 infosData mt-2">
+                                <input type="text" className="form-control" id="exampleInputEmail1"
                                     onChange={(e) => setMontant(e.target.value)}
                                     value={montant}
+                                    disabled={
+                                        state && state.val && state.val.title === "Jeune Talent" ? true : false
+                                    }
                                     aria-describedby="emailHelp" placeholder="Montant de votre partication" />
                                 {
                                     montant < 5000 && montant >= 200 ?
@@ -160,7 +178,9 @@ const Paiement = () => {
                                 }
                             </div>
                         </div>
-                        <div className='col-sm-6'>
+                        <div className={
+                            state && state.val && state.val.title === "Jeune Talent" ? "col-sm-6 showFalse" : "col-sm-6"
+                        }>
                             <label>Veuillez choisir une devise svp</label>
                             <select onChange={(e) => setDevise(e.target.value)} className='form-control'>
                                 <option value="">--Veuillez choisir une devise svp--</option>
@@ -169,59 +189,78 @@ const Paiement = () => {
                                 <option value="FC">FC</option>
                             </select>
 
-                            <div className='row'>
-                                <div className='col-sm-6'>
-                                    {
-                                        montant >= 5000 &&
-                                        <div>
-                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre nom à afficher'></textarea>
+                            {
+                                state && state.val && state.val.title === "Jeune Talent" ? "" :
+                                    <div className='row'>
+                                        <div className='col-sm-6'>
+                                            {
+                                                montant >= 5000 &&
+                                                <div>
+                                                    <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre nom à afficher'></textarea>
+                                                </div>
+                                            }
                                         </div>
-                                    }
-                                </div>
 
-                                <div className='col-sm-6'>
-                                    {
-                                        montant >= 5000 &&
-                                        <div>
-                                            <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre message à afficher'></textarea>
+                                        <div className='col-sm-6'>
+                                            {
+                                                montant >= 5000 &&
+                                                <div>
+                                                    <textarea style={{ height: "90px", fontSize: '14px' }} cols="30" rows="2" className='mt-2 form-control' maxLength={25} placeholder='Votre message à afficher'></textarea>
+                                                </div>
+                                            }
                                         </div>
-                                    }
-                                </div>
-                            </div>
-
+                                    </div>
+                            }
                         </div>
                     </div>
 
                     <div className='montant'>
                         <div className='textPayement'>
                             <h4>Vos coordonées</h4>
-                            <div className='anonymat'>
-                                <span>Je préfère l'anonymat</span>
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={verifCheck} />
-                            </div>
+                            {
+                                state && state.val && state.val.title === "Jeune Talent" ? "" :
+                                    <div className='anonymat'>
+                                        <span>Je préfère l'anonymat</span>
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" onClick={verifCheck} />
+                                    </div>
+                            }
                         </div>
 
                         {
                             !chec &&
-                            <>
-                                <div className="form-group mb-3">
-                                    <input type="text" className="form-control"
-                                        onChange={(e) => setPrenom(e.target.value)}
-                                        id="exampleInputPassword1" placeholder="Votre nom et prénom" />
-                                </div>
-                                <div className="form-group mb-3">
-                                    <input type="email" className="form-control" id="exampleInputEmail1"
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        aria-describedby="emailHelp" placeholder="Adresse email" />
-                                </div>
-                            </>
+                                state && state.val && state.val.title === "Jeune Talent" ?
+                                <FormJeuneTalent
+                                    setNom={setNom}
+                                    setEmail={setEmail}
+                                    setNumTel={setNumTel}
+                                    setCategorie={setCategorie}
+                                    setDateNaissance={setDateNaissance}
+                                    setPrenom={setPrenom}
+                                    setCommune={setCommune}
+                                    setOccupation={setOccupation}
+                                    setFile={setFile}
+                                />
+                                :
+                                <>
+                                    <div className="form-group mb-3">
+                                        <input type="text" className="form-control"
+                                            onChange={(e) => setPrenom(e.target.value)}
+                                            id="exampleInputPassword1" placeholder="Votre nom et prénom" />
+                                    </div>
+                                    <div className="form-group mb-3">
+                                        <input type="email" className="form-control" id="exampleInputEmail1"
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            aria-describedby="emailHelp" placeholder="Adresse email" />
+                                    </div>
+                                </>
                         }
-
                     </div>
 
                     <div className='montant paiementModes'>
                         <br />
-                        <h4>Chosir le mode de paiement</h4> <br />
+                        <h4 style={{
+                            fontFamily: "Poppins"
+                        }}>Chosir le mode de paiement</h4> <br />
                         <div class="row">
                             <div className='col-sm-4'>
                                 <div className={choix === 1 ? "card choisi" : "card"} onClick={() => setChoix(1)}>
@@ -296,7 +335,6 @@ const Paiement = () => {
                                 </tbody>
                             </table>
                         </div>
-
                     }
                     {
                         choix === 1 && (
@@ -320,42 +358,41 @@ const Paiement = () => {
                         )
                     }
 
+                    
                     {
-                        choix === 2 &&
-                        clientSecret && stripePromise && (
-                            <Elements stripe={stripePromise} options={{ clientSecret }}>
-                                <CheckoutForm />
-                            </Elements>
-                        )
-                    }
+                        state && state.val && state.val.title === "Jeune Talent" ?
+                            <>
+                                <div className='mt-4 termeDec'>
+                                    <h3 className='titleTerme'>
+                                        Termes de confidentialité :
+                                    </h3>
+                                    <p className='alert'>
+                                        « Une fois vos données personnelles fournies et par nous recueillies , vous vous en dessaisissez automatiquement et vous nous en laissez l'exclusivité d'usage en tenant compte des restrictions légales y afférentes.
 
+                                        Nous tâcherons de les garder soigneusement sans en altérer l'origine ni en faire usage illégal. »
+                                    </p>
+                                </div>
+
+                                {
+                                    btnClic && !isChecked && <span style={{ color: "red" }}>Veuillez cocher la case pour avoir accepté les termes de confidentialité.</span>
+                                }
+
+                                <div className='mt-3 btnTermes'>
+                                    <label className={isChecked ? "labelLue" : "noChecked"}>J'ai lu et j'accepte les termes de confidentialité</label>
+                                    <input className={isChecked ? "form-check-input" : "form-check-input noChecked"} type="checkbox" value="" id="checkBoxTermes"></input>
+                                </div>
+                            </>
+                            : ""
+                    }
                     <div
                         style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-
-
-                        <form action="https://api-testbed.maxicashapp.com/PayEntryPost" method="POST">
-                            <input type="hidden" name="PayType" value="MaxiCash" />
-                            <input type="hidden" name="Amount" value="1000" />
-                            <input type="hidden" name="Currency" value="MaxiDollar" />
-                            <input type="hidden" name="Telephone" value="0817247035" />
-                            <input type="hidden" name="Email" value="ligabloopale@gmail.com" />
-                            <input type="hidden" name="MerchantID" value="e536dee7701d4ab598e2aa5a112bd88e" />
-                            <input type="hidden" name="MerchantPassword" value="ce11a5a4214548368ba1bc5bbbe0d9a0" />
-                            <input type="hidden" name="Language" value="En" />
-                            <input type="hidden" name="Reference" value="5656" />
-                            <input type="hidden" name="accepturl" value="ligabloprod.com" />
-                            <input type="hidden" name="cancelurl" value="ligabloprod.com" />
-                            <input type="hidden" name="declineurl" value="ligabloprod.com" />
-                            <input type="hidden" name="notifyurl" value="ligabloprod.com" />
-
-                            <button type="submit" className="btn" style={{ width: "100%" }}>
-                                {
-                                    choix === 3 ? "Confirmer ce payement" :
-                                        "Valider et Payer"
-                                }
-                            </button>
-                        </form>
+                        <button type="submit" className="btn" style={{ width: "40%" }}>
+                            {
+                                choix === 3 ? "Confirmer ce payement" :
+                                    "Valider et Payer"
+                            }
+                        </button>
                     </div>
                 </form>
             </div>

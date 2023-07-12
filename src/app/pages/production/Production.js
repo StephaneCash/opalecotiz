@@ -72,20 +72,24 @@ const Production = () => {
                         </div>
                       </div>
                       <div className='collect'>
-                        <span>collectés sur </span>  <span>{state && state.val.montant}
+                        <span>collectés sur </span>  <span>
                           {
-                            state && state.val.devise && state && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
-                              if (value === "Dollar") {
-                                return " $"
-                              } else if (value === "Euro") {
-                                return " €"
-                              } else if (value === "FC") {
-                                return " FC"
-                              } else {
-                                return null
-                              }
-                            })
+                            state && state.val && state.val.title && state.val.title === "Jeune Talent" ?
+                              state && state.val.montant / 500 + " participants" :
+                              `${state && state.val.montant} ${state && state.val.devise && state && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
+                                if (value === "Dollar") {
+                                  return " $"
+                                } else if (value === "Euro") {
+                                  return " €"
+                                } else if (value === "FC") {
+                                  return " FC"
+                                } else {
+                                  return null
+                                }
+                              })
+                              } `
                           }
+
                         </span>
                       </div>
 
