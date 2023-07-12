@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie, setDateNaissance, setPrenom, setCommune, setOccupation, setFile }) => {
+const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie,
+    setDateNaissance, setPrenom, setCommune, setOccupation, setFile, setDuration }) => {
+
+    const [video, setVideo] = useState('');
+
+    const handleChange = (e) => {
+        setFile(e.target.files[0]);
+        setVideo(URL.createObjectURL(e.target.files[0]))
+    }
+
+    useEffect(() => {
+        if (video) {
+            let myVideo = document.getElementById('myVideo');
+
+            myVideo.addEventListener('loadedmetadata', () => {
+                let duration = myVideo.duration;
+                let durationFomated = duration.toFixed(5) / 60;
+                setDuration(durationFomated);
+            })
+        }
+    }, [video, setDuration])
+
     return (
         <div className='formulaire'>
             <div className='row mb-3'>
@@ -62,10 +83,18 @@ const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie, setDateNai
             <label>Télécharger une vidéo à nous envoyer</label>
             <div className='row mt-2'>
                 <div className="col-sm-12">
-                    <input type="file" className="form-control"
-                        onChange={(e) => setFile(e.target.value)}
+                    <input
+                        type="file"
+                        className="form-control"
+                        onChange={handleChange}
                     />
                 </div>
+            </div>
+            <div className='row mt-3'>
+                {
+                    video &&
+                    <video width="100%" height="100%" src={video} autoPlay={false} controls id="myVideo"></video>
+                }
             </div>
         </div>
     )

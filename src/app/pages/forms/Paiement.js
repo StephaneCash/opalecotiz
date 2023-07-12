@@ -7,7 +7,6 @@ import pmobile from "../../../assets/pmobile.jpg"
 import { FaArrowLeft, FaCheckCircle, FaInfo } from 'react-icons/fa';
 import Footer from '../footer/Footer';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
 import mpsa from "../../../assets/mpsa.jpg";
 import orange from "../../../assets/orangemoney.png";
 import airtel from "../../../assets/airtel-money-logo.png";
@@ -44,6 +43,7 @@ const Paiement = () => {
     const [file, setFile] = useState("");
     const [categorie, setCategorie] = useState("");
     const [nom, setNom] = useState("");
+    const [duration, setDuration] = useState(0);
 
     const [isChecked, setIsChecked] = useState(false);
     const [btnClic, setBtnClic] = useState(false);
@@ -64,7 +64,20 @@ const Paiement = () => {
                         toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
                         navigate('/productions');
                     } else {
-                        toast.warning("Veuillez suivre le processus normal")
+                        const typeVideo = file && file.type && file.type.split('/');
+                        if (file && typeVideo[0] === "video") {
+                            if (file && file.size > 20000000) {
+                                toast.error("Votre fichier est trop volumineux, taille max: 20Mo")
+                            } else {
+                                if (duration > 5) {
+                                    toast.error("La vidéo doit avoir une durée max 5 Min")
+                                } else {
+                                    // CODE HERE
+                                }
+                            }
+                        } else {
+                            toast.error("Seuls les fichiers de type vidéos sont autorisés");
+                        }
                     }
                 }
             } else {
@@ -92,7 +105,7 @@ const Paiement = () => {
         } else {
             setChec(false);
         }
-    }
+    };
 
     return (
         <>
@@ -239,6 +252,7 @@ const Paiement = () => {
                                     setCommune={setCommune}
                                     setOccupation={setOccupation}
                                     setFile={setFile}
+                                    setDuration={setDuration}
                                 />
                                 :
                                 <>
@@ -261,7 +275,7 @@ const Paiement = () => {
                         <h4 style={{
                             fontFamily: "Poppins"
                         }}>Chosir le mode de paiement</h4> <br />
-                        <div class="row">
+                        <div className="row">
                             <div className='col-sm-4'>
                                 <div className={choix === 1 ? "card choisi" : "card"} onClick={() => setChoix(1)}>
                                     <img src={pmobile} alt="Paiement mobile" />
@@ -358,7 +372,7 @@ const Paiement = () => {
                         )
                     }
 
-                    
+
                     {
                         state && state.val && state.val.title === "Jeune Talent" ?
                             <>
@@ -387,12 +401,29 @@ const Paiement = () => {
                     <div
                         style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
                     >
-                        <button type="submit" className="btn" style={{ width: "40%" }}>
-                            {
-                                choix === 3 ? "Confirmer ce payement" :
-                                    "Valider et Payer"
-                            }
-                        </button>
+                        {
+                            state && state.val && state.val.title === "Jeune Talent" ?
+                                <button
+                                    type="submit"
+                                    className="btn"
+                                    style={{ width: "40%" }}
+                                    disabled={
+                                        nom && prenom && dateNaissance && commune &&
+                                            occupation && categorie && file ? false : true
+                                    }
+                                >
+                                    {
+                                        choix === 3 ? "Confirmer ce payement" :
+                                            "Valider et Payer"
+                                    }
+                                </button> :
+                                <button type="submit" className="btn" style={{ width: "40%" }}>
+                                    {
+                                        choix === 3 ? "Confirmer ce payement" :
+                                            "Valider et Payer"
+                                    }
+                                </button>
+                        }
                     </div>
                 </form>
             </div>
