@@ -18,7 +18,7 @@ const Why = () => {
                 {
                     sliceCagnottes && sliceCagnottes.length > 0 && sliceCagnottes.map(val => {
                         return <div className='card' key={val.id}>
-                            <img src={baseUrlImage + "/" + val.url} alt="" />
+                            <img src={baseUrlImage + "/" + val.url} alt={val.title} />
                             <div className='card-body'>
                                 <div className='title'>
                                     {val && val.title}

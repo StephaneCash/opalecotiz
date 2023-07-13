@@ -9,13 +9,19 @@
     gap: 1rem;
 }
 
-.footer .mainDiv{
+.footer .mainDiv {
     background: #009c4e;
     padding: 1rem;
     width: 100px;
     border-radius: 7px;
 }
 
-.footer .mainDiv img{
+.footer .mainDiv img {
     width: 100%;
+}
+
+@media screen and (max-width:500px) {
+    .footer {
+        text-align: center;
+    }
 }
