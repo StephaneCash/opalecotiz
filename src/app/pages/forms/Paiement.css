@@ -1,5 +1,5 @@
 .payement {
-    width: 55%;
+    width: 75%;
     margin: 2rem auto;
 }
 
@@ -83,15 +83,16 @@ textarea {
 
 .payement .grille {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
+    grid-template-columns: repeat(4, 22%);
     align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
 }
 
 .payement .grille .card {
-    height: 100px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     cursor: pointer;
     border: 1px solid #ddd;
     border-radius: 0;
@@ -137,7 +138,7 @@ textarea {
 .payement .grille .card img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .paiementModes .col-sm-4 .card {
@@ -235,6 +236,25 @@ textarea {
 
     .anonymat {
         flex-direction: row;
+    }
+
+    .payement .grille {
+        display: grid;
+        grid-template-columns: repeat(4, 23%);
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+    }
+
+    .payement h5 {
+        font-size: 1.5rem !important;
+        width: 90%;
+        margin: 1rem auto !important;
+    }
+
+    .lableDate{
+        margin-top: 1rem !important;
     }
 }
 
