@@ -1,24 +1,86 @@
 import React from 'react';
 import "./Why.css";
-import card2 from "../../../assets/pop.jpg"
+import { useSelector } from 'react-redux';
+import { baseUrlImage } from '../../../bases/basesUrl';
+import { Link } from 'react-router-dom';
 
 const Why = () => {
+
+    const listCagnottes = useSelector(state => state.cagnottes.value);
+    const lengthArray = listCagnottes && listCagnottes.length;
+
+    const sliceCagnottes = listCagnottes && listCagnottes.length > 0 && listCagnottes.slice(lengthArray - 2, lengthArray);
+
     return (
         <div className='why'>
-            <h3>Pourquoi cotiser ?</h3>
+            <h3>Les Dernières productions...</h3>
             <div className='cardsData'>
-                <div className='col1'>
-                    <img src={card2} alt="" />
-                </div>
+                {
+                    sliceCagnottes && sliceCagnottes.length > 0 && sliceCagnottes.map(val => {
+                        return <div className='card' key={val.id}>
+                            <img src={baseUrlImage + "/" + val.url} alt="" />
+                            <div className='card-body'>
+                                <div className='title'>
+                                    {val && val.title}
+                                </div>
+                                <hr />
 
-                <div className='col2'>
-                    Dans le cas d’un salarié cadre d’entreprise, les cotisations sociales salariales et patronales représentent en moyenne 75 % de son salaire brut.
-                    Si vous êtes dirigeant assimilé salarié, elles s’élèvent globalement 62 % de votre rémunération brute
-                    Si vous êtes travailleur indépendant, elles correspondent environ à  45 % de votre rémunération nette ou de votre bénéfice.
-                    Si vous êtes micro-entrepreneur, elles sont calculées directement en proportion du chiffre d’affaires encaissé : en fonction de votre activité, elles représentent soit 12,8 %, soit 22 % de votre chiffre d’affaires.
-                    A noter : que vous soyez dirigeant assimilé salarié, travailleur indépendant ou micro-entrepreneur, vous pouvez bénéficier de la mesure d'exonération de début d'activité.
-                </div>
+                                <div className='montant'>
+                                    <div className='prixRecoltat'>
+                                        {
+                                            val && val.montantRecolte ? val.montantRecolte : 0
+                                        }
+                                    </div>
+                                    <div className='devise'>
+                                        {
+                                            val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                if (value === "Dollar") {
+                                                    return " $"
+                                                } else if (value === "Euro") {
+                                                    return " €"
+                                                } else if (value === "FC") {
+                                                    return " FC"
+                                                } else {
+                                                    return null
+                                                }
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <div className='collect'>
+                                    <span>collectés sur </span>  <span>{val.montant}
+                                        {
+                                            val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                if (value === "Dollar") {
+                                                    return " $"
+                                                } else if (value === "Euro") {
+                                                    return " €"
+                                                } else if (value === "FC") {
+                                                    return " FC"
+                                                } else {
+                                                    return null
+                                                }
+                                            })
+                                        }
+                                    </span>
+                                </div>
+
+                                <Link to={{
+                                    pathname: `/production/${val.title}`
+                                }}
+                                    state={{
+                                        val: val
+                                    }}
+                                >
+                                    En savoir plus
+                                </Link>
+                            </div>
+                        </div>
+                    })
+                }
             </div>
+
+            <Link to="/productions" className='toutesNos btn'>Découvrir Toutes nos productions</Link>
         </div>
     )
 }
