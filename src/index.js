@@ -15,6 +15,7 @@ import cagnotteSlice, { getAllCagnottes } from './features/Cagnotte';
 import imageSlice, { getAllImages } from './features/Images';
 import participantslice, { getAllparticipants } from './features/Participants';
 import DocumentsSlice, { getAllDocuments } from './features/Documents';
+import talentSlice, { getAllTalents } from './features/Talents';
 
 const store = configureStore({
   reducer: combineReducers({
@@ -23,7 +24,8 @@ const store = configureStore({
     cagnottes: cagnotteSlice.reducer,
     images: imageSlice.reducer,
     participants: participantslice.reducer,
-    documentsAdmin: DocumentsSlice.reducer
+    documentsAdmin: DocumentsSlice.reducer,
+    talents: talentSlice.reducer
 
   })
 });
@@ -34,6 +36,7 @@ store.dispatch(getAllCagnottes());
 store.dispatch(getAllImages());
 store.dispatch(getAllparticipants());
 store.dispatch(getAllDocuments());
+store.dispatch(getAllTalents());
 
 const scrollBtn = document.createElement("button");
 

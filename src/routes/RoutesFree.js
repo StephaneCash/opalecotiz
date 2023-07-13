@@ -21,6 +21,9 @@ import AddUser from '../pages/users/AddUser';
 import Documents from "../pages/documents/Documents"
 import DetailDoc from "../pages/documents/DetailDoc"
 import AddDocument from "../pages/documents/AddDocument"
+import Talents from '../pages/talents/Talents';
+import AddTalent from '../pages/talents/AddTalent';
+import DetailTalent from '../pages/talents/DetailTalent';
 
 const RoutesFree = () => {
     return (
@@ -49,6 +52,10 @@ const RoutesFree = () => {
                     <Route path='/admin/documents' element={<Documents />} />
                     <Route path='/admin/documents/add' element={<AddDocument />} />
                     <Route path='/admin/documents/detail' element={<DetailDoc />} />
+
+                    <Route path='/admin/talents' element={<Talents />} />
+                    <Route path='/admin/talents/add' element={<AddTalent />} />
+                    <Route path='/admin/talents/detail' element={<DetailTalent />} />
                 </Route>
             </Routes>
         </BrowserRouter>
