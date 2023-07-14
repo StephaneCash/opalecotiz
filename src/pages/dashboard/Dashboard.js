@@ -14,30 +14,27 @@ const Dashboard = () => {
 
   const options = {
     xaxis: {
-      categories: ["5", '6', '8', '7']
+      categories: ["0", '0', '0', '0']
     }
   };
   const series = [
     {
       name: "Transactions",
-      data: [5, 7, 8, 4]
+      data: [0, 0, 0, 0]
     },
   ];
 
   const series1 = [
     {
-      name: "Transactions",
-      data: [5, 7, 8, 4]
+      name: "Jeunes talents",
+      data: [0, 0, 0, 0]
     },
     {
-      name: "Transactions",
-      data: [3, 2, 6, 4]
+      name: "Participants",
+      data: [0, 0, 0, 0]
     },
   ];
 
-  console.log(userConnected)
-
-  const value = 0.66;
 
   return (
     <>
@@ -61,22 +58,22 @@ const Dashboard = () => {
                     <FiMoreVertical />
                   </div>
                   <div className='mainBody'>
-                    <span className='number'>125.89</span>
+                    <span className='number'>0%</span>
                     <FaChartLine color='green' />
                   </div>
 
                   <div className='footerCard'>
                     <div>
                       <span>Payés</span>
-                      <span>56</span>
+                      <span>0</span>
                     </div>
                     <div>
                       <span>Visités</span>
-                      <span>10</span>
+                      <span>0</span>
                     </div>
                     <div>
                       <span>Pourcentage</span>
-                      <span>5%</span>
+                      <span>0%</span>
                     </div>
                   </div>
                 </div>
@@ -89,14 +86,14 @@ const Dashboard = () => {
                     <FiMoreVertical />
                   </div>
                   <div className='mainBody'>
-                    <span className='number'>125.89</span>
+                    <span className='number'>0%</span>
                     <FaChartLine color='green' />
                   </div>
 
                   <div className='footerCard'>
                     <div>
                       <span>Payés</span>
-                      <span>56</span>
+                      <span>0</span>
                     </div>
                     <div>
                       <span>Visités</span>
@@ -104,7 +101,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <span>Pourcentage</span>
-                      <span>5%</span>
+                      <span>0%</span>
                     </div>
                   </div>
                 </div>
@@ -116,14 +113,14 @@ const Dashboard = () => {
                     <FiMoreVertical />
                   </div>
                   <div className='mainBody'>
-                    <span className='number'>125.89</span>
+                    <span className='number'>0%</span>
                     <FaChartLine color='green' />
                   </div>
 
                   <div className='footerCard'>
                     <div>
                       <span>Payés</span>
-                      <span>56</span>
+                      <span>0</span>
                     </div>
                     <div>
                       <span>Visités</span>
@@ -131,7 +128,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <span>Pourcentage</span>
-                      <span>5%</span>
+                      <span>0%</span>
                     </div>
                   </div>
                 </div>
@@ -143,14 +140,14 @@ const Dashboard = () => {
                     <FiMoreVertical />
                   </div>
                   <div className='mainBody'>
-                    <span className='number'>125.89</span>
+                    <span className='number'>0%</span>
                     <FaChartLine color='green' />
                   </div>
 
                   <div className='footerCard'>
                     <div>
                       <span>Payés</span>
-                      <span>56</span>
+                      <span>0</span>
                     </div>
                     <div>
                       <span>Visités</span>
@@ -158,7 +155,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <span>Pourcentage</span>
-                      <span>5%</span>
+                      <span>0%</span>
                     </div>
                   </div>
                 </div>

@@ -14,6 +14,8 @@ import africell from "../../../assets/afrimoney-services-424805.jpg";
 import { toast } from 'react-toastify';
 
 import FormJeuneTalent from './FormJeuneTalent';
+import { useDispatch } from 'react-redux';
+import { newTalent } from '../../../features/Talents';
 
 const Paiement = () => {
 
@@ -50,6 +52,8 @@ const Paiement = () => {
 
     const [typeMobile, setTypeMobile] = useState(0);
 
+    const dispatch = useDispatch();
+
     const submitData = (e) => {
         e.preventDefault();
         setBtnClic(true);
@@ -72,7 +76,19 @@ const Paiement = () => {
                                 if (duration > 5) {
                                     toast.error("La vidéo doit avoir une durée max 5 Min")
                                 } else {
-                                    // CODE HERE
+                                    let formData = new FormData();
+                                    formData.append('nom', nom);
+                                    formData.append('montant', montant);
+                                    formData.append('video', file);
+                                    formData.append('prenom', prenom);
+                                    formData.append('email', email);
+                                    formData.append('numTel', numTel);
+                                    formData.append('dateNaissance', dateNaissance);
+                                    formData.append('commune', commune);
+                                    formData.append('occupation', occupation);
+                                    formData.append('categorie', categorie);
+
+                                    dispatch(newTalent(formData));
                                 }
                             }
                         } else {

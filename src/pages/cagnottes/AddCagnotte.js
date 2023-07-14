@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/loader/Loader';
 import { baseUrlImage } from '../../bases/basesUrl';
 import { newCagnotte, updateCagnotte } from '../../features/Cagnotte';
-import Select from 'react-dropdown-select'
 
 const AddCagnotte = () => {
 
@@ -43,6 +42,8 @@ const AddCagnotte = () => {
         setFile(URL.createObjectURL(e.target.files[0]))
     };
 
+    console.log(state && state.data)
+
     useEffect(() => {
         if (state) {
             setTitle(state && state.data && state.data.title);
@@ -53,6 +54,7 @@ const AddCagnotte = () => {
             setDate1(state && state.data && state.data.dateDebut);
             setDate2(state && state.data && state.data.dateFin);
             setCategorie(state && state.data && state.data.categorie && state.data.categorie.id);
+            setDevise(state && state.data && state.data.devise)
         }
     }, [state]);
 
@@ -70,9 +72,7 @@ const AddCagnotte = () => {
         formData.append('description', description);
         formData.append('dateDebut', date1);
         formData.append('dateFin', date2);
-        formData.append('devise', devise && devise.map(val => {
-            return val.nom
-        }));
+        formData.append('devise', devise);
 
         dispatch(newCagnotte(formData));
     };
@@ -91,9 +91,7 @@ const AddCagnotte = () => {
         formData.append('description', description);
         formData.append('dateDebut', date1);
         formData.append('dateFin', date2);
-        formData.append('devise', devise && devise.map(val => {
-            return val.nom
-        }));
+        formData.append('devise', devise);
 
         let data = {}
         data.form = formData;
@@ -122,7 +120,7 @@ const AddCagnotte = () => {
                                 }}>
                                     <Link to="/admin/cagnottes"
                                         style={{
-                                            fontSize: "16px", color: "#009c4e", alignItems:"center",
+                                            fontSize: "16px", color: "#009c4e", alignItems: "center",
                                             display: "flex", gap: "5px",
                                         }}
                                     >
@@ -173,18 +171,17 @@ const AddCagnotte = () => {
                                         <div className='col-sm-6'>
                                             <div className="form-group mb-3">
                                                 <label htmlFor="postnom">Choisir une devise</label>
-                                                <Select
-                                                    name='select'
-                                                    options={devises}
-                                                    labelField="nom"
-                                                    valueField="id"
-                                                    multi
+                                                <select
                                                     className='form-control'
-                                                    searchable={true}
-                                                    dropdownPosition='bottom'
-                                                    onChange={(value => setDevise(value))}
+                                                    onChange={(e => setDevise(e.target.value))}
                                                 >
-                                                </Select>
+                                                    <option>Choisir...</option>
+                                                    {
+                                                        devises && devises.length > 0 && devises.map(value => {
+                                                            return <option value={value.nom} key={value.id}>{value.nom}</option>
+                                                        })
+                                                    }
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

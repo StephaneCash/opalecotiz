@@ -12,9 +12,9 @@ import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaImages, FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { dateParserFunction } from '../../utils';
-import { deleteCagnotte } from '../../features/Cagnotte';
+import { deleteTalent } from '../../features/Talents';
 
 export default function ListTalents(props) {
     let data = props.data && props.data;
@@ -25,14 +25,14 @@ export default function ListTalents(props) {
 
     let dispatch = useDispatch();
 
-    const deleteCategorie = (id) => {
+    const deleteTalentJeune = (id) => {
         swal({
             text: "Etes-vous sûr de vouloir supprimer ce jeune talent ?",
             buttons: true,
             dangerMode: true
         }).then((willDelete) => {
             if (willDelete) {
-                dispatch(deleteCagnotte(id));
+                dispatch(deleteTalent(id));
             }
         }).catch((error) => {
             console.log(error);
@@ -92,8 +92,9 @@ export default function ListTalents(props) {
                             />
                         </TableCell>
                         <TableCell>ID</TableCell>
-                        <TableCell>Nom</TableCell>
-                        <TableCell align="left">Description</TableCell>
+                        <TableCell>Noms</TableCell>
+                        <TableCell align="left">Commune</TableCell>
+                        <TableCell align="left">Occupation</TableCell>
                         <TableCell align="left">Date ajout</TableCell>
                         <TableCell align="left">Options</TableCell>
                     </TableRow>
@@ -101,7 +102,7 @@ export default function ListTalents(props) {
                 <TableBody>
 
                     {records ? records.length > 0 ? records.filter(val => {
-                        const nom = val && val.title && val.title.toLowerCase();
+                        const nom = val && val.nom && val.nom.toLowerCase();
                         return nom && nom.includes(valueSearch && valueSearch)
                     })
                         .map((row, i) => (
@@ -119,28 +120,37 @@ export default function ListTalents(props) {
                                 </TableCell>
                                 <TableCell width={60}>{i + 1}</TableCell>
                                 <TableCell width={300}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                        <div>
-                                            <Avatar alt={row.title} sx={{ width: 40, height: 40 }} src={baseUrlImage + "/" + row.url} />
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "center",
+                                        gap: "5px"
+                                    }}>
+                                        <div style={{ fontWeight: "600", }}>
+                                            {
+                                                row && row.nom && row.nom && row.nom.length > 20 ?
+                                                    row.nom.substring(0, 20) + "..." : row && row.nom !== undefined && row.nom
+                                            }
+                                            {" "}
+                                            {
+                                                row && row.prenom && row.prenom && row.prenom.length > 20 ?
+                                                    row.prenom.substring(0, 20) + "..." : row && row.prenom !== undefined && row.prenom
+                                            }
                                         </div>
-                                        <div style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            justifyContent: "center",
-                                            gap:"5px"
-                                        }}>
-                                            <div style={{ fontWeight: "600", }}>{row && row.title && row.title && row.title.length > 20 ?
-                                                row.title.substring(0, 20) + "..." : row && row.title !== undefined && row.title}</div>
-                                            <div className='text-success' style={{ fontWeight: "500", }}>{row && row.categorie && row.categorie.nom}
-                                            </div>
-
+                                        <div className='text-success' style={{ fontWeight: "500", }}>{row && row.categorie}
                                         </div>
                                     </div>
                                 </TableCell>
                                 <TableCell align="left" width={500} style={{ fontWeight: "400", lineHeight: "1.4rem" }}>
                                     {
-                                        row.description && row.description.length > 50 ? row.description.substring(0, 50) + "..."
-                                            : row.description
+                                        row.occupation && row.occupation.length > 50 ? row.occupation.substring(0, 50) + "..."
+                                            : row.occupation
+                                    }
+                                </TableCell>
+                                <TableCell align="left" width={500} style={{ fontWeight: "400", lineHeight: "1.4rem" }}>
+                                    {
+                                        row.commune && row.commune.length > 50 ? row.commune.substring(0, 50) + "..."
+                                            : row.commune
                                     }
                                 </TableCell>
                                 <TableCell width={300}>
@@ -149,16 +159,13 @@ export default function ListTalents(props) {
                                     }
                                 </TableCell>
                                 <TableCell align="left" width={190}>
-                                    <Link to={{ pathname: `detail/${row.id}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
+                                    <Link to={{ pathname: `detail/${row.nom}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                         <FaInfo size={18} />
                                     </Link>
                                     <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                         <FaRegEdit size={18} />
                                     </Link>
-                                    <Link to={{ pathname: `add-images/${row.id}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
-                                        <FaImages size={18} />
-                                    </Link>
-                                    <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
+                                    <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteTalentJeune(row.id)} />
                                 </TableCell>
                             </TableRow>
                         )) :

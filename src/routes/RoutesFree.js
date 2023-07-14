@@ -55,7 +55,7 @@ const RoutesFree = () => {
 
                     <Route path='/admin/talents' element={<Talents />} />
                     <Route path='/admin/talents/add' element={<AddTalent />} />
-                    <Route path='/admin/talents/detail' element={<DetailTalent />} />
+                    <Route path='/admin/talents/detail/:id' element={<DetailTalent />} />
                 </Route>
             </Routes>
         </BrowserRouter>
