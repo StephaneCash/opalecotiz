@@ -75,8 +75,8 @@ const Paiement = () => {
                     } else {
                         const typeVideo = file && file.type && file.type.split('/');
                         if (file && typeVideo[0] === "video") {
-                            if (file && file.size > 20000000) {
-                                toast.error("Votre fichier est trop volumineux, taille max: 20Mo")
+                            if (file && file.size > 500000000) {
+                                toast.error("Votre fichier est trop volumineux, taille maximale: 500Mo")
                             } else {
                                 if (duration > 1) {
                                     toast.error("La vidéo doit avoir une durée max de 2 Minutes")
