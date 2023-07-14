@@ -40,7 +40,7 @@ const DetailTalent = () => {
               <table className='table table-striped table-bordered'>
                 <tbody>
                   <tr>
-                    <td className='p-2' colSpan={"2px"}>Détail {data && data.nom}</td>
+                    <td colSpan={"2px"} style={{ background: "#009c4e", color: "#fff", padding: "20px" }}>Détail {data && data.nom}</td>
                   </tr>
 
                   <tr>
@@ -81,6 +81,33 @@ const DetailTalent = () => {
                   <tr>
                     <td>Catégorie</td>
                     <td>{data && data.categorie}</td>
+                  </tr>
+
+                  <tr>
+                    <td>Catégorie</td>
+                    <td>{data && data.categorie}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table className='table table-striped table-bordered'>
+                <tbody>
+                  <tr>
+                    <td colSpan={"2px"} style={{ background: "#009c4e", color: "#fff", padding: "20px", marginTop: "10px" }}>Transaction</td>
+                  </tr>
+
+                  <tr>
+                    <td>Montant</td>
+                    <td>{data && data.transactions && data.transactions.map(val => {
+                      return val.montant
+                    })} </td>
+                  </tr>
+
+                  <tr>
+                    <td>Mode de paiement</td>
+                    <td>{data && data.transactions && data.transactions.map(val => {
+                      return val.modePaiement
+                    })} </td>
                   </tr>
                 </tbody>
               </table>

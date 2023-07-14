@@ -14,7 +14,7 @@ import africell from "../../../assets/afrimoney-services-424805.jpg";
 import { toast } from 'react-toastify';
 
 import FormJeuneTalent from './FormJeuneTalent';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { newTalent } from '../../../features/Talents';
 
 const Paiement = () => {
@@ -45,12 +45,14 @@ const Paiement = () => {
     const [file, setFile] = useState("");
     const [categorie, setCategorie] = useState("");
     const [nom, setNom] = useState("");
+    const [modePaiement, setModePaiement] = useState('');
     const [duration, setDuration] = useState(0);
 
     const [isChecked, setIsChecked] = useState(false);
     const [btnClic, setBtnClic] = useState(false);
-
     const [typeMobile, setTypeMobile] = useState(0);
+
+    const isLoading = useSelector(state => state.talents.loading);
 
     const dispatch = useDispatch();
 
@@ -76,19 +78,25 @@ const Paiement = () => {
                                 if (duration > 5) {
                                     toast.error("La vidéo doit avoir une durée max 5 Min")
                                 } else {
-                                    let formData = new FormData();
-                                    formData.append('nom', nom);
-                                    formData.append('montant', montant);
-                                    formData.append('video', file);
-                                    formData.append('prenom', prenom);
-                                    formData.append('email', email);
-                                    formData.append('numTel', numTel);
-                                    formData.append('dateNaissance', dateNaissance);
-                                    formData.append('commune', commune);
-                                    formData.append('occupation', occupation);
-                                    formData.append('categorie', categorie);
+                                    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                                    if (pattern.test(email)) {
+                                        let formData = new FormData();
+                                        formData.append('nom', nom);
+                                        formData.append('montant', montant);
+                                        formData.append('video', file);
+                                        formData.append('prenom', prenom);
+                                        formData.append('email', email);
+                                        formData.append('numTel', numTel);
+                                        formData.append('dateNaissance', dateNaissance);
+                                        formData.append('commune', commune);
+                                        formData.append('occupation', occupation);
+                                        formData.append('categorie', categorie);
+                                        formData.append('modePaiement', modePaiement);
 
-                                    dispatch(newTalent(formData));
+                                        dispatch(newTalent(formData));
+                                    } else {
+                                        toast.error("L'adresse email n'est pas valide.")
+                                    }
                                 }
                             }
                         } else {
@@ -371,16 +379,24 @@ const Paiement = () => {
                             <>
                                 <h5>Choisir un mode opératoire</h5>
                                 <div className='grille mobilesBank'>
-                                    <div className={typeMobile === 1 ? "card checked" : "card"} onClick={() => setTypeMobile(1)}>
+                                    <div className={typeMobile === 1 ? "card checked" : "card"} onClick={() => {
+                                        setTypeMobile(1); setModePaiement("MPSA")
+                                    }}>
                                         {typeMobile === 1 && <FaCheckCircle size={30} />}     <img src={mpsa} alt="" />
                                     </div>
-                                    <div className={typeMobile === 2 ? "card checked" : "card"} onClick={() => setTypeMobile(2)}>
+                                    <div className={typeMobile === 2 ? "card checked" : "card"} onClick={() => {
+                                        setTypeMobile(2); setModePaiement("ORANGE MONEY")
+                                    }}>
                                         {typeMobile === 2 && <FaCheckCircle size={30} />}   <img src={orange} alt="" />
                                     </div>
-                                    <div className={typeMobile === 3 ? "card checked" : "card"} onClick={() => setTypeMobile(3)}>
+                                    <div className={typeMobile === 3 ? "card checked" : "card"} onClick={() => {
+                                        setTypeMobile(3); setModePaiement("AIRTEL MONEY")
+                                    }}>
                                         {typeMobile === 3 && <FaCheckCircle size={30} />}    <img src={airtel} alt="" />
                                     </div>
-                                    <div className={typeMobile === 4 ? "card checked" : "card"} onClick={() => setTypeMobile(4)}>
+                                    <div className={typeMobile === 4 ? "card checked" : "card"} onClick={() => {
+                                        setTypeMobile(4); setModePaiement("AFRI MONEY")
+                                    }}>
                                         {typeMobile === 4 && <FaCheckCircle size={30} />}   <img src={africell} alt="" />
                                     </div>
                                 </div>
@@ -430,7 +446,8 @@ const Paiement = () => {
                                 >
                                     {
                                         choix === 3 ? "Confirmer ce payement" :
-                                            "Valider et Payer"
+                                            isLoading ? "Validation..." :
+                                                "Valider et Payer"
                                     }
                                 </button> :
                                 <button type="submit" className="btn" style={{ width: "40%" }}>

@@ -6,13 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar } from '@mui/material';
-import { baseUrlImage } from '../../bases/basesUrl';
 import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaInfo, FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { FaInfo, FaRegTrashAlt } from 'react-icons/fa';
 import { dateParserFunction } from '../../utils';
 import { deleteTalent } from '../../features/Talents';
 
@@ -158,12 +156,9 @@ export default function ListTalents(props) {
                                         dateParserFunction(row.createdAt)
                                     }
                                 </TableCell>
-                                <TableCell align="left" width={190}>
+                                <TableCell align="left" width={140}>
                                     <Link to={{ pathname: `detail/${row.nom}` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
                                         <FaInfo size={18} />
-                                    </Link>
-                                    <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
-                                        <FaRegEdit size={18} />
                                     </Link>
                                     <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteTalentJeune(row.id)} />
                                 </TableCell>

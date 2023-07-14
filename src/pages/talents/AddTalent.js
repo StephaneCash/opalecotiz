@@ -5,7 +5,6 @@ import Navbar from '../../components/navbar/Navbar';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../../components/loader/Loader';
-import { baseUrlImage } from '../../bases/basesUrl';
 import { newTalent, updateTalent } from '../../features/Talents';
 
 const AddTalent = () => {
@@ -20,7 +19,6 @@ const AddTalent = () => {
   const [file, setFile] = useState("");
   const [categorie, setCategorie] = useState("");
   const [nom, setNom] = useState("");
-  const [duration, setDuration] = useState(0);
   const [video, setVideo] = useState('');
   const [montant, setMontant] = useState(0);
 

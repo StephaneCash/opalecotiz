@@ -149,9 +149,9 @@ function Navbar() {
                         </div>
                         <Tooltip title="Ouvrir les paramètres">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt={userConnected && userConnected.pseudo}
-                                    src={userConnected !== null &&
-                                        baseUrlImage + "/" + userConnected.url} />
+                                <Avatar alt={userConnected ? userConnected.pseudo : ""}
+                                    src={userConnected !== null ?
+                                        baseUrlImage + "/" + userConnected.url : ""} />
                             </IconButton>
                         </Tooltip>
                         <Menu
