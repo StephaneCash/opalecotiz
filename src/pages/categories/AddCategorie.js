@@ -81,7 +81,7 @@ const AddCategorie = () => {
                             </div>
                         </div>
 
-                        <div className='col-sm-6 tableCategorie'>
+                        <div className='col-sm-12 tableCategorie'>
                             <div className='row'>
                                 <div className='col-sm-12'>
                                     <div className="form-group mb-3">

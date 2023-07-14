@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
 import { dateParserFunction } from '../../../utils'
+import { FaSearch } from 'react-icons/fa'
 
 const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) => {
 
@@ -21,8 +22,17 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
         <>
             <div className='mainSearch'>
                 <div className='inputSearch'>
-                    <h5>Vous cherchez une production ?</h5>
-                    <input type="search" placeholder='Ex: Pour Grace et Kamaro' className='form-control' onChange={(e) => setValueSearch(e.target.value)} />
+                    <div className='fodrmSearch'>
+                        <h5>Vous cherchez une production ?</h5>
+                        <div className='formSearch'>
+                            <FaSearch />
+                            <input
+                                type="search"
+                                placeholder='Ex: Pour Grace et Kamaro'
+                                className='form-control' onChange={(e) => setValueSearch(e.target.value)}
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <div className='categoriesCagnottes'>

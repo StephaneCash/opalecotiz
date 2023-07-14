@@ -42,8 +42,6 @@ const AddCagnotte = () => {
         setFile(URL.createObjectURL(e.target.files[0]))
     };
 
-    console.log(state && state.data)
-
     useEffect(() => {
         if (state) {
             setTitle(state && state.data && state.data.title);
@@ -260,14 +258,13 @@ const AddCagnotte = () => {
                                             className="form-control"
                                             id="exampleFormControlTextarea1"
                                             onChange={(e) => setCategorie(e.target.value)}
+                                            value={categorie}
                                         >
-                                            <option value="" key="">--Choisir une catégorie--</option>
+                                            <option>--Choisir une catégorie--</option>
                                             {
                                                 categories && categories.isSuccess ?
                                                     categories.value && categories.value.map((val, i) => {
-                                                        return <option value={val.id} key={i} selected={
-                                                            state ? categorie === val.id ? true : false : false
-                                                        }>
+                                                        return <option value={val.id} key={i}>
                                                             {val.nom}
                                                         </option>
                                                     })

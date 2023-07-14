@@ -47,7 +47,7 @@ const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie,
                 <div className="col-sm-6 mt-2">
                     <input type="text" className="form-control"
                         onChange={(e) => setNumTel(e.target.value)}
-                        placeholder="Votre numéro de téléphone" />
+                        placeholder="Votre numéro de téléphone*" />
                 </div>
             </div>
 
@@ -72,16 +72,17 @@ const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie,
                         placeholder="Votre occupation*" />
                 </div>
                 <div className="col-sm-6">
-                    <select onChange={(e) => setCategorie(e.target.value)} className='form-control'>
+                    <select onChange={(e) => setCategorie(e.target.value)} className='form-control categorieJeune'>
                         <option value="">Veuillez choisir une catégorie...</option>
                         <option value="Musique">Musique</option>
-                        <option value="Danse">Danse</option>
+                        <option value="Théatre">Théatre</option>
+                        <option value="Autres">Autres...</option>
                     </select>
                 </div>
             </div>
 
-            <label className='lableDate'>Télécharger une vidéo à nous envoyer</label>
-            <div className='row mt-2'>
+            <label className='lableDate'>Télécharger une vidéo à nous envoyer (Max 2 minutes)</label>
+            <div className='row mt-2' >
                 <div className="col-sm-12">
                     <input
                         type="file"
@@ -90,7 +91,7 @@ const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie,
                     />
                 </div>
             </div>
-            <div className='row mt-3'>
+            <div className='row mt-3' style={{ height: video ? "300px" : 0 }}>
                 {
                     video &&
                     <video width="100%" height="100%" src={video} autoPlay={false} controls id="myVideo"></video>

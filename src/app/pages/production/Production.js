@@ -75,7 +75,7 @@ const Production = () => {
                         <span>collectés sur </span>  <span>
                           {
                             state && state.val && state.val.title && state.val.title === "Jeune Talent" ?
-                              state && state.val.montant / 500 + " participants" :
+                              state && state.val.montant / 1000 + " participants" :
                               `${state && state.val.montant} ${state && state.val.devise && state && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
                                 if (value === "Dollar") {
                                   return " $"
@@ -96,7 +96,6 @@ const Production = () => {
                     </div>
                   </div>
                 </div>
-
 
                 <div className='lastDiv'>
                   <div className="progress">

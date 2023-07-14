@@ -8,32 +8,54 @@
     min-height: 100vh;
 }
 
+.formSearch {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ddd;
+    width: 50%;
+    margin: auto;
+    padding-left: 1rem;
+    border-radius: 3px;
+
+}
+
 .cagnotte .headerTop div svg {
     font-size: 1.4rem;
+}
+
+.fodrmSearch{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
 .cagnotte .mainSearch {
     width: 75%;
     min-height: 100%;
     margin: 1rem auto;
-    border-radius: 0 !important;
+}
+
+.fodrmSearch h5{
+    font-size: 1.3rem !important;
 }
 
 .cagnotte .mainSearch .inputSearch {
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
+   background-color: #fff;
+   display: flex;
+   flex-direction: column !important;
+   justify-content: center;
+   align-items: center;
+   height: 250px;
+   border-top-left-radius: 7px;
+   border-top-right-radius: 7px;
 }
 
 .cagnotte .mainSearch .inputSearch input {
-    border-radius: 3px;
+    border: none;
     box-shadow: none;
-    border: 2px solid silver;
-    width: 60%;
-    margin-top: 1rem;
 }
 
 .cagnotte .categoriesCagnottes {
@@ -43,6 +65,8 @@
     height: 60px;
     gap: 1.2rem;
     background-color: #009c4e;
+    border-bottom-left-radius: 7px !important;
+    border-bottom-right-radius: 7px;
 }
 
 .cagnotte .categoriesCagnottes a {
@@ -178,7 +202,7 @@
     font-weight: bold;
 }
 
-.cagnotte .card-body{
+.cagnotte .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -50,7 +50,6 @@ export default function ListCagnottes(props) {
     const nbPage = Math.ceil(data && data.length > 0 && data.length / cunt);
     const numbers = [...Array(data && nbPage + 1).keys()].slice(1);
 
-    console.log(data)
     return (
         <TableContainer component={Paper}>
             <div className='headTable' style={{

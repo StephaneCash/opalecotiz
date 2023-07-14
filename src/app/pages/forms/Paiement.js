@@ -28,7 +28,7 @@ const Paiement = () => {
 
     const [choix, setChoix] = useState(0);
     const [montant, setMontant] = useState(
-        state && state.val && state.val.title === "Jeune Talent" ? "500 FC" : 200
+        state && state.val && state.val.title === "Jeune Talent" ? "1000 FC" : 200
     );
 
     const [devise, setDevise] = useState(
@@ -52,6 +52,8 @@ const Paiement = () => {
     const [btnClic, setBtnClic] = useState(false);
     const [typeMobile, setTypeMobile] = useState(0);
 
+    const [lire, setLire] = useState(false)
+
     const isLoading = useSelector(state => state.talents.loading);
 
     const dispatch = useDispatch();
@@ -63,6 +65,7 @@ const Paiement = () => {
         if (state && state.val && state.val.title === "Jeune Talent") {
             if (checkBox && checkBox.checked === true) {
                 setIsChecked(true);
+                setLire(true)
                 if (!montant) {
                     toast.error('Veuillez remplir le champ montant svp')
                 } else {
@@ -75,8 +78,8 @@ const Paiement = () => {
                             if (file && file.size > 20000000) {
                                 toast.error("Votre fichier est trop volumineux, taille max: 20Mo")
                             } else {
-                                if (duration > 5) {
-                                    toast.error("La vidéo doit avoir une durée max 5 Min")
+                                if (duration > 1) {
+                                    toast.error("La vidéo doit avoir une durée max de 2 Minutes")
                                 } else {
                                     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
                                     if (pattern.test(email)) {
@@ -106,6 +109,7 @@ const Paiement = () => {
                 }
             } else {
                 setIsChecked(false)
+                setLire(false)
             }
         } else {
             setIsChecked(true);
@@ -150,7 +154,7 @@ const Paiement = () => {
                 </Link>
                 <h5>Paiement de la production {state && state.val && state.val.title}</h5>
 
-                <form onSubmit={submitData}>
+                <div className='form' >
 
                     <div className='row'>
                         <div className={
@@ -404,29 +408,44 @@ const Paiement = () => {
                         )
                     }
 
-
                     {
                         state && state.val && state.val.title === "Jeune Talent" ?
                             <>
-                                <div className='mt-4 termeDec'>
-                                    <h3 className='titleTerme'>
-                                        Termes de confidentialité :
-                                    </h3>
-                                    <p className='alert'>
-                                        « Une fois vos données personnelles fournies et par nous recueillies , vous vous en dessaisissez automatiquement et vous nous en laissez l'exclusivité d'usage en tenant compte des restrictions légales y afférentes.
+                                <div className={lire ? "mt-4 termeDec" : "mt-4"}>
 
-                                        Nous tâcherons de les garder soigneusement sans en altérer l'origine ni en faire usage illégal. »
-                                    </p>
+                                    <div className='btnTermes'>
+                                        <label className={isChecked ? "labelLue accpteClassName" : "noChecked accpteClassName"} style={{ fontFamily: "poppins" }}>J'accepte les termes de confidentialité</label>
+                                        <input
+                                            className={isChecked ? "form-check-input" : "form-check-input noChecked"}
+                                            type="checkbox" value="" id="checkBoxTermes"
+                                        ></input>
+                                    </div>
+
+                                    <button className='btn lireTermes  mb-2' onClick={() => setLire(!lire)}>
+                                        {lire ? "Fermer " : 'Lire '}
+                                        les termes de confidentialité</button>
+                                    {
+                                        lire &&
+                                        <>
+                                            <h3 className='titleTerme'>
+                                                Termes de confidentialité
+                                            </h3>
+                                            <p className='alert'>
+                                                Une fois vos données personnelles fournies par vous et recueillies par Ligablo, vous vous en dessaisissez automatiquement et
+                                                en laissez
+                                                l'exclusivité d'usage à Ligablo en tenant compte des restrictions légales y afférentes.
+                                                Ligablo tâchera de les garder soigneusement sans en altérer l'origine ni en faire usage illégal.
+                                            </p>
+                                        </>
+                                    }
+
                                 </div>
 
                                 {
-                                    btnClic && !isChecked && <span style={{ color: "red" }}>Veuillez cocher la case pour avoir accepté les termes de confidentialité.</span>
+                                    btnClic && !isChecked && <span style={{ color: "red" }}>Veuillez cocher la case pour accepter les termes de confidentialité.</span>
                                 }
 
-                                <div className='mt-3 btnTermes'>
-                                    <label className={isChecked ? "labelLue" : "noChecked"}>J'ai lu et j'accepte les termes de confidentialité</label>
-                                    <input className={isChecked ? "form-check-input" : "form-check-input noChecked"} type="checkbox" value="" id="checkBoxTermes"></input>
-                                </div>
+
                             </>
                             : ""
                     }
@@ -436,13 +455,14 @@ const Paiement = () => {
                         {
                             state && state.val && state.val.title === "Jeune Talent" ?
                                 <button
-                                    type="submit"
+                                    type="button"
                                     className="btn"
                                     style={{ width: "40%" }}
                                     disabled={
                                         nom && prenom && dateNaissance && commune &&
-                                            occupation && categorie && file ? false : true
+                                            occupation && categorie && file && numTel ? false : true
                                     }
+                                    onClick={(e) => submitData(e)}
                                 >
                                     {
                                         choix === 3 ? "Confirmer ce payement" :
@@ -450,7 +470,12 @@ const Paiement = () => {
                                                 "Valider et Payer"
                                     }
                                 </button> :
-                                <button type="submit" className="btn" style={{ width: "40%" }}>
+                                <button
+                                    type="button"
+                                    className="btn"
+                                    style={{ width: "40%" }}
+                                    onClick={(e) => submitData(e)}
+                                >
                                     {
                                         choix === 3 ? "Confirmer ce payement" :
                                             "Valider et Payer"
@@ -458,7 +483,7 @@ const Paiement = () => {
                                 </button>
                         }
                     </div>
-                </form>
+                </div>
             </div>
             <Footer />
         </>
