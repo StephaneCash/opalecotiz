@@ -91,8 +91,8 @@ export default function ListTalents(props) {
                         </TableCell>
                         <TableCell>ID</TableCell>
                         <TableCell>Noms</TableCell>
-                        <TableCell align="left">Commune</TableCell>
                         <TableCell align="left">Occupation</TableCell>
+                        <TableCell align="left"> Commune</TableCell>
                         <TableCell align="left">Date ajout</TableCell>
                         <TableCell align="left">Options</TableCell>
                     </TableRow>

@@ -72,7 +72,28 @@ const Paiement = () => {
                     toast.error('Veuillez remplir le champ montant svp')
                 } else {
                     if (choix === 3) {
-                        toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.")
+                        toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.");
+                        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                        if (pattern.test(email)) {
+                            let formData = new FormData();
+                            formData.append('nom', nom);
+                            formData.append('montant', montant);
+                            formData.append('video', file);
+                            formData.append('prenom', prenom);
+                            formData.append('email', email);
+                            formData.append('numTel', numTel);
+                            formData.append('dateNaissance', dateNaissance);
+                            formData.append('commune', commune);
+                            formData.append('occupation', occupation);
+                            formData.append('categorie', categorie);
+                            formData.append('modePaiement', modePaiement);
+                            formData.append("typePaiement", typePaiement)
+                            formData.append('cagnotteId', state && state.val && state.val.id)
+
+                            dispatch(newTalent(formData));
+                        } else {
+                            toast.error("L'adresse email n'est pas valide.")
+                        }
                         navigate('/productions');
                     } else {
                         const typeVideo = file && file.type && file.type.split('/');
@@ -80,7 +101,7 @@ const Paiement = () => {
                             if (file && file.size > 500000000) {
                                 toast.error("Votre fichier est trop volumineux, taille maximale: 500Mo")
                             } else {
-                                if (duration > 5) {
+                                if (duration > 2) {
                                     toast.error("La vidéo doit avoir une durée max de 2 Minutes")
                                 } else {
                                     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -98,6 +119,7 @@ const Paiement = () => {
                                         formData.append('categorie', categorie);
                                         formData.append('modePaiement', modePaiement);
                                         formData.append("typePaiement", typePaiement)
+                                        formData.append('cagnotteId', state && state.val && state.val.id)
 
                                         dispatch(newTalent(formData));
                                     } else {

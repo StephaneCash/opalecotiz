@@ -83,11 +83,6 @@ const DetailTalent = () => {
                     <td>Catégorie</td>
                     <td>{data && data.categorie}</td>
                   </tr>
-
-                  <tr>
-                    <td>Catégorie</td>
-                    <td>{data && data.categorie}</td>
-                  </tr>
                 </tbody>
               </table>
 
@@ -109,6 +104,17 @@ const DetailTalent = () => {
                     <td>{data && data.transactions && data.transactions.map(val => {
                       return val.modePaiement
                     })} </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Montant</td>
+                    <td>{data && data.transactions && data.transactions.map(val => {
+                      return val.montant
+                    })} {
+                        data && data.cagnotte && data.cagnotte.devise
+                      }
+                    </td>
                   </tr>
                 </tbody>
               </table>
