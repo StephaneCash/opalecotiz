@@ -13,7 +13,7 @@ const Contact = () => {
 
     const submitMsg = (e) => {
         e.preventDefault();
-        const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
         if (noms && email && numTel && msg) {
             if (pattern.test(email)) {
                 if (numTel.length < 10) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import "./Leftbar.css";
 import { FaHandsHelping, FaTextHeight, FaWineBottle } from "react-icons/fa"
-import { FiBarChart, FiImage, FiList, FiUsers, FiVideo } from 'react-icons/fi';
+import { FiBarChart, FiList, FiUsers } from 'react-icons/fi';
 import { GrUserAdmin } from "react-icons/gr";
 
 const Leftbar = () => {

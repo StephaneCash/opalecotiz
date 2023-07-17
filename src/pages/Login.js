@@ -50,7 +50,7 @@ export default function Login() {
                 toast.error('Entrer un mot de passe svp');
                 setClicBtn(false);
             } else {
-                const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
                 if (pattern.test(data.get('email'))) {
                     try {
                         const auth = await axios.post(`${baseUrl}/users/authentification`,
@@ -131,7 +131,7 @@ export default function Login() {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                background:"#009c4e"
+                                background: "#009c4e"
                             }}
                         >
                             {

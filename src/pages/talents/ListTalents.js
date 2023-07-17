@@ -56,10 +56,10 @@ export default function ListTalents(props) {
                 justifyContent: "space-between", alignItems: "center", borderRadius: "5px"
             }}>
                 <div>
-                    <span>Pages</span> / <span>Productions {data && data.length > 0 ? `(${data.length})` :
+                    <span>Pages</span> / <span>Jeunes Talents {data && data.length > 0 ? `(${data.length})` :
                         `(0)`}</span>
                     <br />
-                    <h6>Productions</h6>
+                    <h6>Jeunes Talents</h6>
                 </div>
 
                 <div style={{
