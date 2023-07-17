@@ -64,6 +64,7 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                             }
                         })
                             .map(val => {
+                                const talents = val && val.talents && val.talents.length
                                 return <div className='card' key={val.id}>
                                     <Link to={{
                                         pathname: `/production/${val.title}`
@@ -94,7 +95,9 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                             <div className='montant'>
                                                 <div className='prixRecoltat'>
                                                     {
-                                                        val && val.montantRecolte ? val.montantRecolte : 0
+                                                        val && val.title === "Jeune Talent" ?
+                                                            talents * 1000
+                                                            : 0
                                                     }
                                                 </div>
                                                 <div className='devise'>

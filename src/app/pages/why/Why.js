@@ -17,6 +17,7 @@ const Why = () => {
             <div className='cardsData'>
                 {
                     sliceCagnottes && sliceCagnottes.length > 0 && sliceCagnottes.map(val => {
+                        const talents = val && val.talents && val.talents.length
                         return <div className='card' key={val.id}>
                             <img src={baseUrlImage + "/" + val.url} alt={val.title} />
                             <div className='card-body'>
@@ -28,7 +29,9 @@ const Why = () => {
                                 <div className='montant'>
                                     <div className='prixRecoltat'>
                                         {
-                                            val && val.montantRecolte ? val.montantRecolte : 0
+                                            val && val.title === "Jeune Talent" ?
+                                                talents * 1000
+                                                : 0
                                         }
                                     </div>
                                     <div className='devise'>

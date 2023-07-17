@@ -3,7 +3,7 @@ import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
-import { FaArrowLeft, FaCheckCircle } from 'react-icons/fa'
+import { FaAngleRight, FaCheckCircle } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
 const Production = () => {
@@ -14,15 +14,27 @@ const Production = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, []);
 
+  const talents = state && state.val && state.val.talents && state.val.talents.length
+  const title = state && state.val && state.val.title && state.val.title;
+
+  console.log(talents)
+
   return (
     <div className='production'>
       <HeaderClient />
-      <div className='mainProd'>
-        <Link to="/productions">
-          <FaArrowLeft />
-          <span>Retour</span>
+
+      <div className='toolBar'>
+        <Link to="/">
+          <span>Accueil</span>
         </Link>
-        <h1>{state && state.val && state.val.title}</h1>
+        <FaAngleRight />
+        <Link to="/productions">
+          <span>Productions</span>
+        </Link>
+        <FaAngleRight />
+        {state && state.val && state.val.title}
+      </div>
+      <div className='mainProd'>
         <div className='row1'>
           <div className='col-sm-4'>
 
@@ -52,7 +64,8 @@ const Production = () => {
                       <div className='montant2'>
                         <div className='prixRecoltat'>
                           {
-                            state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
+                            talents && title === "Jeune Talent" ? talents * 1000 :
+                              state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
                           }
                         </div>
                         <div className='devise'>
@@ -102,10 +115,22 @@ const Production = () => {
                     <div
                       className="progress-bar"
                       role="progressbar"
-                      style={{ width: "0%", background: "#009c4e" }} aria-valuenow="10"
-                      aria-valuemin="0" aria-valuemax="100">0%</div>
+                      style={{ width: talents ? title === "Jeune Talent" ? (talents * 100) / 125 + "%" : 0 : 0, background: "#009c4e" }} aria-valuenow="10"
+                      aria-valuemin="0" aria-valuemax="100">
+                      {
+                        talents ? title === "Jeune Talent" ? (talents * 100) / 125 + "%" : 0 : 0
+                      }
+                    </div>
                   </div>
-                  <span>0% atteint avec 0 participants</span>
+                  <span>
+                    {
+                      talents ? title === "Jeune Talent" ?
+                        `
+                        ${talents}  atteint(s) sur ${state && state.val.montant / 1000} participants
+                        `
+                        : 0 : ` 0 atteint(s) sur ${state && state.val.montant / 1000} participants`
+                    }
+                  </span>
                 </div>
 
                 <Link to={{

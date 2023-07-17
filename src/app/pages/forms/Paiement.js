@@ -4,7 +4,7 @@ import "./Paiement.css";
 import vbancaire from "../../../assets/vbancaire.jpg";
 import cash from "../../../assets/don.jpg";
 import pmobile from "../../../assets/pmobile.jpg"
-import { FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
+import { FaAngleRight, FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
 import Footer from '../footer/Footer';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import mpsa from "../../../assets/mpsa.jpg";
@@ -101,7 +101,7 @@ const Paiement = () => {
                             if (file && file.size > 500000000) {
                                 toast.error("Votre fichier est trop volumineux, taille maximale: 500Mo")
                             } else {
-                                if (duration > 2) {
+                                if (duration > 5) {
                                     toast.error("La vidéo doit avoir une durée max de 2 Minutes")
                                 } else {
                                     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -160,25 +160,41 @@ const Paiement = () => {
         }
     };
 
+    const title = state && state.val && state.val.title
+
     return (
         <>
             <HeaderClient />
-
-            <div className='payement'>
+            <div className='toolBar'>
+                <Link to="/">
+                    <span>Accueil</span>
+                </Link>
+                <FaAngleRight className='firstSvg' />
+                <Link to="/productions">
+                    <span>Productions</span>
+                </Link>
+                <FaAngleRight />
                 <Link
                     to={{
                         pathname: `/production/${state && state.val && state.val.title}`
                     }}
                     state={{
                         val: state && state.val
-                    }}
-                    style={{ borderRadius: "10px" }}
-                    className='linksPayement'>
-                    <span><FaArrowLeft /></span>
-                    <span>Retour</span>
+                    }}>
+                    <span>
+                        {
+                            title && title.length > 15 ? title.substring(0, 15) + "..." : title
+                        }
+                    </span>
                 </Link>
-                <h5>Paiement de la production {state && state.val && state.val.title}</h5>
-
+                <FaAngleRight />
+                <span className='payemt'>Payement</span>  <span style={{ fontWeight: "bold" }}>
+                    {
+                        title && title.length > 15 ? title.substring(0, 15) + "..." : title
+                    }
+                </span>
+            </div>
+            <div className='payement'>
                 <div className='form' >
                     <div className='row'>
                         <div className={

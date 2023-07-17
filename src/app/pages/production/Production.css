@@ -7,12 +7,31 @@
     margin: 2rem auto;
 }
 
+.toolBar {
+    background-color: #fff;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toolBar a {
+    color: #009c4e;
+    text-decoration: none;
+}
+
 .mainProd h1 {
     text-align: center;
     margin-bottom: 2rem !important;
     font-size: 2rem !important;
     font-weight: bold;
     font-family: "Poppins";
+}
+
+.progress {
+    height: 20px !important;
 }
 
 .row1 {
@@ -160,8 +179,6 @@ select {
     font-weight: bold;
 }
 
-
-
 .row1 hr {
     width: 50%;
     margin: 7px auto;
@@ -221,6 +238,10 @@ select {
     width: 100%;
 }
 
+.toolBar svg {
+    color: #666;
+}
+
 .videos .card {
     border: 1px solid #ddd;
     border-radius: 0;
@@ -267,5 +288,45 @@ select {
 
     .mainProd .col-sm-8 {
         width: 100% !important;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .toolBar {
+        gap: .4rem;
+    }
+
+    .toolBar a,
+    .toolBar span {
+        font-size: 12px !important;
+    }
+
+    .payement{
+        margin: 1rem auto !important;
+    }
+
+    .payement .form{
+        padding: 1rem !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .toolBar {
+        gap: .2rem;
+        padding: 1rem .4rem;
+    }
+
+    .toolBar a:first-child,
+    .firstSvg {
+        display: none;
+    }
+
+    .toolBar a,
+    .toolBar span {
+        font-size: 14px !important;
+    }
+
+    .payemt {
+        display: none;
     }
 }
