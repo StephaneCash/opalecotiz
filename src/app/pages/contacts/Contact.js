@@ -87,9 +87,10 @@ const Contact = () => {
                     <div className='form-group'>
                         <textarea
                             cols="30" rows="8"
+                            value={msg}
                             placeholder='Votre message'
                             onChange={(e) => setMasg(e.target.value)}
-                            className="form-control">{msg}</textarea>
+                            className="form-control"></textarea>
                     </div>
 
                     <button type='submit' className='btn'>Envoyer <FiSend /> </button>
