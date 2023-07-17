@@ -16,7 +16,7 @@ const Production = () => {
 
   const talents = state && state.val && state.val.talents && state.val.talents.length
   const title = state && state.val && state.val.title && state.val.title;
-  
+
   return (
     <div className='production'>
       <HeaderClient />
@@ -70,22 +70,26 @@ const Production = () => {
                         </div>
                         <div className='devise'>
                           {
-                            state && state.val.devise && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
-                              if (value === "Dollar") {
-                                return " $"
-                              } else if (value === "Euro") {
-                                return " €"
-                              } else if (value === "FC") {
-                                return " FC"
-                              } else {
-                                return null
-                              }
-                            })
+                            title && title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{ fontSize: "18px" }}> participants</div> :
+                              state && state.val.devise && state.val.devise.split(',') && state.val.devise.split(',').map(value => {
+                                if (value === "Dollar") {
+                                  return " $"
+                                } else if (value === "Euro") {
+                                  return " €"
+                                } else if (value === "FC") {
+                                  return " FC"
+                                } else {
+                                  return null
+                                }
+                              })
                           }
                         </div>
                       </div>
                       <div className='collect'>
-                        <span>collectés sur </span>  <span>
+                        {
+                          title === "Jeune Talent" ? " enregistrés sur " : " collectés sur "
+                        }
+                        <span>
                           {
                             state && state.val && state.val.title && state.val.title === "Jeune Talent" ?
                               state && state.val.montant / 1000 + " participants" :
@@ -102,7 +106,6 @@ const Production = () => {
                               })
                               } `
                           }
-
                         </span>
                       </div>
 

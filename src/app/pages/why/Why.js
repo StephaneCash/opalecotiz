@@ -35,18 +35,20 @@ const Why = () => {
                                         }
                                     </div>
                                     <div className='devise'>
+
                                         {
-                                            val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
-                                                if (value === "Dollar") {
-                                                    return " $"
-                                                } else if (value === "Euro") {
-                                                    return " €"
-                                                } else if (value === "FC") {
-                                                    return " FC"
-                                                } else {
-                                                    return null
-                                                }
-                                            })
+                                            val.title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{fontSize:"199px"}}> Participants</div> :
+                                                val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                    if (value === "Dollar") {
+                                                        return " $"
+                                                    } else if (value === "Euro") {
+                                                        return " €"
+                                                    } else if (value === "FC") {
+                                                        return " FC"
+                                                    } else {
+                                                        return null
+                                                    }
+                                                })
                                         }
                                     </div>
                                 </div>
