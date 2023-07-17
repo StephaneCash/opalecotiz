@@ -10,7 +10,7 @@ import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaEdit, FaInfo, FaRegTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { dateParserFunction } from '../../utils';
 import { deleteUser } from '../../features/Users';
 

@@ -35,6 +35,8 @@ export default function DetailListInfluenceur(props) {
             categories && categories.value && categories.value.map(val => {
                 if (val.id === data.categorieId) {
                     return setInf(val);
+                }else{
+                    return null
                 }
             })
         }

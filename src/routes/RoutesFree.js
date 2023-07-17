@@ -6,7 +6,6 @@ import RoutesPrivate from './RoutesPrivate';
 import Categorie from '../pages/categories/Categorie';
 import AddCategorie from '../pages/categories/AddCategorie';
 import DetailCategorie from '../pages/categories/DetailCategorie';
-import Demandes from '../pages/demandes/Demandes';
 import Users from '../pages/users/Users';
 import Cagnottes from '../pages/cagnottes/Cagnottes';
 import AddCagnotte from '../pages/cagnottes/AddCagnotte';
@@ -38,7 +37,6 @@ const RoutesFree = () => {
                 <Route element={<RoutesPrivate />}>
                     <Route path='/admin/dashboard' element={<Dashboard />} />
                     <Route path='/admin/categories' element={<Categorie />} />
-                    <Route path='/admin/demandes' element={<Demandes />} />
                     <Route path='/admin/participants' element={<Participants />} />
                     <Route path='/admin/users' element={<Users />} />
                     <Route path='/admin/categories/add' element={<AddCategorie />} />

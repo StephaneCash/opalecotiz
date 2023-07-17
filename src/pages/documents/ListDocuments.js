@@ -19,7 +19,7 @@ export default function ListDocuments(props) {
     let valueSearch = props.valueSearch && props.valueSearch.toLowerCase();
 
     const [showBtnAddInf, setShowBtnAddInf] = React.useState(true);
-    const [cunt, setCunt] = React.useState(5);
+    const cunt = 5;
 
     let dispatch = useDispatch();
 
