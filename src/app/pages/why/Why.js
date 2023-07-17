@@ -37,7 +37,7 @@ const Why = () => {
                                     <div className='devise'>
 
                                         {
-                                            val.title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{fontSize:"199px"}}> Participants</div> :
+                                            val.title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{ fontSize: "199px" }}> Participants</div> :
                                                 val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
                                                     if (value === "Dollar") {
                                                         return " $"
@@ -53,19 +53,24 @@ const Why = () => {
                                     </div>
                                 </div>
                                 <div className='collect'>
-                                    <span>collectés sur </span>  <span>{val.montant}
+                                    <span>
                                         {
-                                            val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
-                                                if (value === "Dollar") {
-                                                    return " $"
-                                                } else if (value === "Euro") {
-                                                    return " €"
-                                                } else if (value === "FC") {
-                                                    return " FC"
-                                                } else {
-                                                    return null
-                                                }
-                                            })
+                                            val && val.title === "Jeune Talent" ? " enregistrés sur " : " collectés sur "
+                                        }
+                                    </span>  <span>{val.title === "Jeune Talent" ? "" : 12656}
+                                        {
+                                            val && val.title === "Jeune Talent" ? val && val.montant / 1000 + " participants" :
+                                                val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
+                                                    if (value === "Dollar") {
+                                                        return " $"
+                                                    } else if (value === "Euro") {
+                                                        return " €"
+                                                    } else if (value === "FC") {
+                                                        return " FC"
+                                                    } else {
+                                                        return null
+                                                    }
+                                                })
                                         }
                                     </span>
                                 </div>
