@@ -16,9 +16,7 @@ const Production = () => {
 
   const talents = state && state.val && state.val.talents && state.val.talents.length
   const title = state && state.val && state.val.title && state.val.title;
-
-  console.log(talents)
-
+  
   return (
     <div className='production'>
       <HeaderClient />
@@ -32,7 +30,9 @@ const Production = () => {
           <span>Productions</span>
         </Link>
         <FaAngleRight />
-        {state && state.val && state.val.title}
+        {
+          title && title.length > 15 ? title.substring(0, 15) + "..." : title
+        }
       </div>
       <div className='mainProd'>
         <div className='row1'>

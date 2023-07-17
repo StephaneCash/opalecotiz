@@ -316,7 +316,7 @@ select {
         padding: 1rem .4rem;
     }
 
-    .toolBar a:first-child,
+    .toolBar .accueilLink,
     .firstSvg {
         display: none;
     }

@@ -19,7 +19,7 @@ export const newTalent = createAsyncThunk("talents/create",
     async (data) => {
         try {
             const resp = await axios.post(`${baseUrl}/talents`, data);
-            toast.success('Talent ajouté avec succès');
+            toast.success('Vos informations ont été bien reçues');
             return resp.data;
         } catch (error) {
             console.log(error.response);

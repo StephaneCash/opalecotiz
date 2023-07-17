@@ -4,7 +4,7 @@ import "./Paiement.css";
 import vbancaire from "../../../assets/vbancaire.jpg";
 import cash from "../../../assets/don.jpg";
 import pmobile from "../../../assets/pmobile.jpg"
-import { FaAngleRight, FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
+import { FaAngleRight, FaCheckCircle } from 'react-icons/fa';
 import Footer from '../footer/Footer';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import mpsa from "../../../assets/mpsa.jpg";
@@ -17,6 +17,7 @@ import FormJeuneTalent from './FormJeuneTalent';
 import { useDispatch, useSelector } from 'react-redux';
 import { newTalent } from '../../../features/Talents';
 import { FormSugestion } from './FormSugestion';
+import LoaderBlue from "../../../components/loader/LoaderBlue"
 
 const Paiement = () => {
 
@@ -63,6 +64,7 @@ const Paiement = () => {
     const submitData = (e) => {
         e.preventDefault();
         setBtnClic(true);
+        const typeVideo = file && file.type && file.type.split('/');
         const checkBox = document.getElementById('checkBoxTermes');
         if (state && state.val && state.val.title === "Jeune Talent") {
             if (checkBox && checkBox.checked === true) {
@@ -72,43 +74,18 @@ const Paiement = () => {
                     toast.error('Veuillez remplir le champ montant svp')
                 } else {
                     if (choix === 3) {
-                        toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.");
                         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
                         if (pattern.test(email)) {
-                            let formData = new FormData();
-                            formData.append('nom', nom);
-                            formData.append('montant', montant);
-                            formData.append('video', file);
-                            formData.append('prenom', prenom);
-                            formData.append('email', email);
-                            formData.append('numTel', numTel);
-                            formData.append('dateNaissance', dateNaissance);
-                            formData.append('commune', commune);
-                            formData.append('occupation', occupation);
-                            formData.append('categorie', categorie);
-                            formData.append('modePaiement', modePaiement);
-                            formData.append("typePaiement", typePaiement)
-                            formData.append('cagnotteId', state && state.val && state.val.id)
-
-                            dispatch(newTalent(formData));
-                        } else {
-                            toast.error("L'adresse email n'est pas valide.")
-                        }
-                        navigate('/productions');
-                    } else {
-                        const typeVideo = file && file.type && file.type.split('/');
-                        if (file && typeVideo[0] === "video") {
-                            if (file && file.size > 500000000) {
-                                toast.error("Votre fichier est trop volumineux, taille maximale: 500Mo")
-                            } else {
-                                if (duration > 5) {
-                                    toast.error("La vidéo doit avoir une durée max de 2 Minutes")
+                            if (file && typeVideo[0] === "video") {
+                                if (file && file.size > 50000000) {
+                                    toast.error("Votre fichier est trop volumineux, taille maximale: 50Mo")
                                 } else {
-                                    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-                                    if (pattern.test(email)) {
+                                    if (duration > 2) {
+                                        toast.error("La vidéo doit avoir une durée max de 2 Minutes")
+                                    } else {
                                         let formData = new FormData();
                                         formData.append('nom', nom);
-                                        formData.append('montant', montant);
+                                        formData.append('montant', 1000);
                                         formData.append('video', file);
                                         formData.append('prenom', prenom);
                                         formData.append('email', email);
@@ -122,6 +99,45 @@ const Paiement = () => {
                                         formData.append('cagnotteId', state && state.val && state.val.id)
 
                                         dispatch(newTalent(formData));
+                                        if (isLoading === false) {
+                                            navigate('/productions');
+                                            toast.success("Votre paiement sera pris en compte dès que vous aurez réglé en présentiel.");
+                                        }
+                                    }
+                                }
+                            } else {
+                                toast.error("Seuls les fichiers de type vidéos sont autorisés");
+                            }
+                        } else {
+                            toast.error("L'adresse email n'est pas valide.")
+                        }
+                    } else {
+                        if (file && typeVideo[0] === "video") {
+                            if (file && file.size > 50000000) {
+                                toast.error("Votre fichier est trop volumineux, taille maximale: 50Mo")
+                            } else {
+                                if (duration > 2) {
+                                    toast.error("La vidéo doit avoir une durée max de 2 Minutes")
+                                } else {
+                                    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                                    if (pattern.test(email)) {
+                                        let formData = new FormData();
+                                        formData.append('nom', nom);
+                                        formData.append('montant', 1000);
+                                        formData.append('video', file);
+                                        formData.append('prenom', prenom);
+                                        formData.append('email', email);
+                                        formData.append('numTel', numTel);
+                                        formData.append('dateNaissance', dateNaissance);
+                                        formData.append('commune', commune);
+                                        formData.append('occupation', occupation);
+                                        formData.append('categorie', categorie);
+                                        formData.append('modePaiement', modePaiement);
+                                        formData.append("typePaiement", typePaiement)
+                                        formData.append('cagnotteId', state && state.val && state.val.id)
+
+                                        dispatch(newTalent(formData));
+
                                     } else {
                                         toast.error("L'adresse email n'est pas valide.")
                                     }
@@ -166,7 +182,7 @@ const Paiement = () => {
         <>
             <HeaderClient />
             <div className='toolBar'>
-                <Link to="/">
+                <Link to="/" className='accueilLink'>
                     <span>Accueil</span>
                 </Link>
                 <FaAngleRight className='firstSvg' />
@@ -438,7 +454,6 @@ const Paiement = () => {
                                     btnClic && !isChecked && <span style={{ color: "red" }}>Veuillez cocher la case pour accepter les termes de confidentialité.</span>
                                 }
 
-
                             </>
                             : ""
                     }
@@ -447,33 +462,39 @@ const Paiement = () => {
                     >
                         {
                             state && state.val && state.val.title === "Jeune Talent" ?
-                                <button
-                                    type="button"
-                                    className="btn"
-                                    style={{ width: "40%" }}
-                                    disabled={
-                                        nom && prenom && dateNaissance && commune &&
-                                            occupation && categorie && file && numTel ? false : true
-                                    }
-                                    onClick={(e) => submitData(e)}
-                                >
-                                    {
-                                        choix === 3 ? "Confirmer ce payement" :
-                                            isLoading ? "Validation..." :
+                                isLoading ?
+                                    <div className='mt-3'>
+                                        <LoaderBlue />
+                                    </div>
+                                    :
+                                    <button
+                                        type="button"
+                                        className="btn"
+                                        style={{ width: "40%" }}
+                                        disabled={
+                                            nom && prenom && dateNaissance && commune &&
+                                                occupation && categorie && file && numTel ? false : true
+                                        }
+                                        onClick={(e) => submitData(e)}
+                                    >
+                                        {
+                                            choix === 3 ? "Confirmer ce payement" :
                                                 "Valider et Payer"
-                                    }
-                                </button> :
-                                <button
-                                    type="button"
-                                    className="btn"
-                                    style={{ width: "40%" }}
-                                    onClick={(e) => submitData(e)}
-                                >
-                                    {
-                                        choix === 3 ? "Confirmer ce payement" :
-                                            "Valider et Payer"
-                                    }
-                                </button>
+                                        }
+                                    </button>
+                                :
+                                isLoading ? <LoaderBlue /> :
+                                    <button
+                                        type="button"
+                                        className="btn"
+                                        style={{ width: "40%" }}
+                                        onClick={(e) => submitData(e)}
+                                    >
+                                        {
+                                            choix === 3 ? "Confirmer ce payement" :
+                                                "Valider et Payer"
+                                        }
+                                    </button>
                         }
                     </div>
                 </div>

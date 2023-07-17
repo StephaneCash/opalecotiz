@@ -121,6 +121,14 @@ textarea {
     width: 20px;
 }
 
+.categorieJeune{
+    appearance: auto !important;
+}
+
+.Toastify__toast-container{
+    z-index: 10000000000000000 !important;
+}
+
 .btnTermes input:checked {
     background-color: #009c4e !important;
     border-color: #009c4e !important;

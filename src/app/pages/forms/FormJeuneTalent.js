@@ -73,9 +73,10 @@ const FormJeuneTalent = ({ setNom, setEmail, setNumTel, setCategorie,
                 </div>
                 <div className="col-sm-6">
                     <select onChange={(e) => setCategorie(e.target.value)} className='form-control categorieJeune'>
-                        <option value="">Veuillez choisir une catégorie...</option>
+                        <option value="">Veuillez choisir une catégorie*</option>
                         <option value="Musique">Musique</option>
                         <option value="Théatre">Théatre</option>
+                        <option value="Théatre">Danse</option>
                         <option value="Autres">Autres...</option>
                     </select>
                 </div>
