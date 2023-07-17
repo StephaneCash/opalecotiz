@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Leftbar from '../../components/leftbar/Leftbar';
 import Navbar from '../../components/navbar/Navbar';
-import { ContextApp } from '../../context/AppContext'
 import "./Dashboard.css";
 import {  Button } from '@mui/material';
 import Chart from "react-apexcharts";
@@ -10,7 +9,6 @@ import { FiMoreVertical } from "react-icons/fi"
 
 
 const Dashboard = () => {
-  const { userConnected } = useContext(ContextApp);
 
   const options = {
     xaxis: {
