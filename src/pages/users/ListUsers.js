@@ -6,41 +6,26 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar } from '@mui/material';
-import { baseUrlImage } from '../../bases/basesUrl';
 import LoaderBlue from '../../components/loader/LoaderBlue';
 import { useDispatch } from 'react-redux';
-import { getAllcategories } from '../../features/Categories';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
-import { FaFilter, FaRegEdit, FaRegTrashAlt, FaUsers } from 'react-icons/fa';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { FaEdit, FaInfo, FaRegTrashAlt } from 'react-icons/fa';
+import { dateParserFunction } from '../../utils';
 import { deleteUser } from '../../features/Users';
-import { ContextApp } from '../../context/AppContext';
 
 export default function ListUsers(props) {
-    let data = props.data;
+    let data = props.data && props.data;
     let valueSearch = props.valueSearch && props.valueSearch.toLowerCase();
 
     const [showBtnAddInf, setShowBtnAddInf] = React.useState(true);
-
-    const [categories, setCategories] = React.useState([]);
-    const [hasMore, setHasMore] = React.useState(true);
-    const [count, setCount] = React.useState(10);
+    const [cunt, setCunt] = React.useState(5);
 
     let dispatch = useDispatch();
 
-    React.useEffect(() => {
-        setCategories(data && data.value && data.value)
-    }, [data]);
-
-    React.useEffect(() => {
-        dispatch(getAllcategories(count));
-    }, [dispatch, count]);
-
-    const deleteCategorie = (id) => {
+    const deleteTalentJeune = (id) => {
         swal({
-            text: "Etes-vous sûr de vouloir supprimer cet utilsateur ?",
+            text: "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
             buttons: true,
             dangerMode: true
         }).then((willDelete) => {
@@ -52,182 +37,199 @@ export default function ListUsers(props) {
         });
     };
 
-    const loadMore = () => {
-        if (categories.length === count) {
-            setCategories(categories && categories.concat(categories));
-            setHasMore(true);
-            setCount(count + 10);
-        }
-        else {
-            setHasMore(false);
-            setCount(count + 10);
-        }
-    };
-
     const handleCheckBox = (id) => {
         setShowBtnAddInf(!showBtnAddInf);
-        console.log(id)
     };
 
-    React.useEffect(() => {
-        setShowBtnAddInf(false);
-    }, []);
-
-    const { userConnected } = React.useContext(ContextApp);
-
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const lastIndex = currentPage * cunt;
+    const firstIndex = lastIndex - cunt;
+    const records = data && data.length > 0 && data.slice(firstIndex, lastIndex);
+    const nbPage = Math.ceil(data && data.length > 0 && data.length / cunt);
+    const numbers = [...Array(data && nbPage + 1).keys()].slice(1);
 
     return (
-        <TableContainer component={Paper} id="scrollableDiv"
-            style={{
-                height: 510,
-                overflow: 'auto',
+        <TableContainer component={Paper}>
+            <div className='headTable' style={{
+                background: '#009c4e', color: "#fff",
+                border: "1px solid #ddd", padding: "1rem", display: "flex",
+                justifyContent: "space-between", alignItems: "center", borderRadius: "5px"
             }}>
-            <div className='alert alert-primary' style={{ background: '#fff', border: "1px solid #ddd" }}>
-                <div className='headerListCategorie'>
-                    <div>
-                        <span>Pages</span> / <span>Utilisateurs {data && data.value && data.value.length > 0 ? `(${data.value.length})` : `(0)`}</span>
-                        <br />
-                        <h6>Utilisateurs</h6>
-                    </div>
-                    <div>
-                        {
-                            showBtnAddInf ? <button
-                                className='btn btn-success'
-                                style={{
-                                    backgroundColor: '#ddd', color: "#333",
-                                    border: "1px solid #fff", boxShadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
-                                }}>
-                                <FaUsers /> Ajouter des influenceurs
-                            </button>
-                                : <FaFilter />
-                        }
-                    </div>
+                <div>
+                    <span>Pages</span> / <span>Utilisateurs {data && data.length > 0 ? `(${data.length})` :
+                        `(0)`}</span>
+                    <br />
+                    <h6>Utilisateurs</h6>
+                </div>
+
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "flex-end"
+                }}>
+                    <label>Choisir le nombre d'items à afficher</label>
+                    <select style={{ width: "20%", textAlign: "center" }} onChange={(e) => setCunt(e.target.value)} className='form-control'>
+                        <option value={5}>5</option>
+                        <option value={10}>10</option>
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                        <option value={100}>100</option>
+                    </select>
                 </div>
             </div>
-            <InfiniteScroll
-                dataLength={categories && categories.length}
-                next={loadMore}
-                hasMore={hasMore}
-                loader={
-                    <div style={{
-                        width: '100%',
-                        display: "flex",
-                        justifyContent: "center"
-                    }}>
-                        <LoaderBlue />
-                    </div>
-                }
-                endMessage={
-                    <div style={{
-                        width: '100%',
-                        display: "flex",
-                        justifyContent: "center",
-                        marginBottom: '1rem'
-                    }}>
-                        Plus de données disponibles
-                    </div>
-                }
-                scrollableTarget="scrollableDiv"
-            >
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <input
-                                    style={{ border: "2px solid silver", width: 20, height: 20 }}
-                                    className="form-check-input" type="checkbox" value=""
-                                    id="flexCheckDefault"
-                                />
-                            </TableCell>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Pseudo</TableCell>
-                            <TableCell align="left">Email</TableCell>
-                            <TableCell align="left">Role</TableCell>
-                            <TableCell align="left">Statut</TableCell>
-                            <TableCell align="left">Options</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
+                            <input
+                                style={{ border: "2px solid silver", width: 20, height: 20 }}
+                                className="form-check-input" type="checkbox" value=""
+                                id="flexCheckDefault"
+                            />
+                        </TableCell>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Nom</TableCell>
+                        <TableCell align="left">Email</TableCell>
+                        <TableCell align="left">Role</TableCell>
+                        <TableCell align="left">Date ajout</TableCell>
+                        <TableCell align="left">Options</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
 
-                        {categories && categories.length > 0 ? categories.filter(val => {
-                            const nom = val && val.email !== undefined && val.email.toLowerCase();
-                            return nom && nom.includes(valueSearch)
-                        })
-                            .map((row, i) => (
-                                <TableRow
-                                    key={row.id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell width={60}>
-                                        <input
-                                            className="form-check-input" type="checkbox"
-                                            value="" id="flexCheckDefault"
-                                            onClick={() => handleCheckBox(row && row.id)}
-                                            style={{ border: "2px solid silver", width: 20, height: 20 }}
-                                        />
-                                    </TableCell>
-                                    <TableCell width={60}>{i + 1}</TableCell>
-                                    <TableCell width={200} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                                        <Avatar alt={row && row.pseudo && row.pseudo} sx={{ width: 50, height: 50 }} src={baseUrlImage + "/" + row.url} />
-                                        <div>
-                                            <div>{row.pseudo}</div>
-                                            {
-                                                userConnected && userConnected.id === row.id &&
-                                                <div className='text-primary'>
-                                                    ( Vous )
-                                                </div>
-                                            }
-                                        </div>
-                                    </TableCell>
-                                    <TableCell align="left" width={400}
-                                        style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
-                                        {
-                                            row && row.email
-                                        }
-                                    </TableCell>
-                                    <TableCell align="left" width={200}
-                                        style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
-                                        {
-                                            row && row.role === 0 ? "Admin" : "Super Admin"
-                                        }
-                                    </TableCell>
-
-                                    <TableCell align="left" width={200}
-                                        style={{ fontFamily: "Roboto", textAlign: "justify", fontWeight: "400", lineHeight: "1.4rem" }}>
-                                        {
-                                            row && row.isActive === true ? <span className='alert alert-danger'>Désactivé</span> : <span className='alert alert-success'>Activé</span>
-                                        }
-                                    </TableCell>
-                                    <TableCell align="left" width={130}>
-                                       
-                                        <Link to={{ pathname: "add" }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
-                                            <FaRegEdit size={18} />
-                                        </Link>
-                                        {
-                                            userConnected &&  userConnected.id === row.id ? "" :
-                                            <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteCategorie(row.id)} />
-                                            
-                                        }
-                                    </TableCell>
-                                </TableRow>
-                            )) :
-                            data && data.value && data.value.length === 0 ?
-                                <TableCell colSpan="6px"
-                                    style={{
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    Pas de données disponibles.
-                                </TableCell> :
-
-                                <TableCell align="left" style={{ textAlign: "center" }} colSpan="6px">
-                                    ''
+                    {records ? records.length > 0 ? records.filter(val => {
+                        const nom = val && val.pseudo && val.pseudo.toLowerCase();
+                        return nom && nom.includes(valueSearch && valueSearch)
+                    })
+                        .map((row, i) => (
+                            <TableRow
+                                key={row.id}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell width={60}>
+                                    <input
+                                        className="form-check-input" type="checkbox"
+                                        value="" id="flexCheckDefault"
+                                        onClick={() => handleCheckBox(row && row.id)}
+                                        style={{ border: "2px solid silver", width: 20, height: 20 }}
+                                    />
                                 </TableCell>
-                        }
+                                <TableCell width={60}>{i + 1}</TableCell>
+                                <TableCell width={300}>
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "center",
+                                        gap: "5px"
+                                    }}>
+                                        <div style={{ fontWeight: "600", }}>
+                                            {
+                                                row && row.pseudo && row.pseudo && row.pseudo.length > 20 ?
+                                                    row.pseudo.substring(0, 20) + "..." : row && row.pseudo !== undefined && row.pseudo
+                                            }                                           
+                                        </div>
+                                    </div>
+                                </TableCell>
+                                <TableCell align="left" width={500} style={{ fontWeight: "400", lineHeight: "1.4rem" }}>
+                                {
+                                                row && row.email && row.email && row.email.length > 20 ?
+                                                    row.email.substring(0, 20) + "..." : row && row.email !== undefined && row.email
+                                            }
+                                </TableCell>
+                                <TableCell align="left" width={500} style={{ fontWeight: "400", lineHeight: "1.4rem" }}>
+                                    {
+                                        row && row.role === 0 ? "Admin" : "Super Admin"
+                                    }
+                                </TableCell>
+                                <TableCell width={300}>
+                                    {
+                                        dateParserFunction(row.createdAt)
+                                    }
+                                </TableCell>
+                                <TableCell align="left" width={140}>
+                                    <Link to={{ pathname: `add` }} state={{ data: row }} style={{ color: "#111" }} className="me-1">
+                                        <FaEdit size={18} />
+                                    </Link>
+                                    <FaRegTrashAlt size={18} style={{ cursor: 'pointer' }} onClick={() => deleteTalentJeune(row.id)} />
+                                </TableCell>
+                            </TableRow>
+                        )) :
+                        data && data.length === 0 ?
+                            <TableCell colSpan="6px"
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >
+                                Pas de données disponibles.
+                            </TableCell> :
 
-                    </TableBody>
-                </Table>
-            </InfiniteScroll>
+                            <TableRow
+                            >
+                                <TableCell
+                                    align='center'
+                                    colSpan="7px"
+                                >
+                                    <LoaderBlue />
+                                </TableCell>
+                            </TableRow> :
+                        <TableRow
+                        >
+                            <TableCell
+                                align='center'
+                                colSpan="7px"
+                            >
+                                Pas de données disponibles
+                            </TableCell>
+                        </TableRow>
+                    }
+
+                </TableBody>
+            </Table>
+            {
+                <nav className='paginationNav'>
+                    <ul className='pagination'>
+                        <li className='page-item'>
+                            <Link to="#" className='page-link'
+                                onClick={prePage}
+                            >Retour</Link>
+                        </li>
+                        {
+                            numbers && numbers.map((n, i) => {
+                                return (
+                                    <li key={i} className={`page-item ${currentPage === n} ? 'active' : ''`}>
+                                        <Link to="#" className='page-link'
+                                            onClick={() => changePage(n)}
+                                        >{n}</Link>
+                                    </li>
+                                )
+                            })
+                        }
+                        <li className='page-item'>
+                            <Link to="#" className='page-link'
+                                onClick={nextPage}
+                            >Suivant</Link>
+                        </li>
+                    </ul>
+                </nav>
+            }
         </TableContainer>
     );
+
+    function prePage() {
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+
+    function changePage(id) {
+        setCurrentPage(id)
+    }
+
+    function nextPage() {
+        if (currentPage !== nbPage) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
 }

@@ -18,6 +18,7 @@ const DetailTalent = () => {
     }
   }, [state]);
 
+
   return (
     <>
       <Navbar />
@@ -97,9 +98,9 @@ const DetailTalent = () => {
                   </tr>
 
                   <tr>
-                    <td>Montant</td>
+                    <td>Type de paiement</td>
                     <td>{data && data.transactions && data.transactions.map(val => {
-                      return val.montant
+                      return val.typePaiement
                     })} </td>
                   </tr>
 

@@ -47,6 +47,7 @@ const Paiement = () => {
     const [nom, setNom] = useState("");
     const [modePaiement, setModePaiement] = useState('');
     const [duration, setDuration] = useState(0);
+    const [typePaiement, setTypePaiement] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
     const [btnClic, setBtnClic] = useState(false);
@@ -78,7 +79,7 @@ const Paiement = () => {
                             if (file && file.size > 500000000) {
                                 toast.error("Votre fichier est trop volumineux, taille maximale: 500Mo")
                             } else {
-                                if (duration > 1) {
+                                if (duration > 5) {
                                     toast.error("La vidéo doit avoir une durée max de 2 Minutes")
                                 } else {
                                     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -95,6 +96,7 @@ const Paiement = () => {
                                         formData.append('occupation', occupation);
                                         formData.append('categorie', categorie);
                                         formData.append('modePaiement', modePaiement);
+                                        formData.append("typePaiement", typePaiement)
 
                                         dispatch(newTalent(formData));
                                     } else {
@@ -305,7 +307,9 @@ const Paiement = () => {
                         }}>Chosir le mode de paiement</h4> <br />
                         <div className="row">
                             <div className='col-sm-4'>
-                                <div className={choix === 1 ? "card choisi" : "card"} onClick={() => setChoix(1)}>
+                                <div className={choix === 1 ? "card choisi" : "card"} onClick={() => {
+                                    setChoix(1); setTypePaiement("Paiement mobile")
+                                }}>
                                     <img src={pmobile} alt="Paiement mobile" />
                                     {
                                         choix === 1 && <FaCheckCircle size={40} />
@@ -313,7 +317,9 @@ const Paiement = () => {
                                 </div>
                                 <p style={{ fontSize: "1rem", fontWeight: "bold", textAlign: "center" }}>Paiement mobile</p>
                             </div>
-                            <div className='col-sm-4' onClick={() => setChoix(2)}>
+                            <div className='col-sm-4' onClick={() => {
+                                setChoix(2); setTypePaiement('Virement bancaire')
+                            }}>
                                 <div className={choix === 2 ? "card choisi" : "card"}>
                                     <img src={vbancaire} alt="Virement bancaire" />
                                     {
@@ -323,7 +329,9 @@ const Paiement = () => {
                                 <p style={{ fontSize: "1rem", fontWeight: "bold", textAlign: "center" }}>Virement bancaire</p>
                             </div>
 
-                            <div className='col-sm-4' onClick={() => setChoix(3)}>
+                            <div className='col-sm-4' onClick={() => {
+                                setChoix(3); setTypeMobile('Paiement cash')
+                            }}>
                                 <div className={choix === 3 ? "card choisi" : "card"}>
                                     <img src={cash} alt="Paiement cash" />
                                     {

@@ -9,7 +9,7 @@ import ListUsers from './ListUsers';
 
 const Users = () => {
 
-    const usersList = useSelector((state) => state.users);
+    const usersList = useSelector((state) => state.users.value);
     const [valueSearch, setValueSearch] = useState('');
 
     return (

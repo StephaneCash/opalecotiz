@@ -58,6 +58,7 @@ textarea {
 .payement button:hover {
     border: 1px solid #fff;
     color: #009c4e;
+    border: 2px solid #009c4e;
 }
 
 .payement .montant .row .card {
