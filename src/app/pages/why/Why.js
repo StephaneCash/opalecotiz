@@ -82,7 +82,9 @@ const Why = () => {
                                         val: val
                                     }}
                                 >
-                                    Je m'inscris
+                                    {
+                                        val.title === "Jeune Talent" ? "Je m'inscris" : "Je participe"
+                                    }
                                 </Link>
                             </div>
                         </div>

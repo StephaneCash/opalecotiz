@@ -20,12 +20,14 @@ export const newTalent = createAsyncThunk("talents/create",
         try {
             const resp = await axios.post(`${baseUrl}/talents`, data);
             toast.success('Vos informations ont été bien reçues');
+            window.location = "/inscription-success";
             return resp.data;
         } catch (error) {
             console.log(error.response);
             if (error.response && error.response.status === 400) {
                 toast.error(error && error.response && error.response.data && error.response.data.message[0]);
                 console.log("kk", error.response.data && error.response.data.message[0])
+                window.location = "/inscription-faillure";
             }
         }
     });

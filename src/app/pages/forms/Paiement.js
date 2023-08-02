@@ -18,8 +18,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { newTalent } from '../../../features/Talents';
 import { FormSugestion } from './FormSugestion';
 import LoaderBlue from "../../../components/loader/LoaderBlue"
+import ModalPaiement from './ModalPaiement';
 
 const Paiement = () => {
+
+    const [showModal, setShowModal] = useState(false);
+
+    function closeModal() {
+        setShowModal(false);
+    };
 
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -309,7 +316,7 @@ const Paiement = () => {
                         <div className="row">
                             <div className='col-sm-4'>
                                 <div className={choix === 1 ? "card choisi" : "card"} onClick={() => {
-                                    setChoix(1); setTypePaiement("Paiement mobile")
+                                    setChoix(1); setTypePaiement("Paiement mobile");
                                 }}>
                                     <img src={pmobile} alt="Paiement mobile" />
                                     {
@@ -356,7 +363,7 @@ const Paiement = () => {
                                             {montant}
                                             {
                                                 devise === "Dollar" ? " $" : devise === "Euro" ? " €" :
-                                                    devise === "FC" ? " FC" : ""
+                                                    devise === "FC" ? "" : ""
                                             }
                                         </td>
                                     </tr>
@@ -393,24 +400,24 @@ const Paiement = () => {
                                 <h5>Choisir un mode opératoire</h5>
                                 <div className='grille mobilesBank'>
                                     <div className={typeMobile === 1 ? "card checked" : "card"} onClick={() => {
-                                        setTypeMobile(1); setModePaiement("MPSA")
+                                        setTypeMobile(1); setModePaiement("MPSA"); setShowModal(true)
                                     }}>
-                                        {typeMobile === 1 && <FaCheckCircle size={30} />}     <img src={mpsa} alt="" />
+                                        {typeMobile === 1 && <FaCheckCircle size={30} />} <img src={mpsa} alt="" />
                                     </div>
                                     <div className={typeMobile === 2 ? "card checked" : "card"} onClick={() => {
-                                        setTypeMobile(2); setModePaiement("ORANGE MONEY")
+                                        setTypeMobile(2); setModePaiement("ORANGE MONEY"); setShowModal(true)
                                     }}>
-                                        {typeMobile === 2 && <FaCheckCircle size={30} />}   <img src={orange} alt="" />
+                                        {typeMobile === 2 && <FaCheckCircle size={30} />} <img src={orange} alt="" />
                                     </div>
                                     <div className={typeMobile === 3 ? "card checked" : "card"} onClick={() => {
-                                        setTypeMobile(3); setModePaiement("AIRTEL MONEY")
+                                        setTypeMobile(3); setModePaiement("AIRTEL MONEY"); setShowModal(true)
                                     }}>
-                                        {typeMobile === 3 && <FaCheckCircle size={30} />}    <img src={airtel} alt="" />
+                                        {typeMobile === 3 && <FaCheckCircle size={30} />} <img src={airtel} alt="" />
                                     </div>
                                     <div className={typeMobile === 4 ? "card checked" : "card"} onClick={() => {
-                                        setTypeMobile(4); setModePaiement("AFRI MONEY")
+                                        setTypeMobile(4); setModePaiement("AFRI MONEY"); setShowModal(true)
                                     }}>
-                                        {typeMobile === 4 && <FaCheckCircle size={30} />}   <img src={africell} alt="" />
+                                        {typeMobile === 4 && <FaCheckCircle size={30} />} <img src={africell} alt="" />
                                     </div>
                                 </div>
                             </>
@@ -499,6 +506,12 @@ const Paiement = () => {
                     </div>
                 </div>
             </div>
+            <ModalPaiement
+                choix={choix}
+                show={showModal}
+                closeModal={closeModal}
+                modePaiement={modePaiement}
+            />
             <Footer />
         </>
     )

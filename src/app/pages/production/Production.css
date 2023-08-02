@@ -147,7 +147,7 @@ select {
     padding: 1rem;
     font-size: 15px;
     font-family: "Segoe UI" !important;
-    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
 }
 
 .row1 .card .montant .prixRecoltat,
@@ -247,6 +247,28 @@ select {
     border: 1px solid #ddd;
     border-radius: 0;
     width: 100%;
+}
+
+.parentBtn {
+    text-decoration: none;
+}
+
+.parentBtn .btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center
+}
+
+.parentBtn .btn svg {
+    animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+    50% {
+        opacity: 0;
+    }
 }
 
 @media screen and (max-width:1100px) {

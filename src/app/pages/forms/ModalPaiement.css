@@ -1,0 +1,40 @@
+.modalImage.modal {
+    display: flex !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.modalImage.modal .modal-dialog {
+    max-width: 50% !important;
+    width: 100% !important;
+}
+
+.modalImage.modal input {
+    border-radius: 3px !important;
+    margin-top: 1rem !important;
+    box-shadow: none;
+}
+
+.modalImage.modal input:focus {
+    border: 1px solid silver !important;
+}
+
+.modalImage.modal button {
+    padding: .5rem 1rem;
+    border-radius: 3px !important;
+    border: 1px solid silver;
+}
+
+.modalImage.modal button:first-child {
+    background-color: #009c4e;
+    color: #fff;
+}
+
+@media screen and (max-width:500px) {
+    .modalImage.modal .modal-dialog {
+        max-width: 90% !important;
+        width: 100% !important;
+    }
+}
