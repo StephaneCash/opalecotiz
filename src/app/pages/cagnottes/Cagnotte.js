@@ -14,12 +14,12 @@ const Cagnotte = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-}, []);
+  }, []);
 
   return (
     <div className='mainCol'>
       <div className='cagnotte'>
-        <HeaderClient/>
+        <HeaderClient />
         <Main
           listcategories={listcategories}
           listCagnottes={listCagnottes}

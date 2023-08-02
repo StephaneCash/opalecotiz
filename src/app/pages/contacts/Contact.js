@@ -56,7 +56,7 @@ const Contact = () => {
             </div>
             <div className='col2'>
                 <form onSubmit={submitMsg}>
-                    <h5>Contacts</h5>
+                    <h5>Contactez-nous</h5>
                     <div className='form-group'>
                         <input
                             type="text"
@@ -86,7 +86,7 @@ const Contact = () => {
                     </div>
                     <div className='form-group'>
                         <textarea
-                            cols="30" rows="8"
+                            cols="30" rows="4"
                             value={msg}
                             placeholder='Votre message'
                             onChange={(e) => setMasg(e.target.value)}

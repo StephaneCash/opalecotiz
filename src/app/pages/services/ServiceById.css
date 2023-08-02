@@ -1,0 +1,165 @@
+.serviceById {
+    width: 100%;
+}
+
+.serviceById .toolbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem 5rem;
+    background-color: #fff;
+    gap: 10px;
+}
+
+.serviceById .accueilPath {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.serviceById .toolbar a {
+    color: #444;
+    text-decoration: none;
+}
+
+.serviceById .annonce {
+    background-color: #087564;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+}
+
+.serviceById .annonce .overPlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.586);
+}
+
+.serviceById .annonce .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 5rem;
+}
+
+.serviceById .annonce .theme {
+    width: 100%;
+    margin: auto;
+    color: #fff;
+    font-size: 2rem !important;
+    font-family: "Poppins";
+    text-transform: uppercase;
+}
+
+.serviceById .annonce .title {
+    font-size: 3rem !important;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    margin: auto;
+    font-family: "Poppins";
+}
+
+.serviceById .description {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 5rem;
+}
+
+.serviceById .description .title {
+    font-size: 2rem !important;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+
+.serviceById .description .desc {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.serviceById .description .desc .text {
+    width: 60%;
+}
+
+.serviceById .description .desc .image {
+    width: 38%;
+    height: 400px;
+}
+
+.serviceById .description .desc .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.serviceById ul,
+.serviceById ol {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+@media screen and (max-width:1100px) {
+    .serviceById .toolbar {
+        padding: 1rem;
+    }
+
+    .serviceById .description {
+        flex-direction: column;
+    }
+
+    .serviceById .description .desc {
+        flex-direction: column-reverse;
+    }
+
+    .serviceById .description .desc .text,
+    .serviceById .description .desc .image {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .serviceById .description {
+        padding: 1rem;
+    }
+
+    .serviceById .annonce .title {
+        font-size: 2rem;
+    }
+
+    .serviceById .annonce .text {
+        padding-left: 2rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .serviceById .catDate {
+        flex-direction: column;
+    }
+
+    .serviceById .annonce .title {
+        font-size: 1.5rem;
+    }
+
+    .serviceById .annonce .text {
+        padding-left: 1rem;
+    }
+
+    .serviceById .description .title {
+        font-size: 1.1rem !important;
+    }
+
+    .serviceById .annonce .title {
+        font-size: 1.5rem !important;
+    }
+}

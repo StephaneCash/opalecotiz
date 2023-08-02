@@ -3,7 +3,7 @@ import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
-import { FaAngleRight, FaCheckCircle } from 'react-icons/fa'
+import { FaAngleRight, FaCheckCircle, FaHome } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
 const Production = () => {
@@ -22,9 +22,10 @@ const Production = () => {
       <HeaderClient />
 
       <div className='toolBar'>
-        <Link to="/">
-          <span>Accueil</span>
-        </Link>
+        <div className='accueilPath'>
+          <FaHome />
+          <Link to="/">Accueil</Link>
+        </div>
         <FaAngleRight />
         <Link to="/productions">
           <span>Productions</span>
@@ -64,7 +65,7 @@ const Production = () => {
                       <div className='montant2'>
                         <div className='prixRecoltat'>
                           {
-                            talents && title === "Jeune Talent" ? talents * 1000 :
+                            talents && title === "Jeune Talent" ? talents :
                               state && state.val && state.val.montantRecolte ? state.val.montantRecolte : 0
                           }
                         </div>

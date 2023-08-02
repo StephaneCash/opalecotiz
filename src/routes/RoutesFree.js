@@ -23,6 +23,7 @@ import AddDocument from "../pages/documents/AddDocument"
 import Talents from '../pages/talents/Talents';
 import AddTalent from '../pages/talents/AddTalent';
 import DetailTalent from '../pages/talents/DetailTalent';
+import ServiceById from '../app/pages/services/ServiceById';
 
 const RoutesFree = () => {
     return (
@@ -33,6 +34,7 @@ const RoutesFree = () => {
                 <Route path='/production/:id' element={<Production />} />
                 <Route path='/payement/:id' element={<Paiement />} />
                 <Route path='/admin' element={<Login />} />
+                <Route path='/service/:id' element={<ServiceById />} />
 
                 <Route element={<RoutesPrivate />}>
                     <Route path='/admin/dashboard' element={<Dashboard />} />

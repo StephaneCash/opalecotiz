@@ -4,7 +4,7 @@
 }
 
 .why h3 {
-    font-size: 3rem !important;
+    font-size: 2rem !important;
     font-weight: bold;
 }
 
@@ -28,7 +28,6 @@
 
 .why .title {
     font-size: 1.4rem !important;
-    font-family: "Poppins";
     text-align: center;
     font-weight: bold;
 }
@@ -78,12 +77,10 @@
 
 .why .collect span:first-child {
     font-size: 1rem !important;
-    font-family: "Poppins" !important;
 }
 
 .why .collect span:last-child {
     font-size: 1.2rem !important;
-    font-family: "Poppins" !important;
     font-weight: bold;
 }
 
@@ -96,7 +93,7 @@
 
 .why img {
     height: 50% !important;
-    object-fit: scale-down;
+    object-fit: cover;
 }
 
 .why a {

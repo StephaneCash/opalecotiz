@@ -96,13 +96,13 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                                 <div className='prixRecoltat'>
                                                     {
                                                         val && val.title === "Jeune Talent" ?
-                                                            talents * 1000
+                                                            talents
                                                             : 0
                                                     }
                                                 </div>
                                                 <div className='devise'>
                                                     {
-                                                        val && val.title === "Jeune Talent" ? <div className='nomJeuneTalent'> Participants</div> :
+                                                        val && val.title === "Jeune Talent" ? <div style={{ marginLeft: '5px' }}> Participants</div> :
                                                             val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
                                                                 if (value === "Dollar") {
                                                                     return " $"
@@ -125,7 +125,7 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                                     sur </span>
                                                 <span>{
                                                     val.title === "Jeune Talent" ? val.montant / 1000 + " Participants" : val.montant}
-                                                    { val.title !== "Jeune Talent" &&
+                                                    {val.title !== "Jeune Talent" &&
                                                         val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
                                                             if (value === "Dollar") {
                                                                 return " $"

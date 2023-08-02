@@ -13,7 +13,7 @@ const Why = () => {
 
     return (
         <div className='why'>
-            <h3>Les Dernières productions...</h3>
+            <h3>Nos dernières productions...</h3>
             <div className='cardsData'>
                 {
                     sliceCagnottes && sliceCagnottes.length > 0 && sliceCagnottes.map(val => {
@@ -30,14 +30,14 @@ const Why = () => {
                                     <div className='prixRecoltat'>
                                         {
                                             val && val.title === "Jeune Talent" ?
-                                                talents * 1000
+                                                talents 
                                                 : 0
                                         }
                                     </div>
                                     <div className='devise'>
 
                                         {
-                                            val.title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{ fontSize: "199px" }}> Participants</div> :
+                                            val.title === "Jeune Talent" ? <div className='nomJeuneTalent' style={{ marginLeft: "5px" }}> Participants</div> :
                                                 val.devise && val.devise.split(',') && val.devise.split(',').map(value => {
                                                     if (value === "Dollar") {
                                                         return " $"

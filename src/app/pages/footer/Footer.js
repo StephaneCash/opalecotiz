@@ -7,12 +7,30 @@ const Footer = () => {
     const annee = new Date().getFullYear();
     return (
         <div className='footer'>
-            <div className='mainDiv'>
-                <Link to="/">
-                    <img src={logo} alt="Logo" />
-                </Link>
+            <div className='ressourcesApropos'>
+                <ul>
+                    <li>A PROPOS</li>
+                    <li>Comment ça marche</li>
+                    <li>Pourquoi LiGABLO Production</li>
+                </ul>
+
+                <ul>
+                    <li>RESSOURCES</li>
+                    <li>Conditions générales</li>
+                    <li>Confidentialité</li>
+                </ul>
+
+                <div>
+                    <div className='mainDiv'>
+                        <Link to="/">
+                            <img src={logo} alt="Logo" />
+                        </Link>
+                    </div>
+                </div>
             </div>
-            &copy; Par Ligablo  {annee} | Transactions cryptées et sécurisées en SSL/HTTPS.
+            <hr/>
+            <span>
+                &copy; Par Ligablo  {annee} | Transactions cryptées et sécurisées en SSL/HTTPS.</span>
         </div>
     )
 }

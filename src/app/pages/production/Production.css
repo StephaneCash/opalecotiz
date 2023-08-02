@@ -238,6 +238,12 @@ select {
     width: 100%;
 }
 
+.accueilPath {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .toolBar svg {
     color: #666;
 }
@@ -301,11 +307,11 @@ select {
         font-size: 12px !important;
     }
 
-    .payement{
+    .payement {
         margin: 1rem auto !important;
     }
 
-    .payement .form{
+    .payement .form {
         padding: 1rem !important;
     }
 }

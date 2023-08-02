@@ -38,7 +38,7 @@
 
 .about .text .textQuiSommesNous {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2rem !important;
     font-weight: bold;
     color: #ddd;
 }

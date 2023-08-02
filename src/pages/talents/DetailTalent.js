@@ -119,8 +119,8 @@ const DetailTalent = () => {
                 </tbody>
               </table>
 
-              <div className='row'>
-                <video src={baseUrlImage + "/" + data.video} controls></video>
+              <div style={{ border: "1px solid silver" }}>
+                <video src={baseUrlImage + "/" + data.video} height={400} width={"100%"} controls></video>
               </div>
             </div>
           </div>
