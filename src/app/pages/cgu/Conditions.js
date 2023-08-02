@@ -12,7 +12,6 @@ const Conditions = () => {
 
     return (
         <>
-
             <HeaderClient />
             <div className='cgu'>
                 <h1>Mentions légales & CGU</h1>

@@ -1,11 +1,11 @@
-.cgu {
+.cgu, .politiques {
     padding: 2rem;
     width: 60%;
     margin: auto;
     font-family: "Segoe UI";
 }
 
-.cgu p {
+.cgu p, .politiques p {
     font-family: "Segoe UI";
 }
 
@@ -13,7 +13,7 @@
     font-family: "Segoe UI";
 }
 
-.cgu h1 {
+.cgu h1, .politiques h1 {
     font-size: 2rem !important;
     font-weight: bold;
     text-align: center;
@@ -32,23 +32,24 @@
 }
 
 @media screen and (max-width:900px) {
-    .cgu {
+    .cgu, .politiques {
         padding: 2rem;
         width: 80%;
         margin: auto;
         font-family: "Segoe UI";
     }
+
 }
 
 @media screen and (max-width:900px) {
-    .cgu {
+    .cgu, .politiques {
         padding: 2rem 1rem;
         width: 100%;
         margin: auto;
         font-family: "Segoe UI";
     }
 
-    .cgu h1 {
+    .cgu h1, .politiques h1 {
         font-size: 1.3rem !important;
     }
 }

@@ -10,8 +10,12 @@ const Footer = () => {
             <div className='ressourcesApropos'>
                 <ul>
                     <li>A PROPOS</li>
-                    <li>Comment ça marche</li>
-                    <li>Pourquoi LiGABLO Production</li>
+                    <li>
+                        <a href="#services">Comment ça marche</a>
+                    </li>
+                    <li>
+                        <a href="#services">Pourquoi LiGABLO Production</a>
+                    </li>
                 </ul>
 
                 <ul>
@@ -19,7 +23,9 @@ const Footer = () => {
                     <li>
                         <Link to="/cgu">Conditions générales</Link>
                     </li>
-                    <li>Confidentialité</li>
+                    <li>
+                        <Link to="/termes-etconfidentialites">Confidentialité</Link>
+                    </li>
                 </ul>
 
                 <div>
@@ -30,7 +36,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <hr/>
+            <hr />
             <span>
                 &copy; Par Ligablo  {annee} | Transactions cryptées et sécurisées en SSL/HTTPS.</span>
         </div>

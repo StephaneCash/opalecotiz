@@ -25,6 +25,7 @@ import AddTalent from '../pages/talents/AddTalent';
 import DetailTalent from '../pages/talents/DetailTalent';
 import ServiceById from '../app/pages/services/ServiceById';
 import Conditions from '../app/pages/cgu/Conditions';
+import Confidentialites from '../app/pages/cgu/Confidentialites';
 
 const RoutesFree = () => {
     return (
@@ -37,6 +38,7 @@ const RoutesFree = () => {
                 <Route path='/admin' element={<Login />} />
                 <Route path='/service/:id' element={<ServiceById />} />
                 <Route path='/cgu' element={<Conditions />} />
+                <Route path='/termes-etconfidentialites' element={<Confidentialites />} />
 
                 <Route element={<RoutesPrivate />}>
                     <Route path='/admin/dashboard' element={<Dashboard />} />
