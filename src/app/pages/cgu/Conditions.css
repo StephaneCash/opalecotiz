@@ -1,0 +1,54 @@
+.cgu {
+    padding: 2rem;
+    width: 60%;
+    margin: auto;
+    font-family: "Segoe UI";
+}
+
+.cgu p {
+    font-family: "Segoe UI";
+}
+
+.cgu p strong {
+    font-family: "Segoe UI";
+}
+
+.cgu h1 {
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem !important;
+    font-family: "Segoe UI";
+}
+
+.cgu em {
+    font-weight: bold;
+}
+
+.cgu ol li strong,
+.cgu ol li {
+    font-size: 1.2rem !important;
+    font-family: "Segoe UI";
+}
+
+@media screen and (max-width:900px) {
+    .cgu {
+        padding: 2rem;
+        width: 80%;
+        margin: auto;
+        font-family: "Segoe UI";
+    }
+}
+
+@media screen and (max-width:900px) {
+    .cgu {
+        padding: 2rem 1rem;
+        width: 100%;
+        margin: auto;
+        font-family: "Segoe UI";
+    }
+
+    .cgu h1 {
+        font-size: 1.3rem !important;
+    }
+}

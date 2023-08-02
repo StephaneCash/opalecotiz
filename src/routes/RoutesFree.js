@@ -24,6 +24,7 @@ import Talents from '../pages/talents/Talents';
 import AddTalent from '../pages/talents/AddTalent';
 import DetailTalent from '../pages/talents/DetailTalent';
 import ServiceById from '../app/pages/services/ServiceById';
+import Conditions from '../app/pages/cgu/Conditions';
 
 const RoutesFree = () => {
     return (
@@ -35,6 +36,7 @@ const RoutesFree = () => {
                 <Route path='/payement/:id' element={<Paiement />} />
                 <Route path='/admin' element={<Login />} />
                 <Route path='/service/:id' element={<ServiceById />} />
+                <Route path='/cgu' element={<Conditions />} />
 
                 <Route element={<RoutesPrivate />}>
                     <Route path='/admin/dashboard' element={<Dashboard />} />

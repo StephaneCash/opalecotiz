@@ -16,7 +16,9 @@ const Footer = () => {
 
                 <ul>
                     <li>RESSOURCES</li>
-                    <li>Conditions générales</li>
+                    <li>
+                        <Link to="/cgu">Conditions générales</Link>
+                    </li>
                     <li>Confidentialité</li>
                 </ul>
 

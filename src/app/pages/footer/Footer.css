@@ -49,8 +49,13 @@
     font-weight: 600;
 }
 
-.ressourcesApropos ul li{
+.ressourcesApropos ul li {
     font-size: 13px !important;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: none;
 }
 
 @media screen and (max-width:500px) {
