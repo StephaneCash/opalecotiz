@@ -61,6 +61,7 @@ const ModalPaiement = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <button onClick={() => handleClic()}>Valider</button>
+                <button style={{ border: "1px solid #ddd", padding: "5px", borderRadius: "4px" }} onClick={props.closeModal}>Fermer</button>
             </Modal.Footer>
         </Modal>
     )

@@ -480,7 +480,7 @@ const Paiement = () => {
                                         style={{ width: "40%" }}
                                         disabled={
                                             nom && prenom && dateNaissance && commune &&
-                                                occupation && categorie && file && numTel ? false : true
+                                                occupation && categorie && file && numTel && choix ? false : true
                                         }
                                         onClick={(e) => submitData(e)}
                                     >
