@@ -83,7 +83,7 @@ const Confidentialites = () => {
                         L'Utilisateur porte seul la responsabilité de la correspondance qui est envoyée par email à une personne n'en ayant pas
                         fait la demande et non-inscrite au Site LigabloProd.</p>
                     <p>Si le destinataire souhaite se désinscrire de la liste des destinataires, il peut effectuer facilement la démarche,
-                        en adressant un email via <a href="https://ligabloprod.com" target="_blank">https://ligabloprod.com/contact</a>.</p>
+                        en adressant un email via <a href="https://ligabloprod.com" >https://ligabloprod.com/contact</a>.</p>
                     <p>LigabloProd se réserve le droit de communiquer les données personnelles de ses clients aux autorités publiques et compétentes si cela était nécessaire
                         ou exigé lors d'une investigation au sujet d'une fraude ou de méfaits.</p>
                     <p>Concernant la gestion des paiements réalisés par l'intermédiaire de notre partenaire MAXICASH,
@@ -119,13 +119,13 @@ const Confidentialites = () => {
                         représente pour l'Utilisateur la fin de cet accord.</p>
                     <p>Dans le cas d'une réactivation ou de la réouverture du Compte de l'Utilisateur par LigabloProd, ces CGU gouverneront
                         à nouveau son accès et son utilisation du site LigabloProd.</p>
-                    <p>Afin de demander la résiliation du contrat, l'Utilisateur doit adresser une demande via <a href="https://ligabloprod.com" target="_blank">Contact</a>.</p>
+                    <p>Afin de demander la résiliation du contrat, l'Utilisateur doit adresser une demande via <a href="https://ligabloprod.com" >Contact</a>.</p>
                 </div>
                 <div className="wysywyg-section">
                     <h3>10. Quels sont vos droits ?</h3>
                     <p>L'Utilisateur des Services LigabloProd dispose d'un droit d'accès, de modification, de rectification et
                         de suppression des données qui le concernent, qu'il peut exercer auprès de LigabloProd, soit par courrier
-                        à l'adresse suivante : LigabloProd, Av. Kwango 131, Gombe Kinshasa, soit par email en suivant <a href="https://ligabloprod.com" target="_blank">Contact</a>.</p>
+                        à l'adresse suivante : LigabloProd, Av. Kwango 131, Gombe Kinshasa, soit par email en suivant <a href="https://ligabloprod.com">Contact</a>.</p>
                     <p>Par ailleurs, à aucun moment LigabloProd ne collectera, ne traitera, ni n'enregistrera les coordonnées de cartes bancaires des Utilisateurs, qui seront uniquement connues de son partenaire bancaire.</p>
                 </div>
                 <div className="wysywyg-section">
@@ -153,7 +153,7 @@ const Confidentialites = () => {
                 <div className="wysywyg-section">
                     <h3>14. Comment exercer vos droits ?</h3>
                     <p>Vous pouvez exercer vos droits en contactant LigabloProd au moyen du formulaire
-                        de contact disponible sur le site internet <a href="https://ligabloprod.com" target="_blank">https://ligabloprod.com</a></p>
+                        de contact disponible sur le site internet <a href="https://ligabloprod.com">https://ligabloprod.com</a></p>
                 </div>
                 <div className="wysywyg-section">
                     <h3>15. Quels sont les juridictions et le droit applicable ?</h3>
