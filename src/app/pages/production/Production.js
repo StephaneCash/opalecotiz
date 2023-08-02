@@ -6,6 +6,7 @@ import { baseUrlImage } from '../../../bases/basesUrl'
 import { FaAngleRight, FaCheckCircle, FaHome } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
+
 const Production = () => {
 
   const { state } = useLocation();

@@ -1,0 +1,19 @@
+.success {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+}
+
+.success svg {
+    font-size: 6rem !important;
+}
+
+.success a {
+    border-radius: 3px;
+    padding: .5rem 1rem;
+}

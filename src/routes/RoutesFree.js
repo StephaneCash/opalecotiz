@@ -26,6 +26,8 @@ import DetailTalent from '../pages/talents/DetailTalent';
 import ServiceById from '../app/pages/services/ServiceById';
 import Conditions from '../app/pages/cgu/Conditions';
 import Confidentialites from '../app/pages/cgu/Confidentialites';
+import Success from '../app/pages/transactions/Success';
+import Faillure from '../app/pages/transactions/Faillure';
 
 const RoutesFree = () => {
     return (
@@ -39,6 +41,8 @@ const RoutesFree = () => {
                 <Route path='/service/:id' element={<ServiceById />} />
                 <Route path='/cgu' element={<Conditions />} />
                 <Route path='/termes-etconfidentialites' element={<Confidentialites />} />
+                <Route path='/inscription-success' element={<Success />} />
+                <Route path='/inscription-faillure' element={<Faillure />} />
 
                 <Route element={<RoutesPrivate />}>
                     <Route path='/admin/dashboard' element={<Dashboard />} />

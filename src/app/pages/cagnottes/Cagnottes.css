@@ -4,7 +4,7 @@
 
 .cagnotte {
     width: 100%;
-    font-family: "Open sans";
+    font-family: "Segoe UI" !important;
     min-height: 100vh;
 }
 
@@ -114,7 +114,7 @@
 
 .cagnotte .productions .card .title {
     font-size: 1.4rem !important;
-    font-family: "Poppins";
+    font-family: "Segoe UI" !important;
     text-align: center;
     font-weight: bold;
 }
@@ -170,7 +170,7 @@
 
 .cagnotte .productions .card .montant .prixRecoltat,
 .cagnotte .productions .card .devise {
-    font-family: "Poppins" !important;
+    font-family: "Segoe UI" !important;
     font-size: 2rem !important;
     font-weight: bold;
     text-align: center;
@@ -193,12 +193,12 @@
 
 .cagnotte .productions .collect span:first-child {
     font-size: 1rem !important;
-    font-family: "Poppins" !important;
+    font-family: "Segoe UI" !important;
 }
 
 .cagnotte .productions .collect span:last-child {
     font-size: 1.2rem !important;
-    font-family: "Poppins" !important;
+    font-family: "Segoe UI" !important;
     font-weight: bold;
 }
 
@@ -215,7 +215,7 @@
     border-radius: 7px;
     color: #fff;
     font-size: 14px;
-    font-family: "Poppins";
+    font-family: "Segoe UI" !important;
     border: 1px solid #ddd;
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;

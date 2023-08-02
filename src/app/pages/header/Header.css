@@ -15,6 +15,18 @@
     color: #fff;
 }
 
+.headerApp .linksCagnottes a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.headerApp .linksCagnottes a img {
+    height: 30px;
+    width: 30px;
+    border-radius: 120px;
+}
+
 .headerApp .borderTop div {
     display: flex;
     align-items: center;
@@ -104,14 +116,14 @@
         flex-direction: column !important;
     }
 
-    .headerApp .linksCagnottes{
+    .headerApp .linksCagnottes {
         width: 100%;
     }
 }
 
 
 @media screen and (max-width:500px) {
-    .headerApp .linksCagnottes{
+    .headerApp .linksCagnottes {
         flex-direction: column;
         gap: 10px;
         height: auto;

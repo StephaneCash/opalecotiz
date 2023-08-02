@@ -82,7 +82,7 @@ const Why = () => {
                                         val: val
                                     }}
                                 >
-                                    En savoir plus
+                                    Je m'inscris
                                 </Link>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ import { FiArrowRightCircle, FiSearch } from "react-icons/fi"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa"
+import { baseUrlImage } from '../../../bases/basesUrl';
 
 const Header = () => {
 
@@ -51,7 +52,9 @@ const Header = () => {
                                     }}
                                 >{
                                         val && val.title && val.title.length > 20 ? val.title.substring(0, 20) + "..." : val.title
-                                    }</Link>
+                                    }
+                                    <img src={val && val.url && baseUrlImage + "/" + val.url} alt="" />
+                                </Link>
                             })
                             : "Chargement..." : "Serveur non disponible."
                     }

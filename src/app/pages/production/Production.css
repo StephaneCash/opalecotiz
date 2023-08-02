@@ -18,7 +18,7 @@
 }
 
 .toolBar a {
-    color: #009c4e;
+    color: #333;
     text-decoration: none;
 }
 
@@ -27,7 +27,7 @@
     margin-bottom: 2rem !important;
     font-size: 2rem !important;
     font-weight: bold;
-    font-family: "Poppins";
+    font-family: "Segoe UI" !important;
 }
 
 .progress {
@@ -129,7 +129,7 @@ select {
 
 .row1 .card .title {
     font-size: 1.4rem !important;
-    font-family: "Poppins";
+    font-family: "Segoe UI" !important;
     text-align: center;
     font-weight: bold;
 }
@@ -146,13 +146,12 @@ select {
     border-radius: 7px !important;
     padding: 1rem;
     font-size: 15px;
-    font-family: "Poppins";
+    font-family: "Segoe UI" !important;
     text-transform: uppercase;
 }
 
 .row1 .card .montant .prixRecoltat,
 .row1 .card .devise {
-    font-family: "Poppins" !important;
     font-size: 2rem !important;
     font-weight: bold;
     text-align: center;
@@ -170,12 +169,10 @@ select {
 
 .row1 .collect span:first-child {
     font-size: 1rem !important;
-    font-family: "Poppins" !important;
 }
 
 .row1 .collect span:last-child {
     font-size: 1.2rem !important;
-    font-family: "Poppins" !important;
     font-weight: bold;
 }
 
@@ -186,12 +183,10 @@ select {
 
 .cagnotte .productions .collect span:first-child {
     font-size: 1rem !important;
-    font-family: "Poppins" !important;
 }
 
 .cagnotte .productions .collect span:last-child {
     font-size: 1.2rem !important;
-    font-family: "Poppins" !important;
     font-weight: bold;
 }
 

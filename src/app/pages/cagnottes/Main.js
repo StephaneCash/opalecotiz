@@ -142,9 +142,9 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                             </div>
 
                                             <div className='alert text-center' style={{ background: "#efefef" }}>
-                                                Lancement : {dateParserFunction(val.dateDebut)}
+                                                Début : {dateParserFunction(val.dateDebut)}
                                                 <br />
-                                                Fermeture : {dateParserFunction(val.dateFin)}
+                                                Fin : {dateParserFunction(val.dateFin)}
                                             </div>
                                         </div>
                                     </Link>
