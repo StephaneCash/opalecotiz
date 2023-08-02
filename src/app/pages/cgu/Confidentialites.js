@@ -2,8 +2,14 @@ import React from 'react'
 import HeaderClient from '../cagnottes/HeaderClient'
 import Footer from '../footer/Footer'
 import "./Conditions.css"
+import { useEffect } from 'react'
 
 const Confidentialites = () => {
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <div>
             <HeaderClient />
