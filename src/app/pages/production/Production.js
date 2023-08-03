@@ -3,7 +3,7 @@ import "./Production.css"
 import HeaderClient from '../cagnottes/HeaderClient'
 import { Link, useLocation } from 'react-router-dom'
 import { baseUrlImage } from '../../../bases/basesUrl'
-import { FaAngleRight, FaCheckCircle, FaHome, FaMousePointer } from 'react-icons/fa'
+import { FaAngleRight, FaCheckCircle, FaHome, FaRegHandPointUp } from 'react-icons/fa'
 import { dateParserFunction } from '../../../utils'
 import Footer from '../footer/Footer'
 
@@ -147,7 +147,7 @@ const Production = () => {
                     {
                       state && state.val && state.val.title === "Jeune Talent" ? "Je m'inscris" : "Je participe"
                     }
-                    <FaMousePointer size={16} />
+                    <FaRegHandPointUp size={16} />
                   </button>
                 </Link>
               </div>
