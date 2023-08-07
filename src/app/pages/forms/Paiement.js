@@ -123,7 +123,7 @@ const Paiement = () => {
                             if (file && file.size > 50000000) {
                                 toast.error("Votre fichier est trop volumineux, taille maximale: 50Mo")
                             } else {
-                                if (duration > 2) {
+                                if (duration > 3) {
                                     toast.error("La vidéo doit avoir une durée max de 2 Minutes")
                                 } else {
                                     let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;

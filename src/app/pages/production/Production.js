@@ -119,10 +119,10 @@ const Production = () => {
                     <div
                       className="progress-bar"
                       role="progressbar"
-                      style={{ width: talents ? title === "Jeune Talent" ? (talents * 100) / 125 + "%" : 0 : 0, background: "#009c4e" }} aria-valuenow="10"
+                      style={{ width: talents ? title === "Jeune Talent" ? (talents * 100) / 250 + "%" : 0 : 0, background: "#009c4e" }} aria-valuenow="10"
                       aria-valuemin="0" aria-valuemax="100">
                       {
-                        talents ? title === "Jeune Talent" ? (talents * 100) / 125 + "%" : 0 : 0
+                        talents ? title === "Jeune Talent" ? (talents * 100) / 250 + "%" : 0 : 0
                       }
                     </div>
                   </div>
