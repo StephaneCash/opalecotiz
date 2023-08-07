@@ -21,7 +21,6 @@
     text-align: center;
     margin-top: 1rem !important;
     margin-bottom: 1.5rem !important;
-    font-family: "Poppins";
 }
 
 .payement .form {
@@ -142,7 +141,6 @@ textarea {
     font-size: 1.1rem !important;
     margin-top: 2rem !important;
     font-weight: 500;
-    font-family: "Poppins";
 }
 
 .payement .grille .card img {

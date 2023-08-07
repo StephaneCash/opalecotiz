@@ -141,10 +141,10 @@ const Main = ({ listcategories, listCagnottes, valueSearch, setValueSearch }) =>
                                                 </span>
                                             </div>
 
-                                            <div className='alert text-center' style={{ background: "#efefef" }}>
-                                                Début : {dateParserFunction(val.dateDebut)}
+                                            <div className='alert' style={{ background: "#efefef" }}>
+                                                Lancement : {dateParserFunction(val.dateDebut)}
                                                 <br />
-                                                Fin : {dateParserFunction(val.dateFin)}
+                                                Fermeture : {dateParserFunction(val.dateFin)}
                                             </div>
                                         </div>
                                     </Link>

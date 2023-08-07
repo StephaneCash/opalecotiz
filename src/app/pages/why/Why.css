@@ -54,7 +54,6 @@
 
 .why .card .montant .prixRecoltat,
 .why .card .devise {
-    font-family: "Poppins" !important;
     font-size: 2rem !important;
     font-weight: bold;
     text-align: center;

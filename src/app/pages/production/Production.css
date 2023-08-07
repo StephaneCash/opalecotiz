@@ -27,7 +27,6 @@
     margin-bottom: 2rem !important;
     font-size: 2rem !important;
     font-weight: bold;
-    font-family: "Segoe UI" !important;
 }
 
 .progress {
@@ -129,7 +128,6 @@ select {
 
 .row1 .card .title {
     font-size: 1.4rem !important;
-    font-family: "Segoe UI" !important;
     text-align: center;
     font-weight: bold;
 }
@@ -146,7 +144,6 @@ select {
     border-radius: 7px !important;
     padding: 1rem;
     font-size: 15px;
-    font-family: "Segoe UI" !important;
     -webkit-font-smoothing: antialiased;
 }
 
