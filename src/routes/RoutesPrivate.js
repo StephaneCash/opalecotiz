@@ -15,7 +15,7 @@ const RoutesPrivate = () => {
     }
 
     return (
-        data ? <Outlet /> : <Navigate to="/" />
+        data ? <Outlet /> : <Navigate to="/admin" />
     )
 }
 

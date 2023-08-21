@@ -37,6 +37,7 @@
     font-size: 1.5rem;
     color: #555;
 }
+
 .mainData .cards {
     margin-right: 2rem !important;
     display: flex;
@@ -98,20 +99,54 @@
     font-size: 12px;
 }
 
-.mainData .mainBosy4{
+.mainData .mainBosy4 {
     height: 100px;
     display: flex;
     width: 250px;
     margin-top: 1rem;
 }
 
-.mainData .charts{
+.mainData .charts {
     display: flex;
     gap: 1rem;
 }
 
-.mainData .charts .card{
+.mainData .charts .card {
     width: 49.5%;
     background-color: #fff !important;
     border: 0;
 }
+
+@media screen and (max-width:1040px) {
+    .mainData .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 49%);
+    }
+
+    .mainData .cards .col-sm-3 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .mainData .cards {
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+        gap: 0;
+        margin-right: 0 !important;
+    }
+
+    .mainData .cards .col-sm-3 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .mainData .charts {
+        flex-direction: column;
+    }
+
+    .mainData .charts .card{
+        width: 100%;
+    }
+}
+
